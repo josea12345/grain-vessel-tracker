@@ -260,14 +260,29 @@ WS_URL = "wss://stream.aisstream.io/v0/stream"
 DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data")
 
 
+def load_tracked_mmsis():
+    """MMSIs the user asked to track anywhere in the world (not just in zones)."""
+    path = os.path.join(DATA_DIR, "tracked_mmsis.json")
+    try:
+        data = json.load(open(path))
+        return [str(x.get("mmsi", x)) for x in data if str(x.get("mmsi", x)).isdigit()]
+    except (OSError, ValueError, AttributeError):
+        return []
+
+
 def build_subscription(api_key):
-    return {
+    sub = {
         "APIKey": api_key,
         "BoundingBoxes": [p["bbox"] for p in PORTS.values()],
         # PositionReport gives live positions (+ navigational status).
         # ShipStaticData (type 5) carries the crew-declared destination + ETA.
         "FilterMessageTypes": ["PositionReport", "ShipStaticData"],
     }
+    # Per-vessel global tracking: these MMSIs are followed wherever they are.
+    tracked = load_tracked_mmsis()
+    if tracked:
+        sub["FiltersShipMMSI"] = tracked
+    return sub
 
 
 # AIS navigational-status codes -> plain-English labels (ITU-1371).

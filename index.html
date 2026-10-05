@@ -575,7 +575,7 @@ function filtered() {
   const q = state.q.trim().toLowerCase();
   let out = vessels.filter(v => {
     if (q && !(v.name.toLowerCase().includes(q) || String(v.mmsi).includes(q))) return false;
-    if (state.product !== 'All' && !(ZONE_PRODUCTS[v.zoneKey] || []).includes(state.product)) return false;
+    if (state.product !== 'All' && v.zoneKey !== 'tracked' && !(ZONE_PRODUCTS[v.zoneKey] || []).includes(state.product)) return false;
     if (!state.zones.has(v.zoneKey)) return false;
     if (!state.underway.has(statusOf(v))) return false;
     if (state.fleetOnly && !watch.has(v.mmsi)) return false;
@@ -707,7 +707,10 @@ function syncFilters() {
   // sidebar zones
   const fz = document.getElementById('fZones');
   fz.innerHTML = '';
-  for (const [key, p] of Object.entries(ports)) {
+  const zoneEntries = Object.entries(ports);
+  const nTracked = vessels.filter(v => v.zoneKey === 'tracked').length;
+  if (nTracked) zoneEntries.unshift(['tracked', { name: '★ Tracked vessels (worldwide)' }]);
+  for (const [key, p] of zoneEntries) {
     const n = vessels.filter(v => v.zoneKey === key).length;
     const lab = document.createElement('label');
     lab.className = 'fitem';
@@ -769,10 +772,13 @@ fetch('data/vessels.json')
 
     vessels = raw.map(v => {
       const zk = zoneKeyOf(v);
-      return { ...v, name: v.name || 'Unknown', zoneKey: zk, zoneName: zk ? ports[zk].name : '—' };
+      // Vessels tracked by MMSI live outside every zone — keep them visible.
+      const key = zk || 'tracked';
+      return { ...v, name: v.name || 'Unknown', zoneKey: key, zoneName: zk ? ports[zk].name : '★ Tracked vessel' };
     });
     vessels.sort((a, b) => a.name.localeCompare(b.name));
     Object.keys(ports).forEach(k => state.zones.add(k));
+    state.zones.add('tracked');
 
     // map markers
     drawVessels(vessels);
