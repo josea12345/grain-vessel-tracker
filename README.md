@@ -10,8 +10,8 @@ with real-time AIS data. The physical flow behind the futures prices.
 
 - **Collector** (`collector/collector.py`) connects to [AISStream.io](https://aisstream.io)'s
   free WebSocket feed, subscribes to bounding boxes around key grain export ports
-  (v1: New Orleans / S. Louisiana, Santos), keeps the latest position per cargo
-  vessel, writes `data/vessels.json` for the globe, and archives every snapshot
+  (v1: New Orleans / S. Louisiana, Santos), keeps the latest position per vessel,
+  writes `data/vessels.json` for the globe, and archives every snapshot
   into `data/vessels.db` so voyage history builds from day one.
 - **Globe** (`index.html`) renders it all in 3D with [CesiumJS](https://cesium.com/platform/cesiumjs/):
   vessel positions with heading tracks, clickable AIS details (name, MMSI, speed,
@@ -19,10 +19,13 @@ with real-time AIS data. The physical flow behind the futures prices.
 
 ## Honest limitations (read before citing this in an interview)
 
-- AIS ship-type codes 70–79 cover **all** cargo vessels — bulk carriers, container
-  ships, etc. "Grain vessel" here means *a cargo vessel inside a grain-port zone*,
-  which is a heuristic, not a cargo manifest. Commercial platforms (e.g. Kpler)
-  combine AIS with port lineup data to identify actual cargoes; this project does not.
+- AISStream's position reports do **not** include ship type — it arrives in separate
+  static-data messages the free feed doesn't bundle. So v1 shows **all** vessel traffic
+  inside the port zones (bulkers, tankers, tugs, everything with AIS on), labeled honestly
+  as such. "Grain vessel" here means *a vessel inside a grain-port bounding box* — a
+  heuristic, not a cargo manifest. Commercial platforms (e.g. Kpler) combine AIS with port
+  lineup data to identify actual cargoes; this project does not. Ship-type filtering via
+  static-data integration is the v2 improvement.
 - AISStream is **real-time only** — there is no free historical endpoint. The SQLite
   archive is how history accumulates: it starts the day you first run the collector.
 - Mid-ocean AIS coverage can be patchy; port zones are solid.
@@ -43,7 +46,8 @@ secret. (One connection per API key; the collector holds it only while running.)
 ## Roadmap
 
 - v2: more ports (Rosario, Vancouver, Odesa/Chornomorsk), USDA weekly export-inspection
-  volumes under each port marker, Panama/Suez chokepoint counters
+  volumes under each port marker, Panama/Suez chokepoint counters, ship-type filtering
+  via static-data messages
 - v3: voyage trails from the SQLite archive, port-congestion view
 
 ## Stack

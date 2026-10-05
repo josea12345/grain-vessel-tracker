@@ -13,12 +13,15 @@ Usage:
 Notes / honest limitations:
 - AISStream is real-time only; there is no free historical endpoint. History
   in vessels.db starts the day you first run this.
-- AIS ship-type codes 70-79 cover ALL cargo vessels (bulk carriers, container
-  ships, tankers report separately under 80-89). "Grain vessel" here means a
-  cargo vessel inside a grain-port bounding box — a heuristic, not a cargo
-  manifest. The README states this plainly.
+- AISStream's PositionReport metadata does NOT include ship type (it arrives
+  in separate static-data messages), so v1 tracks ALL vessel traffic inside
+  the port zones — bulkers, tankers, tugs — and labels it honestly as such.
+  "Grain vessel" here means a vessel inside a grain-port bounding box: a
+  heuristic, not a cargo manifest. Ship-type filtering via static-data
+  messages is a v2 improvement. The README states this plainly.
 - One WebSocket connection per API key. Send the subscription within 3 seconds
   of connecting or the server drops you.
+- Honors HTTPS_PROXY/https_proxy env vars for sandboxed networks.
 """
 import argparse
 import asyncio
@@ -54,8 +57,11 @@ PORTS = {
     },
 }
 
-# AIS ship types 70-79 = cargo ships (includes bulk carriers).
-CARGO_SHIP_TYPES = list(range(70, 80))
+# AIS ship-type codes 70-79 cover cargo vessels, but AISStream's PositionReport
+# MetaData does NOT include ShipType (it arrives in separate static-data
+# messages). v1 therefore tracks ALL vessel traffic inside the port zones and
+# labels it honestly as such — see README "Honest limitations". Ship-type
+# filtering via static-data integration is a v2 improvement.
 
 WS_URL = "wss://stream.aisstream.io/v0/stream"
 DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data")
@@ -78,16 +84,10 @@ def extract_vessel(msg):
         lon = float(meta.get("longitude"))
     except (TypeError, ValueError):
         return None
-    ship_type = meta.get("ShipType")
-    try:
-        ship_type = int(ship_type)
-    except (TypeError, ValueError):
-        ship_type = None
-    if ship_type not in CARGO_SHIP_TYPES:
-        return None
     mmsi = str(meta.get("MMSI", ""))
     if not mmsi:
         return None
+    # NOTE: no ship-type filtering — see comment at top of file.
     try:
         sog = float(body.get("Sog", 0) or 0)
     except (TypeError, ValueError):
@@ -136,7 +136,12 @@ def archive_snapshot(vessels):
 async def collect(api_key, seconds):
     vessels = {}
     subscription = json.dumps(build_subscription(api_key))
-    async with websockets.connect(WS_URL, max_size=10 * 1024 * 1024) as ws:
+    # Honor standard proxy env vars (some sandboxes/VPNs require egress via proxy).
+    proxy = os.environ.get("HTTPS_PROXY") or os.environ.get("https_proxy")
+    connect_kwargs = {"max_size": 10 * 1024 * 1024}
+    if proxy:
+        connect_kwargs["proxy"] = proxy
+    async with websockets.connect(WS_URL, **connect_kwargs) as ws:
         # The 3-second rule: subscribe immediately or the server drops you.
         await ws.send(subscription)
         deadline = time.time() + seconds
@@ -170,9 +175,9 @@ def main():
         sys.exit("No API key. Get a free one at https://aisstream.io and set AISSTREAM_API_KEY.")
 
     print(f"Listening to AISStream for {args.seconds}s "
-          f"({len(PORTS)} port boxes, cargo ship types 70-79)...")
+          f"({len(PORTS)} port boxes, all vessel traffic)...")
     vessels, n_messages = asyncio.run(collect(args.key, args.seconds))
-    print(f"Received {n_messages} messages -> {len(vessels)} cargo vessels in grain-port boxes.")
+    print(f"Received {n_messages} messages -> {len(vessels)} vessels in grain-port boxes.")
 
     os.makedirs(DATA_DIR, exist_ok=True)
     snapshot = {
