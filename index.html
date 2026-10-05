@@ -134,6 +134,7 @@
   .pill { font-size: 11.5px; font-weight: 600; padding: 4px 11px; border-radius: 999px; white-space: nowrap; }
   .pill.mmsi { background: var(--grey-pill); color: var(--body); }
   .pill.type { background: var(--peach); color: var(--peach-ink); }
+  .pillLane { background: #e0f2fe; color: #075985; }
   .pillGo { background: #dcfce7; color: #166534; }
   .pillWarn { background: #fef3c7; color: #92400e; }
   .pillInfo { background: #dbeafe; color: #1e40af; }
@@ -631,7 +632,9 @@ function render() {
           <div style="font-size:12px;color:var(--muted);margin-top:2px">${escapeHtml(v.zoneName)} · <span class="pill ${statusPillClass(v)}" style="margin-left:2px">${statusLabel(v)}</span></div>
         </div>
         <span class="pill mmsi">MMSI: ${v.mmsi}</span>
-        <span class="pill type">Grain zone</span>
+        ${v.zoneKey === 'tracked' ? '<span class="pill pillInfo">★ Tracked</span>'
+          : lanes[v.zoneKey] ? '<span class="pill pillLane">🌊 Lane</span>'
+          : '<span class="pill type">Grain zone</span>'}
         <span class="vchev">▾</span>
       </div>
       <div class="vdetail">
