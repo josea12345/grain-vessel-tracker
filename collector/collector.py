@@ -2,7 +2,9 @@
 Grain Vessel Tracker — AIS collector (v1).
 
 Connects to AISStream.io's free WebSocket feed, subscribes to bounding boxes
-around key grain export ports, keeps the latest position report per vessel,
+around 20 major grain export ports worldwide (US Gulf, US Pacific Northwest,
+Brazil, Argentina, Canada, Black Sea, France, Australia), keeps the latest
+position report per vessel,
 writes a live snapshot (data/vessels.json) for the 3D globe, and archives
 every snapshot into data/vessels.db so voyage history builds from day one.
 
@@ -38,22 +40,138 @@ except ImportError:
     sys.exit("Missing dependency: pip install -r collector/requirements.txt")
 
 # ---------------------------------------------------------------------------
-# Grain ports, v1: Mississippi River system (New Orleans / S. Louisiana) and
-# Santos, Brazil — the two largest Western-hemisphere grain export gateways.
+# Grain ports: the world's major grain export gateways — US Gulf & Pacific
+# Northwest, Brazil, Argentina, Canada, Black Sea, France, Australia.
 # Bounding boxes are [[lat_min, lon_min], [lat_max, lon_max]].
 # ---------------------------------------------------------------------------
 PORTS = {
+    # --- US Gulf ---
     "new-orleans": {
         "name": "New Orleans / S. Louisiana",
         "country": "USA",
         "bbox": [[28.6, -92.2], [30.6, -88.6]],
         "marker": [-90.06, 29.95],
     },
+    "houston": {
+        "name": "Houston / Galveston",
+        "country": "USA",
+        "bbox": [[28.9, -95.5], [30.1, -94.1]],
+        "marker": [-94.77, 29.60],
+    },
+    "corpus-christi": {
+        "name": "Corpus Christi",
+        "country": "USA",
+        "bbox": [[27.2, -98.0], [28.4, -96.8]],
+        "marker": [-97.40, 27.81],
+    },
+    # --- US Pacific Northwest ---
+    "pnw-columbia": {
+        "name": "Columbia River (Portland / Kalama)",
+        "country": "USA",
+        "bbox": [[45.4, -123.6], [46.5, -122.2]],
+        "marker": [-122.83, 46.01],
+    },
+    "seattle": {
+        "name": "Seattle / Tacoma",
+        "country": "USA",
+        "bbox": [[47.1, -123.0], [47.9, -122.0]],
+        "marker": [-122.47, 47.60],
+    },
+    # --- Brazil ---
     "santos": {
         "name": "Santos",
         "country": "Brazil",
         "bbox": [[-25.2, -47.2], [-22.8, -45.4]],
         "marker": [-46.31, -23.96],
+    },
+    "paranagua": {
+        "name": "Paranaguá",
+        "country": "Brazil",
+        "bbox": [[-26.3, -49.3], [-24.7, -47.7]],
+        "marker": [-48.52, -25.50],
+    },
+    "rio-grande": {
+        "name": "Rio Grande",
+        "country": "Brazil",
+        "bbox": [[-32.8, -52.9], [-31.3, -51.3]],
+        "marker": [-52.10, -32.03],
+    },
+    "itaqui": {
+        "name": "Itaqui / São Luís",
+        "country": "Brazil",
+        "bbox": [[-3.3, -45.1], [-1.8, -43.6]],
+        "marker": [-44.38, -2.58],
+    },
+    "barcarena": {
+        "name": "Barcarena / Vila do Conde",
+        "country": "Brazil",
+        "bbox": [[-2.2, -49.4], [-0.9, -48.1]],
+        "marker": [-48.75, -1.53],
+    },
+    # --- Argentina ---
+    "rosario": {
+        "name": "Rosario / San Lorenzo (Up-River)",
+        "country": "Argentina",
+        "bbox": [[-33.3, -61.3], [-32.2, -60.2]],
+        "marker": [-60.73, -32.75],
+    },
+    "bahia-blanca": {
+        "name": "Bahía Blanca",
+        "country": "Argentina",
+        "bbox": [[-39.5, -62.9], [-38.1, -61.3]],
+        "marker": [-62.10, -38.78],
+    },
+    # --- Canada ---
+    "vancouver": {
+        "name": "Vancouver",
+        "country": "Canada",
+        "bbox": [[49.0, -123.7], [49.5, -122.7]],
+        "marker": [-123.12, 49.29],
+    },
+    "prince-rupert": {
+        "name": "Prince Rupert",
+        "country": "Canada",
+        "bbox": [[53.9, -131.0], [54.7, -129.6]],
+        "marker": [-130.32, 54.32],
+    },
+    # --- Black Sea ---
+    "odesa": {
+        "name": "Odesa / Chornomorsk",
+        "country": "Ukraine",
+        "bbox": [[46.1, 30.2], [46.9, 31.2]],
+        "marker": [30.73, 46.48],
+    },
+    "novorossiysk": {
+        "name": "Novorossiysk",
+        "country": "Russia",
+        "bbox": [[44.3, 37.2], [45.1, 38.3]],
+        "marker": [37.77, 44.72],
+    },
+    "constanta": {
+        "name": "Constanta",
+        "country": "Romania",
+        "bbox": [[43.8, 28.1], [44.6, 29.2]],
+        "marker": [28.66, 44.17],
+    },
+    # --- Europe ---
+    "rouen": {
+        "name": "Rouen",
+        "country": "France",
+        "bbox": [[49.1, 0.4], [49.8, 1.7]],
+        "marker": [1.08, 49.44],
+    },
+    # --- Australia ---
+    "kwinana": {
+        "name": "Kwinana / Perth",
+        "country": "Australia",
+        "bbox": [[-32.9, 115.1], [-31.6, 116.4]],
+        "marker": [115.75, -32.23],
+    },
+    "newcastle-au": {
+        "name": "Newcastle",
+        "country": "Australia",
+        "bbox": [[-33.5, 151.2], [-32.3, 152.4]],
+        "marker": [151.78, -32.92],
     },
 }
 

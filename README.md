@@ -9,8 +9,9 @@ with real-time AIS data. The physical flow behind the futures prices.
 ## What it does
 
 - **Collector** (`collector/collector.py`) connects to [AISStream.io](https://aisstream.io)'s
-  free WebSocket feed, subscribes to bounding boxes around key grain export ports
-  (v1: New Orleans / S. Louisiana, Santos), keeps the latest position per vessel,
+  free WebSocket feed, subscribes to bounding boxes around 20 major grain export
+  ports (US Gulf, US Pacific Northwest, Brazil, Argentina, Canada, Black Sea,
+  France, Australia), keeps the latest position per vessel,
   writes `data/vessels.json` for the globe, and archives every snapshot
   into `data/vessels.db` so voyage history builds from day one.
 - **Web app** (`index.html`) — a MagicPort-style vessel directory on a live 3D globe
