@@ -3,139 +3,259 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Grain Vessel Tracker — Live 3D AIS Map</title>
+<title>Grain Vessel Tracker — Search and Track Grain Vessels Live</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cesium@1.138/Build/Cesium/Widgets/widgets.css">
 <style>
   :root {
-    --glass: rgba(8, 14, 26, 0.78);
-    --border: rgba(255, 255, 255, 0.09);
-    --text: #eef3f8;
-    --muted: #9fb0c3;
-    --amber: #ffb300;
-    --green: #34d399;
+    --bg: #f5f8fc;
+    --card: #ffffff;
+    --border: #e3e8f0;
+    --ink: #0f1b2d;
+    --body: #33415c;
+    --muted: #8a94a6;
+    --green: #15803d;
+    --green-dark: #0f6a31;
+    --peach: #fdeeda;
+    --peach-ink: #9a5b00;
+    --grey-pill: #eef1f5;
+    --amber: #f59e0b;
   }
-  html, body, #cesiumContainer { width: 100%; height: 100%; margin: 0; padding: 0; overflow: hidden;
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
-    background: #060b14; color: var(--text); }
-  .card { background: var(--glass); border: 1px solid var(--border); border-radius: 14px;
-    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45); }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--body);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif; }
 
-  /* Header */
-  #hud { position: absolute; top: 14px; left: 14px; z-index: 10; padding: 14px 16px; max-width: 340px; }
-  #hud h1 { margin: 0 0 2px; font-size: 18px; font-weight: 700; letter-spacing: 0.2px; }
-  #hud h1 .grain { color: var(--green); }
-  #hud .sub { margin: 0 0 10px; font-size: 12.5px; line-height: 1.45; color: var(--muted); }
-  #hud .stats { display: flex; gap: 18px; }
-  #hud .stat b { display: block; font-size: 22px; font-weight: 700; }
-  #hud .stat span { font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; }
-  #liveDot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #34d399;
-    margin-right: 6px; box-shadow: 0 0 8px #34d399; animation: pulse 2s infinite; }
-  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
+  /* Navbar */
+  #nav { position: sticky; top: 0; z-index: 50; background: var(--card);
+    border-bottom: 1px solid var(--border); }
+  #nav .inner { max-width: 1200px; margin: 0 auto; padding: 0 20px; height: 62px;
+    display: flex; align-items: center; gap: 28px; }
+  #brand { font-size: 18px; font-weight: 800; color: var(--ink); text-decoration: none;
+    display: flex; align-items: center; gap: 8px; white-space: nowrap; }
+  #brand .grain { color: var(--green); }
+  #navLinks { display: flex; gap: 22px; margin-left: 8px; }
+  #navLinks a { color: var(--body); text-decoration: none; font-size: 14px; font-weight: 500; }
+  #navLinks a:hover { color: var(--green); }
+  #navRight { margin-left: auto; display: flex; align-items: center; gap: 10px; }
+  .livePill { display: inline-flex; align-items: center; gap: 7px; background: #e8f7ee;
+    color: var(--green-dark); border: 1px solid #bfe6cc; font-size: 12.5px; font-weight: 700;
+    padding: 7px 14px; border-radius: 999px; }
+  .livePill i { width: 8px; height: 8px; border-radius: 50%; background: #22c55e;
+    box-shadow: 0 0 8px #22c55e; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+  #updatedPill { font-size: 12.5px; color: var(--muted); }
 
-  /* Search */
-  #searchWrap { position: absolute; top: 14px; right: 14px; z-index: 11; width: 300px; }
-  #searchBox { display: flex; align-items: center; padding: 0 12px; height: 44px; }
-  #searchBox svg { flex: 0 0 auto; margin-right: 8px; opacity: 0.6; }
-  #searchInput { flex: 1; background: transparent; border: none; outline: none; color: var(--text);
-    font-size: 14px; height: 100%; }
+  /* Breadcrumb */
+  #crumbs { background: #eef1f6; border-bottom: 1px solid var(--border); }
+  #crumbs .inner { max-width: 1200px; margin: 0 auto; padding: 9px 20px; font-size: 13px; color: var(--muted); }
+  #crumbs b { color: var(--body); font-weight: 600; }
+
+  /* Page */
+  #page { max-width: 1200px; margin: 0 auto; padding: 26px 20px 60px; }
+  h1 { font-size: 30px; color: var(--ink); margin: 0 0 6px; letter-spacing: -0.3px; }
+  #subline { font-size: 14.5px; color: var(--muted); margin: 0 0 18px; max-width: 760px; line-height: 1.55; }
+
+  /* Stat mini cards */
+  #stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 20px; }
+  .statCard { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 12px 16px; }
+  .statCard .k { font-size: 11px; text-transform: uppercase; letter-spacing: 0.7px; color: var(--muted);
+    display: flex; align-items: center; gap: 6px; }
+  .statCard .v { font-size: 22px; font-weight: 800; color: var(--ink); margin-top: 3px; }
+
+  /* Map card */
+  #mapSection { margin-bottom: 26px; }
+  #mapCard { background: var(--card); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+  #mapHead { display: flex; align-items: center; justify-content: space-between; padding: 13px 18px;
+    border-bottom: 1px solid var(--border); }
+  #mapHead b { color: var(--ink); font-size: 15px; }
+  #mapHead span { font-size: 12.5px; color: var(--muted); }
+  #cesiumContainer { width: 100%; height: 430px; background: #060b14; position: relative; }
+  #mapLegend { display: flex; gap: 16px; padding: 10px 18px; font-size: 12.5px; color: var(--muted);
+    border-top: 1px solid var(--border); }
+  #mapLegend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
+
+  /* Search row */
+  #countLine { font-size: 14px; color: var(--body); margin: 0 0 12px; }
+  #countLine b { color: var(--ink); }
+  #searchRow { display: flex; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+  #searchBar { flex: 1 1 320px; display: flex; align-items: center; background: var(--card);
+    border: 1px solid var(--border); border-radius: 999px; padding: 4px 4px 4px 16px; min-width: 0; }
+  #searchBar svg { flex: 0 0 auto; margin-right: 8px; }
+  #searchInput { flex: 1; border: none; outline: none; font-size: 14px; color: var(--ink);
+    background: transparent; min-width: 0; }
   #searchInput::placeholder { color: var(--muted); }
-  #results { display: none; margin-top: 6px; overflow: hidden; max-height: 320px; overflow-y: auto; }
-  #results.open { display: block; }
-  .result { padding: 10px 14px; cursor: pointer; border-top: 1px solid var(--border); }
-  .result:first-child { border-top: none; }
-  .result:hover, .result.active { background: rgba(255, 179, 0, 0.12); }
-  .result .rname { font-size: 13.5px; font-weight: 600; }
-  .result .rzone { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
-  .noResult { padding: 12px 14px; font-size: 13px; color: var(--muted); }
+  .btn { border: none; cursor: pointer; font-size: 14px; font-weight: 700; border-radius: 999px;
+    padding: 11px 26px; }
+  .btnPrimary { background: var(--green); color: #fff; }
+  .btnPrimary:hover { background: var(--green-dark); }
+  .btnOutline { background: var(--card); color: var(--body); border: 1px solid var(--border); font-weight: 600;
+    display: inline-flex; align-items: center; gap: 8px; }
+  .btnOutline:hover { border-color: var(--green); color: var(--green-dark); }
 
-  /* Vessel detail sheet */
-  #detail { position: absolute; left: 50%; transform: translateX(-50%) translateY(20px); bottom: 18px;
-    z-index: 10; width: min(480px, calc(100vw - 28px)); padding: 16px 18px;
-    opacity: 0; pointer-events: none; transition: opacity 0.25s, transform 0.25s; }
-  #detail.open { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
-  #detail .dhead { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
-  #detail h2 { margin: 0; font-size: 17px; font-weight: 700; }
-  #detail .dsub { font-size: 12px; color: var(--muted); margin-top: 2px; }
-  #detailClose { background: rgba(255,255,255,0.08); border: 1px solid var(--border); color: var(--text);
-    width: 30px; height: 30px; border-radius: 50%; font-size: 15px; cursor: pointer; flex: 0 0 auto; }
-  #detailClose:hover { background: rgba(255,255,255,0.16); }
-  #detail .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 12px; }
-  #detail .fact b { display: block; font-size: 15px; font-weight: 650; }
-  #detail .fact span { font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.7px; }
+  /* Product chips */
+  #chips { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }
+  .chip { border: 1px solid var(--border); background: var(--card); color: var(--body); font-size: 13px;
+    font-weight: 600; padding: 8px 15px; border-radius: 999px; cursor: pointer; }
+  .chip:hover { border-color: var(--green); }
+  .chip.on { background: var(--green); border-color: var(--green); color: #fff; }
+  .chipNote { font-size: 12px; color: var(--muted); align-self: center; margin-left: 2px; }
 
-  /* Legend + credit */
-  #legend { position: absolute; bottom: 14px; left: 14px; z-index: 9; padding: 9px 13px; font-size: 12px;
-    color: var(--muted); display: flex; gap: 14px; }
-  #legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
-  #credit { position: absolute; bottom: 14px; right: 14px; z-index: 9; color: rgba(255,255,255,0.5);
-    font-size: 10.5px; text-align: right; max-width: 44vw; }
-  #credit a { color: rgba(255,255,255,0.7); }
+  /* Content grid */
+  #grid { display: grid; grid-template-columns: 290px 1fr; gap: 18px; align-items: start; }
 
-  #banner { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); z-index: 12;
-    background: rgba(120, 72, 0, 0.9); color: #ffe9c4; border: 1px solid #a86e00; border-radius: 10px;
-    padding: 8px 14px; font-size: 12px; display: none; max-width: calc(100vw - 40px); }
+  /* Filters sidebar */
+  #filters { background: var(--card); border: 1px solid var(--border); border-radius: 14px; overflow: hidden;
+    position: sticky; top: 76px; }
+  #filters .fhead { padding: 14px 18px; border-bottom: 1px solid var(--border); font-weight: 700;
+    color: var(--ink); font-size: 14.5px; display: flex; align-items: center; gap: 8px; }
+  .fsection { padding: 6px 18px 14px; border-bottom: 1px solid var(--border); }
+  .fsection:last-child { border-bottom: none; }
+  .fsection h4 { font-size: 13px; color: var(--ink); margin: 12px 0 8px; display: flex;
+    justify-content: space-between; align-items: center; }
+  .fitem { display: flex; align-items: center; gap: 9px; padding: 6px 0; font-size: 13.5px; cursor: pointer;
+    border-radius: 6px; }
+  .fitem:hover { color: var(--green-dark); }
+  .fitem input { accent-color: var(--green); width: 15px; height: 15px; cursor: pointer; }
+  .fitem .cnt { margin-left: auto; font-size: 11.5px; color: var(--muted); background: var(--grey-pill);
+    padding: 2px 8px; border-radius: 999px; }
+  .fitem.prod { padding-left: 24px; }
 
-  @media (max-width: 640px) {
-    #hud { top: 10px; left: 10px; right: 10px; max-width: none; padding: 11px 13px; }
-    #hud h1 { font-size: 16px; }
-    #hud .sub { display: none; }
-    #hud .stats { gap: 14px; }
-    #hud .stat b { font-size: 18px; }
-    #searchWrap { top: auto; bottom: 76px; right: 10px; left: 10px; width: auto; }
-    #legend { display: none; }
-    #credit { display: none; }
-    #detail { bottom: 132px; }
+  /* Vessel cards */
+  .vessel { background: var(--card); border: 1px solid var(--border); border-radius: 14px;
+    margin-bottom: 12px; overflow: hidden; }
+  .vessel.open { border-color: #bfe0cb; box-shadow: 0 4px 18px rgba(21, 128, 61, 0.08); }
+  .vrow { display: flex; align-items: center; gap: 12px; padding: 15px 18px; cursor: pointer; }
+  .vdot { width: 34px; height: 34px; border-radius: 50%; background: #e8f7ee; color: var(--green);
+    display: flex; align-items: center; justify-content: center; font-size: 17px; flex: 0 0 auto; }
+  .vname { font-weight: 800; color: var(--ink); font-size: 15px; letter-spacing: 0.3px; }
+  .pill { font-size: 11.5px; font-weight: 600; padding: 4px 11px; border-radius: 999px; white-space: nowrap; }
+  .pill.mmsi { background: var(--grey-pill); color: var(--body); }
+  .pill.type { background: var(--peach); color: var(--peach-ink); }
+  .vchev { margin-left: auto; color: var(--muted); font-size: 18px; transition: transform 0.2s; flex: 0 0 auto; }
+  .vessel.open .vchev { transform: rotate(180deg); }
+  .vdetail { display: none; padding: 4px 18px 18px; }
+  .vessel.open .vdetail { display: block; }
+  .statGrid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px; }
+  .miniCard { border: 1px solid var(--border); border-radius: 10px; padding: 10px 13px; }
+  .miniCard .k { font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.6px; color: var(--muted);
+    margin-bottom: 4px; }
+  .miniCard .v { font-size: 14px; font-weight: 700; color: var(--ink); word-break: break-word; }
+  .vActions { display: flex; justify-content: space-between; align-items: center; }
+  .btnClose { background: var(--grey-pill); color: var(--body); font-weight: 600; padding: 10px 20px; }
+
+  #empty { background: var(--card); border: 1px dashed var(--border); border-radius: 14px; padding: 40px 20px;
+    text-align: center; color: var(--muted); font-size: 14px; display: none; }
+
+  /* Footer */
+  footer { border-top: 1px solid var(--border); background: var(--card); margin-top: 10px; }
+  footer .inner { max-width: 1200px; margin: 0 auto; padding: 22px 20px; font-size: 12.5px; color: var(--muted);
+    line-height: 1.7; }
+  footer a { color: var(--green-dark); }
+  footer .honest { background: #fff8ec; border: 1px solid #f0dcae; border-radius: 10px; padding: 10px 14px;
+    margin-bottom: 12px; color: #7c5a00; }
+
+  #banner { max-width: 1200px; margin: 14px auto 0; padding: 0 20px; display: none; }
+  #banner div { background: #fff8ec; border: 1px solid #f0dcae; color: #7c5a00; border-radius: 10px;
+    padding: 10px 14px; font-size: 13px; }
+
+  @media (max-width: 900px) {
+    #grid { grid-template-columns: 1fr; }
+    #filters { position: static; }
+    #stats { grid-template-columns: repeat(2, 1fr); }
+    #navLinks { display: none; }
+    #cesiumContainer { height: 320px; }
+    .statGrid { grid-template-columns: repeat(2, 1fr); }
+    h1 { font-size: 24px; }
   }
 </style>
 </head>
 <body>
-<div id="cesiumContainer"></div>
 
-<div id="hud" class="card">
-  <h1>🚢 <span class="grain">Grain</span> Vessel Tracker</h1>
-  <p class="sub"><span id="liveDot"></span>Live vessel traffic inside grain-export port zones, on a real 3D world map. Search a vessel by name or tap any dot for its AIS details.</p>
-  <div class="stats">
-    <div class="stat"><b id="statVessels">–</b><span>vessels</span></div>
-    <div class="stat"><b id="statPorts">–</b><span>ports</span></div>
-    <div class="stat"><b id="statUpdated">–</b><span>updated</span></div>
-  </div>
-</div>
-
-<div id="searchWrap">
-  <div id="searchBox" class="card">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9fb0c3" stroke-width="2.4" stroke-linecap="round">
-      <circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/>
-    </svg>
-    <input id="searchInput" type="text" placeholder="Search vessel by name…" autocomplete="off" spellcheck="false">
-  </div>
-  <div id="results" class="card"></div>
-</div>
-
-<div id="detail" class="card">
-  <div class="dhead">
-    <div>
-      <h2 id="dName">—</h2>
-      <div class="dsub" id="dSub">—</div>
+<nav id="nav">
+  <div class="inner">
+    <a id="brand" href="#">🚢 <span><span class="grain">Grain</span> Vessel Tracker</span></a>
+    <div id="navLinks">
+      <a href="#mapSection">Live Map</a>
+      <a href="#directory">Vessels</a>
+      <a href="#directory">Port Zones</a>
     </div>
-    <button id="detailClose" aria-label="Close">✕</button>
+    <div id="navRight">
+      <span class="livePill"><i></i>LIVE AIS</span>
+      <span id="updatedPill">—</span>
+    </div>
   </div>
-  <div class="grid">
-    <div class="fact"><b id="dSpeed">—</b><span>speed</span></div>
-    <div class="fact"><b id="dCourse">—</b><span>course</span></div>
-    <div class="fact"><b id="dDest">—</b><span>destination</span></div>
-    <div class="fact"><b id="dMmsi">—</b><span>mmsi</span></div>
-    <div class="fact"><b id="dPos">—</b><span>position</span></div>
-    <div class="fact"><b id="dZone">—</b><span>port zone</span></div>
+</nav>
+<div id="crumbs"><div class="inner">Grain Vessel Tracker &nbsp;›&nbsp; <b>Vessels</b></div></div>
+<div id="banner"><div>⚠️ <b>Sample data.</b> Connect the AISStream collector for live vessel positions.</div></div>
+
+<div id="page">
+  <h1>Search and Track Grain Vessels</h1>
+  <p id="subline">Live AIS vessel traffic inside grain-export port zones — covering the products you work with:
+    corn, soybeans, soybean meal, soybean oil, and wheat. Search by name, filter by product or port zone,
+    and tap any vessel for its details.</p>
+
+  <div id="stats">
+    <div class="statCard"><div class="k">🚢 Vessels live</div><div class="v" id="statVessels">–</div></div>
+    <div class="statCard"><div class="k">⚓ Port zones</div><div class="v" id="statPorts">–</div></div>
+    <div class="statCard"><div class="k">🌾 Products covered</div><div class="v">5</div></div>
+    <div class="statCard"><div class="k">🕐 Last update</div><div class="v" id="statUpdated" style="font-size:17px">–</div></div>
+  </div>
+
+  <section id="mapSection">
+    <div id="mapCard">
+      <div id="mapHead"><b>🛰 Live 3D world map</b><span>Real satellite imagery · tap a vessel dot to open its card</span></div>
+      <div id="cesiumContainer"></div>
+      <div id="mapLegend">
+        <span><i style="background:#f59e0b"></i>Vessel (AIS)</span>
+        <span><i style="background:#22c55e"></i>Grain export port</span>
+      </div>
+    </div>
+  </section>
+
+  <div id="directory">
+    <p id="countLine">Showing <b id="countShown">–</b> of <b id="countTotal">–</b> vessels</p>
+    <div id="searchRow">
+      <div id="searchBar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#8a94a6" stroke-width="2.4" stroke-linecap="round">
+          <circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/>
+        </svg>
+        <input id="searchInput" type="text" placeholder="Search by vessel name or MMSI…" autocomplete="off" spellcheck="false">
+      </div>
+      <button class="btn btnPrimary" id="searchBtn">Search</button>
+      <button class="btn btnOutline" id="sortBtn">Sort by: Name <span>⇅</span></button>
+    </div>
+    <div id="chips"></div>
+
+    <div id="grid">
+      <aside id="filters">
+        <div class="fhead">⚙️ Filters</div>
+        <div class="fsection">
+          <h4>Product focus</h4>
+          <div id="fProducts"></div>
+        </div>
+        <div class="fsection">
+          <h4>Port zone</h4>
+          <div id="fZones"></div>
+        </div>
+        <div class="fsection">
+          <h4>Status</h4>
+          <div id="fStatus"></div>
+        </div>
+      </aside>
+      <div id="list"></div>
+    </div>
+    <div id="empty">No vessels match those filters. Try clearing the search or choosing another product.</div>
   </div>
 </div>
 
-<div id="legend" class="card">
-  <div><i style="background:#ffb300"></i>Vessel (AIS)</div>
-  <div><i style="background:#34d399"></i>Grain export port</div>
-</div>
-<div id="credit">Vessel data: <a href="https://aisstream.io" target="_blank" rel="noopener">AISStream.io</a> (free tier) · Imagery: Esri World Imagery</div>
-<div id="banner">⚠️ <b>Sample data.</b> Connect the AISStream collector for live vessel positions.</div>
+<footer>
+  <div class="inner">
+    <div class="honest">🌾 <b>Honest labeling:</b> a "grain vessel" here is a vessel inside a grain-export port zone —
+      not a verified cargo manifest. Product filters highlight port zones that handle each product.</div>
+    Vessel data: <a href="https://aisstream.io" target="_blank" rel="noopener">AISStream.io</a> (free tier) ·
+    Imagery: Esri World Imagery · Built by <a href="https://github.com/josea12345" target="_blank" rel="noopener">josea12345</a>
+  </div>
+</footer>
 
 <script>
   window.CESIUM_BASE_URL = 'https://cdn.jsdelivr.net/npm/cesium@1.138/Build/Cesium/';
@@ -146,184 +266,288 @@
 <script type="module">
 import * as Cesium from 'cesium';
 
+/* ---------- data ---------- */
+const PRODUCTS = ['Corn', 'Soybeans', 'Soybean Meal', 'Soybean Oil', 'Wheat'];
+// Zone-level export products (honest: the zone handles these; cargo per vessel isn't verified).
+const ZONE_PRODUCTS = {
+  'santos':      ['Soybeans', 'Corn'],
+  'new-orleans': ['Corn', 'Soybeans', 'Soybean Meal', 'Soybean Oil', 'Wheat']
+};
+const PRODUCT_ICON = { 'Corn': '🌽', 'Soybeans': '🫘', 'Soybean Meal': '🟤', 'Soybean Oil': '🫗', 'Wheat': '🌾' };
+
+const state = { q: '', product: 'All', zones: new Set(), underway: new Set(['underway', 'anchored']), sort: 'name' };
+let vessels = [];       // enriched vessel records
+let ports = {};
+const entityByMmsi = new Map();
+const cardByMmsi = new Map();
+
+function zoneKeyOf(v) {
+  let best = null, bestD = 1e9;
+  for (const [key, p] of Object.entries(ports)) {
+    const [plon, plat] = p.marker || [];
+    if (plon == null) continue;
+    const d = Math.hypot(v.lon - plon, v.lat - plat);
+    if (d < bestD) { bestD = d; best = key; }
+  }
+  return bestD < 4 ? best : null;
+}
+const statusOf = v => (v.sog_knots != null && v.sog_knots >= 0.5) ? 'underway' : 'anchored';
+
+/* ---------- map ---------- */
 const viewer = new Cesium.Viewer('cesiumContainer', {
-  // Proper ArcGIS MapServer provider (Web Mercator) — renders the real world map.
   imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
     url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer'
   }),
-  baseLayerPicker: false, geocoder: false, homeButton: true,
+  baseLayerPicker: false, geocoder: false, homeButton: false,
   sceneModePicker: false, navigationHelpButton: false,
   animation: false, timeline: false, fullscreenButton: false,
   infoBox: false, selectionIndicator: true
 });
 viewer.scene.globe.enableLighting = false;
-
-// Open on the Western Hemisphere grain corridor.
-viewer.camera.setView({
-  destination: Cesium.Cartesian3.fromDegrees(-58, 4, 15000000)
-});
-
-const vesselIndex = [];   // {name, zone, entity}
-const byEntity = new Map();
+viewer.camera.setView({ destination: Cesium.Cartesian3.fromDegrees(-58, 4, 15000000) });
 
 function headingLine(lon, lat, cogDeg, sogKnots) {
   const lenDeg = Math.max(0.15, Math.min(1.2, sogKnots * 0.06));
   const rad = Cesium.Math.toRadians(cogDeg);
   const dLon = lenDeg * Math.sin(rad) / Math.max(0.2, Math.cos(Cesium.Math.toRadians(lat)));
-  const dLat = lenDeg * Math.cos(rad);
-  return [lon, lat, lon + dLon, lat + dLat];
+  return [lon, lat, lon + dLon, lat + lenDeg * Math.cos(rad)];
 }
-
-function showDetail(v) {
-  document.getElementById('dName').textContent = v.name || 'Unknown vessel';
-  document.getElementById('dSub').textContent = `MMSI ${v.mmsi || '—'} · live AIS position`;
-  document.getElementById('dSpeed').textContent = v.sog_knots != null ? `${v.sog_knots} kn` : '—';
-  document.getElementById('dCourse').textContent = v.cog_deg != null ? `${v.cog_deg}°` : '—';
-  document.getElementById('dDest').textContent = v.destination || '—';
-  document.getElementById('dMmsi').textContent = v.mmsi || '—';
-  document.getElementById('dPos').textContent =
-    (v.lat != null && v.lon != null) ? `${v.lat.toFixed(2)}, ${v.lon.toFixed(2)}` : '—';
-  document.getElementById('dZone').textContent = v.zone || '—';
-  document.getElementById('detail').classList.add('open');
-}
-function hideDetail() {
-  document.getElementById('detail').classList.remove('open');
-  if (viewer.selectedEntity) viewer.selectedEntity = undefined;
-}
-document.getElementById('detailClose').addEventListener('click', hideDetail);
 
 viewer.selectedEntityChanged.addEventListener(() => {
   const e = viewer.selectedEntity;
-  if (e && byEntity.has(e)) showDetail(byEntity.get(e));
-  else if (!e) hideDetail();
+  if (e && e._vesselMmsi && cardByMmsi.has(e._vesselMmsi)) openCard(e._vesselMmsi, true);
 });
 
-function flyToVessel(entry) {
-  const v = entry.vessel;
-  viewer.camera.flyTo({
-    destination: Cesium.Cartesian3.fromDegrees(v.lon, v.lat, 600000),
-    duration: 1.6
+/* ---------- directory ---------- */
+const listEl = document.getElementById('list');
+const emptyEl = document.getElementById('empty');
+
+function filtered() {
+  const q = state.q.trim().toLowerCase();
+  let out = vessels.filter(v => {
+    if (q && !(v.name.toLowerCase().includes(q) || String(v.mmsi).includes(q))) return false;
+    if (state.product !== 'All' && !(ZONE_PRODUCTS[v.zoneKey] || []).includes(state.product)) return false;
+    if (!state.zones.has(v.zoneKey)) return false;
+    if (!state.underway.has(statusOf(v))) return false;
+    return true;
   });
-  viewer.selectedEntity = entry.entity; // opens the detail sheet
-  closeResults();
-  document.getElementById('searchInput').value = entry.name;
+  out.sort(state.sort === 'speed'
+    ? (a, b) => (b.sog_knots || 0) - (a.sog_knots || 0)
+    : (a, b) => a.name.localeCompare(b.name));
+  return out;
 }
 
-// ---- search ----
-const input = document.getElementById('searchInput');
-const resultsBox = document.getElementById('results');
-let activeIdx = -1;
+function statCard(k, v) {
+  return `<div class="miniCard"><div class="k">${k}</div><div class="v">${v}</div></div>`;
+}
 
-function closeResults() { resultsBox.classList.remove('open'); resultsBox.innerHTML = ''; activeIdx = -1; }
+function render() {
+  const rows = filtered();
+  document.getElementById('countShown').textContent = rows.length;
+  document.getElementById('countTotal').textContent = vessels.length;
+  emptyEl.style.display = rows.length ? 'none' : 'block';
+  listEl.innerHTML = '';
+  for (const v of rows) {
+    const card = document.createElement('div');
+    card.className = 'vessel';
+    card.id = 'v-' + v.mmsi;
+    const prods = (ZONE_PRODUCTS[v.zoneKey] || []).map(p => `${PRODUCT_ICON[p]||''} ${p}`).join(' · ');
+    card.innerHTML = `
+      <div class="vrow">
+        <div class="vdot">🚢</div>
+        <div>
+          <div class="vname">${escapeHtml(v.name)}</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px">${escapeHtml(v.zoneName)} · ${statusOf(v) === 'underway' ? 'Underway' : 'At anchor'}</div>
+        </div>
+        <span class="pill mmsi">MMSI: ${v.mmsi}</span>
+        <span class="pill type">Grain zone</span>
+        <span class="vchev">▾</span>
+      </div>
+      <div class="vdetail">
+        ${prods ? `<div style="font-size:12.5px;color:var(--muted);margin-bottom:10px">Zone handles: <b style="color:var(--body)">${prods}</b></div>` : ''}
+        <div class="statGrid">
+          ${statCard('Speed', v.sog_knots != null ? v.sog_knots + ' kn' : '—')}
+          ${statCard('Course', v.cog_deg != null ? v.cog_deg + '°' : '—')}
+          ${statCard('Destination', escapeHtml(v.destination || '—'))}
+          ${statCard('Position', `${v.lat.toFixed(3)}, ${v.lon.toFixed(3)}`)}
+          ${statCard('Port zone', escapeHtml(v.zoneName))}
+          ${statCard('Last update', fmtTime(v.timestamp))}
+        </div>
+        <div class="vActions">
+          <button class="btn btnClose" data-close>Close ▴</button>
+          <button class="btn btnPrimary" data-showmap>Show on map →</button>
+        </div>
+      </div>`;
+    card.querySelector('.vrow').addEventListener('click', () => card.classList.toggle('open'));
+    card.querySelector('[data-close]').addEventListener('click', (ev) => { ev.stopPropagation(); card.classList.remove('open'); });
+    card.querySelector('[data-showmap]').addEventListener('click', (ev) => { ev.stopPropagation(); showOnMap(v.mmsi); });
+    listEl.appendChild(card);
+    cardByMmsi.set(v.mmsi, card);
+  }
+}
 
-function renderResults(matches) {
-  resultsBox.innerHTML = '';
-  if (!matches.length) {
-    resultsBox.innerHTML = '<div class="noResult">No vessel matches that name.</div>';
-  } else {
-    matches.slice(0, 8).forEach((m, i) => {
-      const div = document.createElement('div');
-      div.className = 'result' + (i === activeIdx ? ' active' : '');
-      div.innerHTML = `<div class="rname">${m.name}</div><div class="rzone">${m.zone || 'Port zone'} · ${m.vessel.sog_knots ?? '—'} kn</div>`;
-      div.addEventListener('mousedown', (ev) => { ev.preventDefault(); flyToVessel(m); });
-      resultsBox.appendChild(div);
+function openCard(mmsi, scroll) {
+  const card = cardByMmsi.get(mmsi);
+  if (!card) return;
+  document.querySelectorAll('.vessel.open').forEach(c => c.classList.remove('open'));
+  card.classList.add('open');
+  if (scroll) card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+}
+
+function showOnMap(mmsi) {
+  const v = vessels.find(x => x.mmsi === mmsi);
+  if (!v) return;
+  document.getElementById('mapSection').scrollIntoView({ behavior: 'smooth' });
+  viewer.camera.flyTo({
+    destination: Cesium.Cartesian3.fromDegrees(v.lon, v.lat, 500000),
+    duration: 1.4
+  });
+  setTimeout(() => { viewer.selectedEntity = entityByMmsi.get(mmsi); }, 1500);
+}
+
+function escapeHtml(s) {
+  return String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+function fmtTime(ts) {
+  const d = new Date(ts);
+  return isNaN(d) ? '—' : d.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+}
+
+/* ---------- filters UI ---------- */
+function renderChips() {
+  const box = document.getElementById('chips');
+  box.innerHTML = '';
+  ['All', ...PRODUCTS].forEach(p => {
+    const b = document.createElement('button');
+    b.className = 'chip' + (state.product === p ? ' on' : '');
+    b.textContent = (p === 'All' ? '' : (PRODUCT_ICON[p] || '') + ' ') + (p === 'All' ? 'All products' : p);
+    b.addEventListener('click', () => { state.product = p; syncFilters(); render(); });
+    box.appendChild(b);
+  });
+  const note = document.createElement('span');
+  note.className = 'chipNote';
+  note.textContent = 'Product filter highlights port zones that handle each product.';
+  box.appendChild(note);
+}
+
+function syncFilters() {
+  renderChips();
+  // sidebar products
+  const fp = document.getElementById('fProducts');
+  fp.innerHTML = '';
+  ['All', ...PRODUCTS].forEach(p => {
+    const n = p === 'All' ? vessels.length
+      : vessels.filter(v => (ZONE_PRODUCTS[v.zoneKey] || []).includes(p)).length;
+    const lab = document.createElement('label');
+    lab.className = 'fitem prod';
+    lab.innerHTML = `<input type="radio" name="prod" ${state.product === p ? 'checked' : ''}>
+      ${(p === 'All' ? 'All products' : (PRODUCT_ICON[p] || '') + ' ' + p)} <span class="cnt">${n}</span>`;
+    lab.querySelector('input').addEventListener('change', () => { state.product = p; syncFilters(); render(); });
+    fp.appendChild(lab);
+  });
+  // sidebar zones
+  const fz = document.getElementById('fZones');
+  fz.innerHTML = '';
+  for (const [key, p] of Object.entries(ports)) {
+    const n = vessels.filter(v => v.zoneKey === key).length;
+    const lab = document.createElement('label');
+    lab.className = 'fitem';
+    lab.innerHTML = `<input type="checkbox" ${state.zones.has(key) ? 'checked' : ''}>
+      ⚓ ${escapeHtml(p.name)} <span class="cnt">${n}</span>`;
+    lab.querySelector('input').addEventListener('change', (ev) => {
+      ev.target.checked ? state.zones.add(key) : state.zones.delete(key);
+      render();
     });
+    fz.appendChild(lab);
   }
-  resultsBox.classList.add('open');
+  // sidebar status
+  const fs = document.getElementById('fStatus');
+  fs.innerHTML = '';
+  [['underway', 'Underway'], ['anchored', 'At anchor']].forEach(([k, label]) => {
+    const n = vessels.filter(v => statusOf(v) === k).length;
+    const lab = document.createElement('label');
+    lab.className = 'fitem';
+    lab.innerHTML = `<input type="checkbox" ${state.underway.has(k) ? 'checked' : ''}>
+      ${label} <span class="cnt">${n}</span>`;
+    lab.querySelector('input').addEventListener('change', (ev) => {
+      ev.target.checked ? state.underway.add(k) : state.underway.delete(k);
+      render();
+    });
+    fs.appendChild(lab);
+  });
 }
 
-input.addEventListener('input', () => {
-  const q = input.value.trim().toLowerCase();
-  activeIdx = -1;
-  if (!q) { closeResults(); return; }
-  renderResults(vesselIndex.filter(v => v.name.toLowerCase().includes(q)));
+document.getElementById('searchBtn').addEventListener('click', () => {
+  state.q = document.getElementById('searchInput').value;
+  render();
+});
+document.getElementById('searchInput').addEventListener('keydown', (ev) => {
+  if (ev.key === 'Enter') { state.q = ev.target.value; render(); }
+});
+document.getElementById('sortBtn').addEventListener('click', (ev) => {
+  state.sort = state.sort === 'name' ? 'speed' : 'name';
+  ev.currentTarget.innerHTML = `Sort by: ${state.sort === 'name' ? 'Name' : 'Speed'} <span>⇅</span>`;
+  render();
 });
 
-input.addEventListener('keydown', (ev) => {
-  const items = resultsBox.querySelectorAll('.result');
-  if (ev.key === 'ArrowDown' || ev.key === 'ArrowUp') {
-    ev.preventDefault();
-    if (!items.length) return;
-    activeIdx = ev.key === 'ArrowDown'
-      ? Math.min(activeIdx + 1, items.length - 1)
-      : Math.max(activeIdx - 1, 0);
-    items.forEach((el, i) => el.classList.toggle('active', i === activeIdx));
-    items[activeIdx].scrollIntoView({ block: 'nearest' });
-  } else if (ev.key === 'Enter') {
-    const q = input.value.trim().toLowerCase();
-    const m = vesselIndex.filter(v => v.name.toLowerCase().includes(q));
-    if (m.length) flyToVessel(activeIdx >= 0 && m[activeIdx] ? m[activeIdx] : m[0]);
-  } else if (ev.key === 'Escape') {
-    closeResults(); input.blur();
-  }
-});
-input.addEventListener('blur', () => setTimeout(closeResults, 150));
-input.addEventListener('focus', () => {
-  if (input.value.trim()) input.dispatchEvent(new Event('input'));
-});
-
-// ---- data ----
+/* ---------- load ---------- */
 fetch('data/vessels.json')
   .then(r => { if (!r.ok) throw new Error('vessels.json not found'); return r.json(); })
   .then(snap => {
-    const vessels = snap.vessels || [];
-    const ports = snap.ports || {};
-    document.getElementById('statVessels').textContent = vessels.length;
+    ports = snap.ports || {};
+    const raw = snap.vessels || [];
+    document.getElementById('statVessels').textContent = raw.length;
     document.getElementById('statPorts').textContent = Object.keys(ports).length;
     const updated = new Date(snap.generated_at);
-    document.getElementById('statUpdated').textContent =
-      isNaN(updated) ? '—' : updated.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const updStr = isNaN(updated) ? '—' : updated.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    document.getElementById('statUpdated').textContent = updStr;
+    document.getElementById('updatedPill').textContent = 'Updated ' + updStr;
     if (snap.sample_data) document.getElementById('banner').style.display = 'block';
 
-    // Map each vessel to its port zone for search context.
-    const zoneOf = (v) => {
-      for (const [, p] of Object.entries(ports)) {
-        const [plon, plat] = p.marker || [];
-        if (plon == null) continue;
-        if (Math.abs(v.lon - plon) < 3 && Math.abs(v.lat - plat) < 3) return p.name;
-      }
-      return v.zone || '';
-    };
+    vessels = raw.map(v => {
+      const zk = zoneKeyOf(v);
+      return { ...v, name: v.name || 'Unknown', zoneKey: zk, zoneName: zk ? ports[zk].name : '—' };
+    });
+    vessels.sort((a, b) => a.name.localeCompare(b.name));
+    Object.keys(ports).forEach(k => state.zones.add(k));
 
+    // map entities
     for (const v of vessels) {
-      const pos = Cesium.Cartesian3.fromDegrees(v.lon, v.lat);
       const [x1, y1, x2, y2] = headingLine(v.lon, v.lat, v.cog_deg || 0, v.sog_knots || 0);
-      const entity = viewer.entities.add({
-        position: pos,
-        point: { pixelSize: 9, color: Cesium.Color.fromCssColorString('#ffb300'),
+      const e = viewer.entities.add({
+        position: Cesium.Cartesian3.fromDegrees(v.lon, v.lat),
+        point: { pixelSize: 9, color: Cesium.Color.fromCssColorString('#f59e0b'),
                  outlineColor: Cesium.Color.BLACK, outlineWidth: 1.5 },
         polyline: { positions: Cesium.Cartesian3.fromDegreesArray([x1, y1, x2, y2]),
-                    width: 2, material: Cesium.Color.fromCssColorString('#ffb300').withAlpha(0.7) },
-        label: { text: v.name || '', font: '11px sans-serif', fillColor: Cesium.Color.WHITE,
+                    width: 2, material: Cesium.Color.fromCssColorString('#f59e0b').withAlpha(0.7) },
+        label: { text: v.name, font: '11px sans-serif', fillColor: Cesium.Color.WHITE,
                  style: Cesium.LabelStyle.OUTLINE, outlineWidth: 2,
                  pixelOffset: new Cesium.Cartesian2(0, -18),
                  distanceDisplayCondition: new Cesium.DistanceDisplayCondition(0, 6000000) }
       });
-      const zone = zoneOf(v);
-      const entry = { name: v.name || 'Unknown', zone, vessel: { ...v, zone }, entity };
-      vesselIndex.push(entry);
-      byEntity.set(entity, entry.vessel);
+      e._vesselMmsi = v.mmsi;
+      entityByMmsi.set(v.mmsi, e);
     }
-    vesselIndex.sort((a, b) => a.name.localeCompare(b.name));
-
-    for (const [, p] of Object.entries(ports)) {
+    for (const p of Object.values(ports)) {
       const [lon, lat] = p.marker || [];
       if (lon == null) continue;
-      const pent = viewer.entities.add({
+      viewer.entities.add({
         position: Cesium.Cartesian3.fromDegrees(lon, lat),
-        point: { pixelSize: 13, color: Cesium.Color.fromCssColorString('#34d399'),
+        point: { pixelSize: 13, color: Cesium.Color.fromCssColorString('#22c55e'),
                  outlineColor: Cesium.Color.BLACK, outlineWidth: 2 },
         label: { text: `⚓ ${p.name}`, font: 'bold 13px sans-serif', fillColor: Cesium.Color.WHITE,
                  style: Cesium.LabelStyle.OUTLINE, outlineWidth: 2,
                  pixelOffset: new Cesium.Cartesian2(0, -22) }
       });
-      byEntity.set(pent, { name: `⚓ ${p.name}`, mmsi: '—', sog_knots: null, cog_deg: null,
-        destination: `${p.country || ''} grain export gateway`, lat: lat, lon: lon,
-        zone: 'Port marker' });
     }
+
+    syncFilters();
+    render();
   })
   .catch(err => {
     document.getElementById('statVessels').textContent = '0';
+    emptyEl.style.display = 'block';
+    emptyEl.textContent = 'Could not load vessel data.';
     console.error(err);
   });
 </script>
