@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-05T15:39:48.810252+00:00",
+ "generated_at": "2026-10-05T15:50:24.409013+00:00",
  "ports": {
   "new-orleans": {
    "name": "New Orleans / S. Louisiana",
@@ -9,6 +9,38 @@
     29.95
    ]
   },
+  "houston": {
+   "name": "Houston / Galveston",
+   "country": "USA",
+   "marker": [
+    -94.77,
+    29.6
+   ]
+  },
+  "corpus-christi": {
+   "name": "Corpus Christi",
+   "country": "USA",
+   "marker": [
+    -97.4,
+    27.81
+   ]
+  },
+  "pnw-columbia": {
+   "name": "Columbia River (Portland / Kalama)",
+   "country": "USA",
+   "marker": [
+    -122.83,
+    46.01
+   ]
+  },
+  "seattle": {
+   "name": "Seattle / Tacoma",
+   "country": "USA",
+   "marker": [
+    -122.47,
+    47.6
+   ]
+  },
   "santos": {
    "name": "Santos",
    "country": "Brazil",
@@ -16,259 +48,7121 @@
     -46.31,
     -23.96
    ]
+  },
+  "paranagua": {
+   "name": "Paranagu\u00e1",
+   "country": "Brazil",
+   "marker": [
+    -48.52,
+    -25.5
+   ]
+  },
+  "rio-grande": {
+   "name": "Rio Grande",
+   "country": "Brazil",
+   "marker": [
+    -52.1,
+    -32.03
+   ]
+  },
+  "itaqui": {
+   "name": "Itaqui / S\u00e3o Lu\u00eds",
+   "country": "Brazil",
+   "marker": [
+    -44.38,
+    -2.58
+   ]
+  },
+  "barcarena": {
+   "name": "Barcarena / Vila do Conde",
+   "country": "Brazil",
+   "marker": [
+    -48.75,
+    -1.53
+   ]
+  },
+  "rosario": {
+   "name": "Rosario / San Lorenzo (Up-River)",
+   "country": "Argentina",
+   "marker": [
+    -60.73,
+    -32.75
+   ]
+  },
+  "bahia-blanca": {
+   "name": "Bah\u00eda Blanca",
+   "country": "Argentina",
+   "marker": [
+    -62.1,
+    -38.78
+   ]
+  },
+  "vancouver": {
+   "name": "Vancouver",
+   "country": "Canada",
+   "marker": [
+    -123.12,
+    49.29
+   ]
+  },
+  "prince-rupert": {
+   "name": "Prince Rupert",
+   "country": "Canada",
+   "marker": [
+    -130.32,
+    54.32
+   ]
+  },
+  "odesa": {
+   "name": "Odesa / Chornomorsk",
+   "country": "Ukraine",
+   "marker": [
+    30.73,
+    46.48
+   ]
+  },
+  "novorossiysk": {
+   "name": "Novorossiysk",
+   "country": "Russia",
+   "marker": [
+    37.77,
+    44.72
+   ]
+  },
+  "constanta": {
+   "name": "Constanta",
+   "country": "Romania",
+   "marker": [
+    28.66,
+    44.17
+   ]
+  },
+  "rouen": {
+   "name": "Rouen",
+   "country": "France",
+   "marker": [
+    1.08,
+    49.44
+   ]
+  },
+  "kwinana": {
+   "name": "Kwinana / Perth",
+   "country": "Australia",
+   "marker": [
+    115.75,
+    -32.23
+   ]
+  },
+  "newcastle-au": {
+   "name": "Newcastle",
+   "country": "Australia",
+   "marker": [
+    151.78,
+    -32.92
+   ]
   }
  },
- "vessel_count": 25,
+ "vessel_count": 700,
  "vessels": [
+  {
+   "mmsi": "503076550",
+   "name": "--",
+   "lat": -32.06325,
+   "lon": 115.7452,
+   "sog_knots": 0.0,
+   "cog_deg": 25.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:35.98678284 +0000 UTC"
+  },
+  {
+   "mmsi": "701006612",
+   "name": "320 RIO PILCOMAYO",
+   "lat": -32.64929,
+   "lon": -60.73546,
+   "sog_knots": 1.8,
+   "cog_deg": 128.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:29.419146962 +0000 UTC"
+  },
+  {
+   "mmsi": "367741120",
+   "name": "A J",
+   "lat": 47.57326,
+   "lon": -122.34519,
+   "sog_knots": 0.0,
+   "cog_deg": 147.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:10.716056101 +0000 UTC"
+  },
+  {
+   "mmsi": "226004890",
+   "name": "ADELINE",
+   "lat": 49.38067,
+   "lon": 1.11849,
+   "sog_knots": 7.7,
+   "cog_deg": 356.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:01.405565865 +0000 UTC"
+  },
+  {
+   "mmsi": "368187930",
+   "name": "ADRIENNE M MOORE",
+   "lat": 29.76478,
+   "lon": -95.0837,
+   "sog_knots": 7.3,
+   "cog_deg": 258.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:07.947665094 +0000 UTC"
+  },
+  {
+   "mmsi": "311001292",
+   "name": "AFRICAN BUZZARD",
+   "lat": 49.30443,
+   "lon": -123.20987,
+   "sog_knots": 0.1,
+   "cog_deg": 235.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:07.159371976 +0000 UTC"
+  },
+  {
+   "mmsi": "311001205",
+   "name": "AFRICAN LOGRUNNER",
+   "lat": 49.29966,
+   "lon": -122.94492,
+   "sog_knots": 0.0,
+   "cog_deg": 131.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:36.612866747 +0000 UTC"
+  },
+  {
+   "mmsi": "210226000",
+   "name": "AKAKI",
+   "lat": -32.90218,
+   "lon": 151.77049,
+   "sog_knots": 0.0,
+   "cog_deg": 161.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:45:54.759085525 +0000 UTC"
+  },
+  {
+   "mmsi": "367669550",
+   "name": "ALASKA CHALLENGER",
+   "lat": 46.17718,
+   "lon": -123.35742,
+   "sog_knots": 0.0,
+   "cog_deg": 120.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:27.561386638 +0000 UTC"
+  },
+  {
+   "mmsi": "367754690",
+   "name": "ALASKA CHIEFTAIN",
+   "lat": 47.63497,
+   "lon": -122.32865,
+   "sog_knots": 0.0,
+   "cog_deg": 10.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:23.67141521 +0000 UTC"
+  },
+  {
+   "mmsi": "367081260",
+   "name": "ALASKA VENTURE",
+   "lat": 47.66592,
+   "lon": -122.39316,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:45.89513378 +0000 UTC"
+  },
+  {
+   "mmsi": "338250000",
+   "name": "ALASKA WARRIOR",
+   "lat": 47.64599,
+   "lon": -122.33936,
+   "sog_knots": 0.0,
+   "cog_deg": 330.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:54.266782147 +0000 UTC"
+  },
+  {
+   "mmsi": "316005616",
+   "name": "ALBERT L LEDCOR",
+   "lat": 49.32769,
+   "lon": -123.42626,
+   "sog_knots": 6.8,
+   "cog_deg": 289.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:14.424215836 +0000 UTC"
+  },
+  {
+   "mmsi": "701006760",
+   "name": "ALBERTO V",
+   "lat": -32.68321,
+   "lon": -60.71303,
+   "sog_knots": 6.5,
+   "cog_deg": 331.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:17.568572508 +0000 UTC"
+  },
+  {
+   "mmsi": "316001731",
+   "name": "ALISON NICOLE 1",
+   "lat": 49.19933,
+   "lon": -123.08949,
+   "sog_knots": 0.0,
+   "cog_deg": 211.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:00.494601291 +0000 UTC"
+  },
+  {
+   "mmsi": "303639000",
+   "name": "ALLIANCE",
+   "lat": 47.6095,
+   "lon": -122.21041,
+   "sog_knots": 0.0,
+   "cog_deg": 194.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:37.718473295 +0000 UTC"
+  },
   {
    "mmsi": "710008780",
    "name": "ALPHARD",
-   "lat": -23.95145,
-   "lon": -46.30821,
-   "sog_knots": 8.1,
-   "cog_deg": 335.4,
+   "lat": -23.93235,
+   "lon": -46.31247,
+   "sog_knots": 4.4,
+   "cog_deg": 324.3,
    "destination": "",
-   "timestamp": "2026-10-05 15:39:28.222516733 +0000 UTC"
+   "timestamp": "2026-10-05 15:49:48.259022424 +0000 UTC"
   },
   {
-   "mmsi": "477392400",
-   "name": "AMOY POWER",
-   "lat": -23.94302,
-   "lon": -46.31274,
-   "sog_knots": 0.1,
-   "cog_deg": 174.7,
+   "mmsi": "636018699",
+   "name": "ALRAYAN",
+   "lat": 29.73617,
+   "lon": -95.151,
+   "sog_knots": 6.2,
+   "cog_deg": 285.0,
    "destination": "",
-   "timestamp": "2026-10-05 15:39:37.78718236 +0000 UTC"
+   "timestamp": "2026-10-05 15:50:07.576020804 +0000 UTC"
+  },
+  {
+   "mmsi": "269057292",
+   "name": "AMALYRA",
+   "lat": 49.43693,
+   "lon": 1.09527,
+   "sog_knots": 0.0,
+   "cog_deg": 242.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:04.073628939 +0000 UTC"
+  },
+  {
+   "mmsi": "367731330",
+   "name": "AMAZING GRACE",
+   "lat": 29.77924,
+   "lon": -92.18169,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:40.667235309 +0000 UTC"
+  },
+  {
+   "mmsi": "367764750",
+   "name": "AMER CONSTELLATION",
+   "lat": 47.74968,
+   "lon": -122.44888,
+   "sog_knots": 10.1,
+   "cog_deg": 189.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:01.147766437 +0000 UTC"
+  },
+  {
+   "mmsi": "366946000",
+   "name": "AMERICAN EMPRESS II",
+   "lat": 47.62961,
+   "lon": -122.37944,
+   "sog_knots": 0.0,
+   "cog_deg": 306.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:33.597235618 +0000 UTC"
+  },
+  {
+   "mmsi": "367703790",
+   "name": "AMERICAN PROGRESS",
+   "lat": 27.82456,
+   "lon": -97.44309,
+   "sog_knots": 0.0,
+   "cog_deg": 274.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:02.579020619 +0000 UTC"
+  },
+  {
+   "mmsi": "367603210",
+   "name": "AMERICAN WAY",
+   "lat": 27.82192,
+   "lon": -97.48437,
+   "sog_knots": 0.0,
+   "cog_deg": 210.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:51.966606876 +0000 UTC"
+  },
+  {
+   "mmsi": "368023770",
+   "name": "AMERICN CONSTITUTION",
+   "lat": 47.5621,
+   "lon": -122.62114,
+   "sog_knots": 0.0,
+   "cog_deg": 21.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:39.851405351 +0000 UTC"
+  },
+  {
+   "mmsi": "316041987",
+   "name": "AMIA X",
+   "lat": 49.29154,
+   "lon": -123.05927,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:30.949990203 +0000 UTC"
+  },
+  {
+   "mmsi": "636019537",
+   "name": "AMIS STAR",
+   "lat": 29.74097,
+   "lon": -95.28217,
+   "sog_knots": 0.0,
+   "cog_deg": 19.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:50.799626333 +0000 UTC"
+  },
+  {
+   "mmsi": "367727410",
+   "name": "AMY B",
+   "lat": 45.56401,
+   "lon": -122.73225,
+   "sog_knots": 0.0,
+   "cog_deg": 36.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:22.232305953 +0000 UTC"
+  },
+  {
+   "mmsi": "212775000",
+   "name": "ANIMA",
+   "lat": -23.97208,
+   "lon": -46.29484,
+   "sog_knots": 0.0,
+   "cog_deg": 317.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:13.703038873 +0000 UTC"
+  },
+  {
+   "mmsi": "701006297",
+   "name": "ANTONIO MARIA FERRO",
+   "lat": -32.57955,
+   "lon": -60.74058,
+   "sog_knots": 0.0,
+   "cog_deg": 0.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:56.622466617 +0000 UTC"
+  },
+  {
+   "mmsi": "701006803",
+   "name": "ANTONIO PUGLIESE",
+   "lat": -32.65098,
+   "lon": -60.72647,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:13.070226317 +0000 UTC"
+  },
+  {
+   "mmsi": "372612000",
+   "name": "APOGEE ENDEAVOUR",
+   "lat": -32.77058,
+   "lon": -60.71594,
+   "sog_knots": 0.0,
+   "cog_deg": 261.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:58.702036038 +0000 UTC"
+  },
+  {
+   "mmsi": "538010875",
+   "name": "AQUAVITA GLOW",
+   "lat": 54.25609,
+   "lon": -130.68834,
+   "sog_knots": 12.5,
+   "cog_deg": 105.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:29.952788602 +0000 UTC"
+  },
+  {
+   "mmsi": "209672000",
+   "name": "ARAGONITH",
+   "lat": 49.4206,
+   "lon": 1.02137,
+   "sog_knots": 0.0,
+   "cog_deg": 42.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:24.14844531 +0000 UTC"
+  },
+  {
+   "mmsi": "316003448",
+   "name": "ARCTIC OCEAN",
+   "lat": 49.20076,
+   "lon": -123.08853,
+   "sog_knots": 0.0,
+   "cog_deg": 224.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:52.28967965 +0000 UTC"
+  },
+  {
+   "mmsi": "226006810",
+   "name": "ARTOIS",
+   "lat": 49.44436,
+   "lon": 1.0622,
+   "sog_knots": 0.0,
+   "cog_deg": 176.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:12.836138153 +0000 UTC"
+  },
+  {
+   "mmsi": "352004974",
+   "name": "ASAHI QUEEN",
+   "lat": 46.09413,
+   "lon": -122.93757,
+   "sog_knots": 0.0,
+   "cog_deg": 325.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:15.048805534 +0000 UTC"
+  },
+  {
+   "mmsi": "368470580",
+   "name": "ASSIST",
+   "lat": 45.65029,
+   "lon": -122.74768,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:32.108411505 +0000 UTC"
+  },
+  {
+   "mmsi": "367656670",
+   "name": "ATCHAFALAYA",
+   "lat": 29.66775,
+   "lon": -94.22867,
+   "sog_knots": 6.8,
+   "cog_deg": 244.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:06.102763555 +0000 UTC"
+  },
+  {
+   "mmsi": "366760610",
+   "name": "ATLAS",
+   "lat": 27.81167,
+   "lon": -97.40903,
+   "sog_knots": 0.0,
+   "cog_deg": 29.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:29.130779986 +0000 UTC"
+  },
+  {
+   "mmsi": "226002820",
+   "name": "ATLAS",
+   "lat": 49.39416,
+   "lon": 1.01183,
+   "sog_knots": 4.0,
+   "cog_deg": 3.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:14.057455428 +0000 UTC"
+  },
+  {
+   "mmsi": "367126410",
+   "name": "AVE MARIA",
+   "lat": 29.73648,
+   "lon": -95.14122,
+   "sog_knots": 0.0,
+   "cog_deg": 0.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:23.152196292 +0000 UTC"
+  },
+  {
+   "mmsi": "269023000",
+   "name": "AVENTICUM",
+   "lat": 54.23324,
+   "lon": -130.33663,
+   "sog_knots": 0.0,
+   "cog_deg": 344.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:30.833619032 +0000 UTC"
+  },
+  {
+   "mmsi": "227461230",
+   "name": "BAC 13",
+   "lat": 49.46968,
+   "lon": 0.53146,
+   "sog_knots": 0.0,
+   "cog_deg": 307.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:42.166181145 +0000 UTC"
+  },
+  {
+   "mmsi": "226006730",
+   "name": "BAC 15",
+   "lat": 49.41378,
+   "lon": 0.86719,
+   "sog_knots": 0.0,
+   "cog_deg": 295.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:56.704491728 +0000 UTC"
+  },
+  {
+   "mmsi": "226006750",
+   "name": "BAC 17",
+   "lat": 49.42938,
+   "lon": 0.80108,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:27.756870682 +0000 UTC"
+  },
+  {
+   "mmsi": "226006760",
+   "name": "BAC 18",
+   "lat": 49.38687,
+   "lon": 1.0088,
+   "sog_knots": 0.0,
+   "cog_deg": 282.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:07.130044081 +0000 UTC"
+  },
+  {
+   "mmsi": "226006780",
+   "name": "BAC 20",
+   "lat": 49.3856,
+   "lon": 1.01147,
+   "sog_knots": 0.0,
+   "cog_deg": 77.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:07.832154521 +0000 UTC"
+  },
+  {
+   "mmsi": "226006790",
+   "name": "BAC 22",
+   "lat": 49.41348,
+   "lon": 0.86735,
+   "sog_knots": 0.0,
+   "cog_deg": 312.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:05.375424776 +0000 UTC"
+  },
+  {
+   "mmsi": "227069110",
+   "name": "BAC 23",
+   "lat": 49.48046,
+   "lon": 0.8756,
+   "sog_knots": 1.5,
+   "cog_deg": 154.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:08.157365474 +0000 UTC"
+  },
+  {
+   "mmsi": "226015980",
+   "name": "BAC 26",
+   "lat": 49.35179,
+   "lon": 0.93477,
+   "sog_knots": 7.2,
+   "cog_deg": 247.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:45.834657411 +0000 UTC"
+  },
+  {
+   "mmsi": "226006770",
+   "name": "BAC19",
+   "lat": 49.42239,
+   "lon": 1.02186,
+   "sog_knots": 5.3,
+   "cog_deg": 261.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:14.254704572 +0000 UTC"
+  },
+  {
+   "mmsi": "226015850",
+   "name": "BAC25",
+   "lat": 49.45742,
+   "lon": 0.81916,
+   "sog_knots": 0.3,
+   "cog_deg": 272.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:11.453216304 +0000 UTC"
+  },
+  {
+   "mmsi": "368167820",
+   "name": "BAFFIN BAY",
+   "lat": 27.82012,
+   "lon": -97.47632,
+   "sog_knots": 4.3,
+   "cog_deg": 292.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:36.349839893 +0000 UTC"
+  },
+  {
+   "mmsi": "316005605",
+   "name": "BALLANTYNE STRAITS",
+   "lat": 49.23164,
+   "lon": -122.77005,
+   "sog_knots": 0.0,
+   "cog_deg": 303.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:11.212156795 +0000 UTC"
+  },
+  {
+   "mmsi": "367413760",
+   "name": "BAY LADY",
+   "lat": 47.60934,
+   "lon": -122.34642,
+   "sog_knots": 0.0,
+   "cog_deg": 24.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:07.060959903 +0000 UTC"
+  },
+  {
+   "mmsi": "316003527",
+   "name": "BELINA",
+   "lat": 49.12375,
+   "lon": -123.18865,
+   "sog_knots": 0.0,
+   "cog_deg": 280.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:44.450457515 +0000 UTC"
+  },
+  {
+   "mmsi": "367609130",
+   "name": "BELLA K",
+   "lat": 47.66299,
+   "lon": -122.3884,
+   "sog_knots": 102.3,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:22.341699258 +0000 UTC"
+  },
+  {
+   "mmsi": "258002000",
+   "name": "BELMAR",
+   "lat": 49.28909,
+   "lon": -123.0786,
+   "sog_knots": 0.0,
+   "cog_deg": 183.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:35.577174991 +0000 UTC"
+  },
+  {
+   "mmsi": "257933000",
+   "name": "BELRAY",
+   "lat": -32.6752,
+   "lon": -60.71447,
+   "sog_knots": 0.1,
+   "cog_deg": 266.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:05.178906231 +0000 UTC"
+  },
+  {
+   "mmsi": "232059113",
+   "name": "BERGE JUNGFRAU",
+   "lat": -32.68601,
+   "lon": -60.70719,
+   "sog_knots": 0.1,
+   "cog_deg": 85.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:04.19415709 +0000 UTC"
+  },
+  {
+   "mmsi": "503189890",
+   "name": "BEVERLEY",
+   "lat": -32.16579,
+   "lon": 115.76685,
+   "sog_knots": 0.0,
+   "cog_deg": 351.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:06.650903717 +0000 UTC"
+  },
+  {
+   "mmsi": "503572100",
+   "name": "BHAGWAN RENEGADE",
+   "lat": -32.14679,
+   "lon": 115.7659,
+   "sog_knots": 0.0,
+   "cog_deg": 117.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:09.850248895 +0000 UTC"
+  },
+  {
+   "mmsi": "316029965",
+   "name": "BILL L LEDCOR",
+   "lat": 49.2176,
+   "lon": -122.84405,
+   "sog_knots": 5.4,
+   "cog_deg": 84.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:01.015465828 +0000 UTC"
+  },
+  {
+   "mmsi": "366751770",
+   "name": "BILLIE H",
+   "lat": 54.57246,
+   "lon": -130.7328,
+   "sog_knots": 6.9,
+   "cog_deg": 174.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:05.153227969 +0000 UTC"
+  },
+  {
+   "mmsi": "538008110",
+   "name": "BLUE HORIZON",
+   "lat": 47.62405,
+   "lon": -122.37132,
+   "sog_knots": 0.0,
+   "cog_deg": 37.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:31.644228855 +0000 UTC"
+  },
+  {
+   "mmsi": "367642530",
+   "name": "BO BRUSCO",
+   "lat": 47.26235,
+   "lon": -122.43205,
+   "sog_knots": 0.0,
+   "cog_deg": 197.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:54.624134535 +0000 UTC"
+  },
+  {
+   "mmsi": "367548930",
+   "name": "BOARDWALK FANTASEA",
+   "lat": 29.55184,
+   "lon": -95.02859,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:13.546749323 +0000 UTC"
+  },
+  {
+   "mmsi": "368836000",
+   "name": "BOB HOPE",
+   "lat": 45.54778,
+   "lon": -122.69828,
+   "sog_knots": 0.0,
+   "cog_deg": 0.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:56.90311684 +0000 UTC"
+  },
+  {
+   "mmsi": "257569000",
+   "name": "BOW PROSPER",
+   "lat": -23.92539,
+   "lon": -46.32848,
+   "sog_knots": 0.0,
+   "cog_deg": 341.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:40.436828354 +0000 UTC"
+  },
+  {
+   "mmsi": "255915645",
+   "name": "BRAVE FUTURE",
+   "lat": 29.58731,
+   "lon": -94.93753,
+   "sog_knots": 13.7,
+   "cog_deg": 146.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:00.332182186 +0000 UTC"
+  },
+  {
+   "mmsi": "368075390",
+   "name": "BRAZOS PILOT",
+   "lat": 28.92266,
+   "lon": -95.33749,
+   "sog_knots": 0.0,
+   "cog_deg": 245.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:16.73127605 +0000 UTC"
+  },
+  {
+   "mmsi": "368438320",
+   "name": "BRENDA S",
+   "lat": 28.94806,
+   "lon": -95.32893,
+   "sog_knots": 0.0,
+   "cog_deg": 52.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:16.928675339 +0000 UTC"
+  },
+  {
+   "mmsi": "368142760",
+   "name": "BRISCOE",
+   "lat": 29.78678,
+   "lon": -95.06695,
+   "sog_knots": 1.0,
+   "cog_deg": 72.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:49.150191892 +0000 UTC"
+  },
+  {
+   "mmsi": "232006296",
+   "name": "BRITISH MENTOR",
+   "lat": 28.93843,
+   "lon": -95.30726,
+   "sog_knots": 0.0,
+   "cog_deg": 187.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:45:39.691194693 +0000 UTC"
+  },
+  {
+   "mmsi": "636017767",
+   "name": "BROOKLANDS",
+   "lat": 29.30863,
+   "lon": -94.813,
+   "sog_knots": 0.0,
+   "cog_deg": 85.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:25.927030584 +0000 UTC"
+  },
+  {
+   "mmsi": "338257000",
+   "name": "BROOKSMCCALL",
+   "lat": 28.9476,
+   "lon": -95.32879,
+   "sog_knots": 0.0,
+   "cog_deg": 228.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:02.470515754 +0000 UTC"
+  },
+  {
+   "mmsi": "367007550",
+   "name": "BROWN WATER VIII",
+   "lat": 29.64692,
+   "lon": -94.96984,
+   "sog_knots": 3.2,
+   "cog_deg": 160.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:45.0175978 +0000 UTC"
+  },
+  {
+   "mmsi": "367587190",
+   "name": "BROWN WATER XI",
+   "lat": 28.93958,
+   "lon": -95.34189,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:43.222177833 +0000 UTC"
+  },
+  {
+   "mmsi": "538071343",
+   "name": "BUFFALO NICKEL",
+   "lat": 49.29196,
+   "lon": -123.12499,
+   "sog_knots": 0.0,
+   "cog_deg": 200.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:58.167169932 +0000 UTC"
+  },
+  {
+   "mmsi": "316011649",
+   "name": "BURRARD BEAVER",
+   "lat": 49.31092,
+   "lon": -123.08498,
+   "sog_knots": 0.0,
+   "cog_deg": 110.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:32.351088586 +0000 UTC"
+  },
+  {
+   "mmsi": "316042365",
+   "name": "BURRARD CHINOOK",
+   "lat": 49.2898,
+   "lon": -123.1053,
+   "sog_knots": 9.5,
+   "cog_deg": 193.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:59.168866537 +0000 UTC"
+  },
+  {
+   "mmsi": "316028554",
+   "name": "BURRARD OTTER II",
+   "lat": 49.30979,
+   "lon": -123.084,
+   "sog_knots": 0.0,
+   "cog_deg": 33.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:17.830813221 +0000 UTC"
+  },
+  {
+   "mmsi": "316014621",
+   "name": "BURRARD PACIFIC BRZE",
+   "lat": 49.29586,
+   "lon": -123.09606,
+   "sog_knots": 12.2,
+   "cog_deg": 45.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:53.593256081 +0000 UTC"
+  },
+  {
+   "mmsi": "367554310",
+   "name": "BUTTERCUP",
+   "lat": 29.61275,
+   "lon": -95.01487,
+   "sog_knots": 0.0,
+   "cog_deg": 270.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:10.412649127 +0000 UTC"
+  },
+  {
+   "mmsi": "367705050",
+   "name": "C E",
+   "lat": 47.58687,
+   "lon": -122.3433,
+   "sog_knots": 0.0,
+   "cog_deg": 284.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:22.314337741 +0000 UTC"
+  },
+  {
+   "mmsi": "372477000",
+   "name": "C.DIGNITY",
+   "lat": 27.82611,
+   "lon": -97.15586,
+   "sog_knots": 10.6,
+   "cog_deg": 259.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:26.390628718 +0000 UTC"
+  },
+  {
+   "mmsi": "352005284",
+   "name": "C.ENDEAVOUR",
+   "lat": 49.35115,
+   "lon": 0.97102,
+   "sog_knots": 0.0,
+   "cog_deg": 234.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:44.213159739 +0000 UTC"
+  },
+  {
+   "mmsi": "316005723",
+   "name": "C.H.CATES III",
+   "lat": 49.31099,
+   "lon": -123.10692,
+   "sog_knots": 0.1,
+   "cog_deg": 110.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:20.441387469 +0000 UTC"
+  },
+  {
+   "mmsi": "316003137",
+   "name": "CADAL",
+   "lat": 54.32963,
+   "lon": -130.29971,
+   "sog_knots": 0.2,
+   "cog_deg": 22.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:10.421269645 +0000 UTC"
+  },
+  {
+   "mmsi": "636021897",
+   "name": "CAIPIRINHA",
+   "lat": -23.96188,
+   "lon": -46.30337,
+   "sog_knots": 0.0,
+   "cog_deg": 240.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:51.854317363 +0000 UTC"
+  },
+  {
+   "mmsi": "367705090",
+   "name": "CALLIE M.ETHEREDGE",
+   "lat": 29.70797,
+   "lon": -95.04268,
+   "sog_knots": 1.3,
+   "cog_deg": 105.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:06.132208725 +0000 UTC"
+  },
+  {
+   "mmsi": "226016720",
+   "name": "CALYPSO",
+   "lat": 49.44222,
+   "lon": 1.0747,
+   "sog_knots": 2.4,
+   "cog_deg": 51.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:04.808007822 +0000 UTC"
+  },
+  {
+   "mmsi": "367165270",
+   "name": "CAMAI",
+   "lat": 47.66284,
+   "lon": -122.38772,
+   "sog_knots": 0.0,
+   "cog_deg": 69.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:32.305200983 +0000 UTC"
+  },
+  {
+   "mmsi": "316030654",
+   "name": "CAMANO SOUND",
+   "lat": 54.29126,
+   "lon": -130.35682,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:40.700170812 +0000 UTC"
+  },
+  {
+   "mmsi": "563385000",
+   "name": "CAMELLIA BLISS",
+   "lat": 47.26537,
+   "lon": -122.44193,
+   "sog_knots": 0.0,
+   "cog_deg": 165.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:29.251026311 +0000 UTC"
+  },
+  {
+   "mmsi": "338226000",
+   "name": "CAMERON BLAIR",
+   "lat": 29.61103,
+   "lon": -95.0244,
+   "sog_knots": 0.0,
+   "cog_deg": 86.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:58.273587714 +0000 UTC"
+  },
+  {
+   "mmsi": "431933000",
+   "name": "CAPE SAPPHIRE",
+   "lat": 49.0105,
+   "lon": -123.16792,
+   "sog_knots": 0.0,
+   "cog_deg": 336.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:29.395824576 +0000 UTC"
+  },
+  {
+   "mmsi": "503740000",
+   "name": "CAPRICORNIAN SUNSET",
+   "lat": -32.06019,
+   "lon": 115.74602,
+   "sog_knots": 0.0,
+   "cog_deg": 312.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:47.029679387 +0000 UTC"
+  },
+  {
+   "mmsi": "367530590",
+   "name": "CAPT PAUL E LORD",
+   "lat": 29.66526,
+   "lon": -94.97595,
+   "sog_knots": 7.9,
+   "cog_deg": 162.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:22.604961687 +0000 UTC"
+  },
+  {
+   "mmsi": "366862820",
+   "name": "CAPT ROGER D ADAMS",
+   "lat": 29.61203,
+   "lon": -95.02539,
+   "sog_knots": 0.0,
+   "cog_deg": 173.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:09.96710766 +0000 UTC"
+  },
+  {
+   "mmsi": "366991110",
+   "name": "CAPT TIMMY",
+   "lat": 29.47227,
+   "lon": -94.95566,
+   "sog_knots": 0.1,
+   "cog_deg": 281.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:03.172545803 +0000 UTC"
+  },
+  {
+   "mmsi": "368327640",
+   "name": "CAPT. STEVE",
+   "lat": 45.81094,
+   "lon": -122.79204,
+   "sog_knots": 8.4,
+   "cog_deg": 348.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:09.961312864 +0000 UTC"
+  },
+  {
+   "mmsi": "368484970",
+   "name": "CAPT. STEVE",
+   "lat": 29.73503,
+   "lon": -95.14448,
+   "sog_knots": 0.0,
+   "cog_deg": 113.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:58.425236309 +0000 UTC"
+  },
+  {
+   "mmsi": "366917130",
+   "name": "CAPT.KENNY CADY",
+   "lat": 29.3764,
+   "lon": -94.87132,
+   "sog_knots": 0.0,
+   "cog_deg": 243.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:14.987402139 +0000 UTC"
+  },
+  {
+   "mmsi": "368489650",
+   "name": "CAPT.PETECIARAMITARO",
+   "lat": 29.73004,
+   "lon": -95.02107,
+   "sog_knots": 0.9,
+   "cog_deg": 138.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:57.612109646 +0000 UTC"
+  },
+  {
+   "mmsi": "368215640",
+   "name": "CAPT.TKJ",
+   "lat": 29.77733,
+   "lon": -92.17867,
+   "sog_knots": 6.8,
+   "cog_deg": 281.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:12.496278727 +0000 UTC"
+  },
+  {
+   "mmsi": "755018000",
+   "name": "CAPTAIN BILBO",
+   "lat": -32.614,
+   "lon": -60.75734,
+   "sog_knots": 6.2,
+   "cog_deg": 337.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:08.114677277 +0000 UTC"
+  },
+  {
+   "mmsi": "367641540",
+   "name": "CAROL ANN GOLDING",
+   "lat": 27.83549,
+   "lon": -97.5039,
+   "sog_knots": 6.1,
+   "cog_deg": 306.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:45.417725262 +0000 UTC"
+  },
+  {
+   "mmsi": "236507000",
+   "name": "CASTORWATER",
+   "lat": 49.46629,
+   "lon": 0.54217,
+   "sog_knots": 0.0,
+   "cog_deg": 147.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:37.149312596 +0000 UTC"
+  },
+  {
+   "mmsi": "316028008",
+   "name": "CATALINA ADVENTURE",
+   "lat": 49.46321,
+   "lon": -122.8779,
+   "sog_knots": 0.0,
+   "cog_deg": 212.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:03.248584628 +0000 UTC"
+  },
+  {
+   "mmsi": "316005728",
+   "name": "CATES VIII",
+   "lat": 49.3115,
+   "lon": -123.10685,
+   "sog_knots": 0.0,
+   "cog_deg": 0.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:25.770357098 +0000 UTC"
   },
   {
    "mmsi": "367001570",
    "name": "CATHY",
-   "lat": 29.77975,
-   "lon": -92.17735,
+   "lat": 29.77978,
+   "lon": -92.17737,
    "sog_knots": 0.0,
    "cog_deg": 360.0,
    "destination": "",
-   "timestamp": "2026-10-05 15:38:26.367875837 +0000 UTC"
+   "timestamp": "2026-10-05 15:48:35.448121579 +0000 UTC"
   },
   {
    "mmsi": "710006060",
    "name": "CAUE",
    "lat": -23.95003,
-   "lon": -46.31158,
+   "lon": -46.3116,
    "sog_knots": 0.0,
    "cog_deg": 302.2,
    "destination": "",
-   "timestamp": "2026-10-05 15:39:22.095237918 +0000 UTC"
+   "timestamp": "2026-10-05 15:49:23.592951894 +0000 UTC"
   },
   {
-   "mmsi": "477906500",
-   "name": "CL HENGYANG",
-   "lat": -23.96819,
-   "lon": -46.29799,
-   "sog_knots": 0.0,
-   "cog_deg": 260.2,
+   "mmsi": "755025000",
+   "name": "CAVALIER X",
+   "lat": -32.6268,
+   "lon": -60.721,
+   "sog_knots": 0.1,
+   "cog_deg": 359.4,
    "destination": "",
-   "timestamp": "2026-10-05 15:36:54.024418226 +0000 UTC"
+   "timestamp": "2026-10-05 15:48:35.764613677 +0000 UTC"
+  },
+  {
+   "mmsi": "416499000",
+   "name": "CEMTEX HUNTER",
+   "lat": -33.02171,
+   "lon": 152.23243,
+   "sog_knots": 0.5,
+   "cog_deg": 332.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:41.716757187 +0000 UTC"
+  },
+  {
+   "mmsi": "369493664",
+   "name": "CG45664",
+   "lat": 47.5904,
+   "lon": -122.33874,
+   "sog_knots": 0.0,
+   "cog_deg": 81.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:06.202664754 +0000 UTC"
+  },
+  {
+   "mmsi": "316053863",
+   "name": "CHIEF DAN GEORGE",
+   "lat": 49.29687,
+   "lon": -122.94488,
+   "sog_knots": 3.6,
+   "cog_deg": 73.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:30.099894075 +0000 UTC"
+  },
+  {
+   "mmsi": "367005070",
+   "name": "CHIEF SEATTLE",
+   "lat": 47.6036,
+   "lon": -122.3394,
+   "sog_knots": 0.0,
+   "cog_deg": 79.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:04.05381111 +0000 UTC"
+  },
+  {
+   "mmsi": "367581490",
+   "name": "CHLOE K",
+   "lat": 27.81876,
+   "lon": -97.45595,
+   "sog_knots": 0.0,
+   "cog_deg": 64.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:19.653764723 +0000 UTC"
+  },
+  {
+   "mmsi": "368280980",
+   "name": "CHRISSY",
+   "lat": 45.79313,
+   "lon": -122.84313,
+   "sog_knots": 0.0,
+   "cog_deg": 204.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:26.222901641 +0000 UTC"
+  },
+  {
+   "mmsi": "367653490",
+   "name": "CHRISTI C.",
+   "lat": 28.94107,
+   "lon": -95.30814,
+   "sog_knots": 0.1,
+   "cog_deg": 196.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:58.175839818 +0000 UTC"
+  },
+  {
+   "mmsi": "538004359",
+   "name": "CIHAN",
+   "lat": 49.30169,
+   "lon": -123.08277,
+   "sog_knots": 0.0,
+   "cog_deg": 298.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:00.282440934 +0000 UTC"
+  },
+  {
+   "mmsi": "316006101",
+   "name": "CINDY MOZEL",
+   "lat": 54.23509,
+   "lon": -130.31263,
+   "sog_knots": 0.0,
+   "cog_deg": 338.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:13.072676842 +0000 UTC"
+  },
+  {
+   "mmsi": "367005270",
+   "name": "CJ BOYNE",
+   "lat": 29.70591,
+   "lon": -95.0362,
+   "sog_knots": 0.0,
+   "cog_deg": 139.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:17.148113609 +0000 UTC"
+  },
+  {
+   "mmsi": "563329500",
+   "name": "CL ZENITH",
+   "lat": -32.66725,
+   "lon": -60.72813,
+   "sog_knots": 0.0,
+   "cog_deg": 235.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:41.740155086 +0000 UTC"
+  },
+  {
+   "mmsi": "367476050",
+   "name": "CLACKAMAS",
+   "lat": 46.1454,
+   "lon": -123.34162,
+   "sog_knots": 5.6,
+   "cog_deg": 280.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:24.9415068 +0000 UTC"
+  },
+  {
+   "mmsi": "338205428",
+   "name": "CLAIRE B",
+   "lat": 45.80562,
+   "lon": -122.82232,
+   "sog_knots": 0.7,
+   "cog_deg": 212.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:44.149249863 +0000 UTC"
+  },
+  {
+   "mmsi": "367363590",
+   "name": "CLARKSTON",
+   "lat": 45.64732,
+   "lon": -122.7395,
+   "sog_knots": 0.0,
+   "cog_deg": 258.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:35.337026227 +0000 UTC"
+  },
+  {
+   "mmsi": "366921670",
+   "name": "CLAXTON",
+   "lat": 29.7239,
+   "lon": -95.24969,
+   "sog_knots": 0.0,
+   "cog_deg": 348.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:10.744173713 +0000 UTC"
+  },
+  {
+   "mmsi": "229808000",
+   "name": "CMA CGM FIDELIO",
+   "lat": 29.61241,
+   "lon": -95.01518,
+   "sog_knots": 0.0,
+   "cog_deg": 222.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:50.253041505 +0000 UTC"
+  },
+  {
+   "mmsi": "248002000",
+   "name": "CMA CGM OSMIUM",
+   "lat": -23.96619,
+   "lon": -46.29189,
+   "sog_knots": 0.0,
+   "cog_deg": 88.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:05.910157161 +0000 UTC"
   },
   {
    "mmsi": "228479800",
    "name": "CMA CGM SYRACUSE",
-   "lat": -23.98119,
-   "lon": -46.28896,
-   "sog_knots": 6.3,
-   "cog_deg": 3.2,
+   "lat": -23.9682,
+   "lon": -46.29404,
+   "sog_knots": 3.0,
+   "cog_deg": 322.7,
    "destination": "",
-   "timestamp": "2026-10-05 15:38:01.123850327 +0000 UTC"
+   "timestamp": "2026-10-05 15:49:11.656064949 +0000 UTC"
   },
   {
-   "mmsi": "636021671",
-   "name": "GREEN ITAQUI",
-   "lat": -23.9739,
-   "lon": -46.2935,
-   "sog_knots": 0.0,
-   "cog_deg": 242.2,
+   "mmsi": "316003800",
+   "name": "COAST ISLAND KING",
+   "lat": 49.47552,
+   "lon": -123.4785,
+   "sog_knots": 3.1,
+   "cog_deg": 41.9,
    "destination": "",
-   "timestamp": "2026-10-05 15:39:09.624870482 +0000 UTC"
+   "timestamp": "2026-10-05 15:45:54.779667717 +0000 UTC"
+  },
+  {
+   "mmsi": "316011408",
+   "name": "COASTAL INSPIRATION",
+   "lat": 49.15011,
+   "lon": -123.55655,
+   "sog_knots": 19.5,
+   "cog_deg": 300.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:55.9068926 +0000 UTC"
+  },
+  {
+   "mmsi": "369702000",
+   "name": "COASTAL RELIANCE",
+   "lat": 46.2718,
+   "lon": -123.48095,
+   "sog_knots": 11.6,
+   "cog_deg": 98.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:18.467633292 +0000 UTC"
+  },
+  {
+   "mmsi": "316011407",
+   "name": "COASTAL RENAISSANCE",
+   "lat": 49.08777,
+   "lon": -123.46982,
+   "sog_knots": 19.4,
+   "cog_deg": 125.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:53.039928324 +0000 UTC"
+  },
+  {
+   "mmsi": "367704540",
+   "name": "COASTAL STANDARD",
+   "lat": 47.65735,
+   "lon": -122.3752,
+   "sog_knots": 0.0,
+   "cog_deg": 344.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:33.829697054 +0000 UTC"
+  },
+  {
+   "mmsi": "367764630",
+   "name": "COLE GUIDRY",
+   "lat": 29.61164,
+   "lon": -95.02461,
+   "sog_knots": 0.0,
+   "cog_deg": 357.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:14.067413464 +0000 UTC"
+  },
+  {
+   "mmsi": "368066010",
+   "name": "COLEMAN",
+   "lat": 28.91225,
+   "lon": -95.35582,
+   "sog_knots": 0.0,
+   "cog_deg": 302.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:45:59.93904825 +0000 UTC"
+  },
+  {
+   "mmsi": "367571770",
+   "name": "COLT CLARY",
+   "lat": 27.82488,
+   "lon": -97.43769,
+   "sog_knots": 0.0,
+   "cog_deg": 204.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:30.828402633 +0000 UTC"
+  },
+  {
+   "mmsi": "367697010",
+   "name": "COLUMBIA",
+   "lat": 29.68585,
+   "lon": -94.98527,
+   "sog_knots": 0.0,
+   "cog_deg": 278.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:14.988306481 +0000 UTC"
+  },
+  {
+   "mmsi": "367513150",
+   "name": "COLUMBIA",
+   "lat": 46.0905,
+   "lon": -122.93232,
+   "sog_knots": 0.0,
+   "cog_deg": 263.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:18.787477623 +0000 UTC"
+  },
+  {
+   "mmsi": "368206360",
+   "name": "COMMANDER",
+   "lat": 47.78815,
+   "lon": -122.47362,
+   "sog_knots": 30.8,
+   "cog_deg": 128.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:02.79560015 +0000 UTC"
+  },
+  {
+   "mmsi": "316021988",
+   "name": "CONSTITUTION",
+   "lat": 49.29498,
+   "lon": -123.13318,
+   "sog_knots": 0.0,
+   "cog_deg": 343.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:53.582852489 +0000 UTC"
+  },
+  {
+   "mmsi": "368044470",
+   "name": "COOKE",
+   "lat": 27.81437,
+   "lon": -97.41832,
+   "sog_knots": 0.0,
+   "cog_deg": 290.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:34.834955131 +0000 UTC"
+  },
+  {
+   "mmsi": "368106830",
+   "name": "COOPER K",
+   "lat": 27.81176,
+   "lon": -97.40893,
+   "sog_knots": 0.0,
+   "cog_deg": 224.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:37.139042484 +0000 UTC"
+  },
+  {
+   "mmsi": "538011410",
+   "name": "COPENHAGEN STAR",
+   "lat": 49.29698,
+   "lon": -122.94473,
+   "sog_knots": 3.6,
+   "cog_deg": 69.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:54.990827401 +0000 UTC"
+  },
+  {
+   "mmsi": "372759000",
+   "name": "CORONA MAJESTY",
+   "lat": -33.35818,
+   "lon": 152.05121,
+   "sog_knots": 0.4,
+   "cog_deg": 316.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:07.800845396 +0000 UTC"
+  },
+  {
+   "mmsi": "357338000",
+   "name": "CORONA ROYAL",
+   "lat": 54.1578,
+   "lon": -130.37272,
+   "sog_knots": 0.0,
+   "cog_deg": 250.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:40.160185123 +0000 UTC"
+  },
+  {
+   "mmsi": "372934000",
+   "name": "COSCO BOSTON",
+   "lat": 29.68213,
+   "lon": -94.99217,
+   "sog_knots": 0.0,
+   "cog_deg": 120.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:07.611902909 +0000 UTC"
+  },
+  {
+   "mmsi": "354886000",
+   "name": "COSCO EUROPE",
+   "lat": 54.28899,
+   "lon": -130.3607,
+   "sog_knots": 0.0,
+   "cog_deg": 224.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:42.885781673 +0000 UTC"
+  },
+  {
+   "mmsi": "414697000",
+   "name": "COSCOSHIPPING PENGBO",
+   "lat": -23.92545,
+   "lon": -46.31351,
+   "sog_knots": 0.0,
+   "cog_deg": 354.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:37.295669297 +0000 UTC"
+  },
+  {
+   "mmsi": "477286800",
+   "name": "CS HANGZHOU",
+   "lat": -32.99407,
+   "lon": 152.04671,
+   "sog_knots": 0.8,
+   "cog_deg": 329.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:41.138330696 +0000 UTC"
+  },
+  {
+   "mmsi": "316005648",
+   "name": "CT CHINOOK",
+   "lat": 54.40216,
+   "lon": -130.26353,
+   "sog_knots": 8.9,
+   "cog_deg": 294.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:21.642428046 +0000 UTC"
+  },
+  {
+   "mmsi": "319107100",
+   "name": "CV-9",
+   "lat": 47.66114,
+   "lon": -122.3843,
+   "sog_knots": 0.0,
+   "cog_deg": 0.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:17.009772025 +0000 UTC"
+  },
+  {
+   "mmsi": "367605130",
+   "name": "DAHLI BROOKE",
+   "lat": 29.60843,
+   "lon": -95.01739,
+   "sog_knots": 0.0,
+   "cog_deg": 285.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:01.961791577 +0000 UTC"
+  },
+  {
+   "mmsi": "372480000",
+   "name": "DAIWAN GLORY",
+   "lat": 49.30816,
+   "lon": -123.11544,
+   "sog_knots": 0.0,
+   "cog_deg": 26.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:15.119356723 +0000 UTC"
+  },
+  {
+   "mmsi": "368109530",
+   "name": "DARIAN ALEXANDRA",
+   "lat": 29.72031,
+   "lon": -95.23932,
+   "sog_knots": 1.1,
+   "cog_deg": 210.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:38.561015229 +0000 UTC"
+  },
+  {
+   "mmsi": "503541000",
+   "name": "DAVID ALLAN",
+   "lat": -32.90066,
+   "lon": 151.77029,
+   "sog_knots": 0.0,
+   "cog_deg": 171.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:17.370816482 +0000 UTC"
+  },
+  {
+   "mmsi": "367302310",
+   "name": "DB MUKILTEO",
+   "lat": 47.27611,
+   "lon": -122.38996,
+   "sog_knots": 0.0,
+   "cog_deg": 245.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:48.907195504 +0000 UTC"
+  },
+  {
+   "mmsi": "368433760",
+   "name": "DEBORAH H VALENTINE",
+   "lat": 29.73612,
+   "lon": -95.13995,
+   "sog_knots": 0.7,
+   "cog_deg": 126.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:10.93572069 +0000 UTC"
+  },
+  {
+   "mmsi": "303303000",
+   "name": "DEFENDER",
+   "lat": 47.65937,
+   "lon": -122.38074,
+   "sog_knots": 0.0,
+   "cog_deg": 169.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:34.747086858 +0000 UTC"
+  },
+  {
+   "mmsi": "367614890",
+   "name": "DELFRED ROMERO",
+   "lat": 28.92906,
+   "lon": -95.32701,
+   "sog_knots": 0.0,
+   "cog_deg": 225.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:41.900950415 +0000 UTC"
+  },
+  {
+   "mmsi": "367496010",
+   "name": "DELIVERANCE",
+   "lat": 46.14607,
+   "lon": -123.3561,
+   "sog_knots": 0.2,
+   "cog_deg": 327.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:17.232189432 +0000 UTC"
+  },
+  {
+   "mmsi": "316005772",
+   "name": "DENMAN ISLE",
+   "lat": 49.12356,
+   "lon": -123.18705,
+   "sog_knots": 0.0,
+   "cog_deg": 237.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:48.546932573 +0000 UTC"
+  },
+  {
+   "mmsi": "367638590",
+   "name": "DENNIS CHAMBERS",
+   "lat": 29.61301,
+   "lon": -95.00094,
+   "sog_knots": 0.0,
+   "cog_deg": 256.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:14.354556795 +0000 UTC"
+  },
+  {
+   "mmsi": "367131150",
+   "name": "DIANE",
+   "lat": 29.73439,
+   "lon": -95.20136,
+   "sog_knots": 0.0,
+   "cog_deg": 34.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:09.550118601 +0000 UTC"
+  },
+  {
+   "mmsi": "369970253",
+   "name": "DISCOVERY BAY",
+   "lat": 47.72432,
+   "lon": -122.83765,
+   "sog_knots": 0.0,
+   "cog_deg": 158.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:36.937077229 +0000 UTC"
+  },
+  {
+   "mmsi": "701006899",
+   "name": "DON BASILIO",
+   "lat": -32.52906,
+   "lon": -60.75473,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:38.167138739 +0000 UTC"
+  },
+  {
+   "mmsi": "701001511",
+   "name": "DONA MARIA ANA",
+   "lat": -32.86402,
+   "lon": -60.68939,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:21.565052825 +0000 UTC"
+  },
+  {
+   "mmsi": "367741150",
+   "name": "DR MILTON WANER",
+   "lat": 47.48891,
+   "lon": -122.43322,
+   "sog_knots": 6.7,
+   "cog_deg": 162.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:44.651772757 +0000 UTC"
+  },
+  {
+   "mmsi": "226015880",
+   "name": "DREAMBOAT",
+   "lat": 49.40602,
+   "lon": 0.9253,
+   "sog_knots": 7.9,
+   "cog_deg": 205.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:30.648893751 +0000 UTC"
+  },
+  {
+   "mmsi": "366986380",
+   "name": "DREDGE OREGON",
+   "lat": 46.146,
+   "lon": -123.35637,
+   "sog_knots": 0.3,
+   "cog_deg": 161.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:28.648765405 +0000 UTC"
+  },
+  {
+   "mmsi": "366916860",
+   "name": "DREW DEVALL",
+   "lat": 29.7066,
+   "lon": -95.01958,
+   "sog_knots": 6.5,
+   "cog_deg": 154.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:22.869203591 +0000 UTC"
+  },
+  {
+   "mmsi": "304789000",
+   "name": "ECHO ELISA",
+   "lat": 49.45256,
+   "lon": 0.41967,
+   "sog_knots": 12.6,
+   "cog_deg": 61.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:32.007818361 +0000 UTC"
+  },
+  {
+   "mmsi": "368074170",
+   "name": "ED  S.",
+   "lat": 28.98317,
+   "lon": -95.26599,
+   "sog_knots": 0.0,
+   "cog_deg": 121.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:17.34079166 +0000 UTC"
+  },
+  {
+   "mmsi": "368190090",
+   "name": "ELIJAH S",
+   "lat": 27.84537,
+   "lon": -97.51906,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:14.429868215 +0000 UTC"
+  },
+  {
+   "mmsi": "636017372",
+   "name": "EN MAY",
+   "lat": -32.85885,
+   "lon": 152.39381,
+   "sog_knots": 11.2,
+   "cog_deg": 230.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:23.533860232 +0000 UTC"
+  },
+  {
+   "mmsi": "368151810",
+   "name": "ENETAI",
+   "lat": 47.59573,
+   "lon": -122.40127,
+   "sog_knots": 30.0,
+   "cog_deg": 57.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:00.096953026 +0000 UTC"
+  },
+  {
+   "mmsi": "367098190",
+   "name": "ENTRANCE POINT",
+   "lat": 47.65654,
+   "lon": -122.36697,
+   "sog_knots": 0.0,
+   "cog_deg": 305.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:32.96571575 +0000 UTC"
+  },
+  {
+   "mmsi": "255806501",
+   "name": "ERNA OLDENDORFF",
+   "lat": -32.89183,
+   "lon": 151.77373,
+   "sog_knots": 0.0,
+   "cog_deg": 170.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:13.213638104 +0000 UTC"
+  },
+  {
+   "mmsi": "255915647",
+   "name": "ESL SHEKOU",
+   "lat": 54.28507,
+   "lon": -130.36116,
+   "sog_knots": 0.0,
+   "cog_deg": 56.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:29.102265938 +0000 UTC"
+  },
+  {
+   "mmsi": "352003205",
+   "name": "ESTEEM COWBOY",
+   "lat": 49.29093,
+   "lon": -122.95432,
+   "sog_knots": 0.0,
+   "cog_deg": 77.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:56.882224456 +0000 UTC"
+  },
+  {
+   "mmsi": "235009850",
+   "name": "EVER SIGMA",
+   "lat": 47.25422,
+   "lon": -122.37877,
+   "sog_knots": 0.0,
+   "cog_deg": 321.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:07.857860551 +0000 UTC"
+  },
+  {
+   "mmsi": "316003659",
+   "name": "EVERNORTH CAVALIER",
+   "lat": 49.23974,
+   "lon": -123.3925,
+   "sog_knots": 8.4,
+   "cog_deg": 160.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:20.919142562 +0000 UTC"
+  },
+  {
+   "mmsi": "316006154",
+   "name": "EVERNORTH MCPHAIL",
+   "lat": 49.20294,
+   "lon": -123.04616,
+   "sog_knots": 0.0,
+   "cog_deg": 234.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:10.281551265 +0000 UTC"
+  },
+  {
+   "mmsi": "316026464",
+   "name": "EVERNORTH STAR",
+   "lat": 49.24866,
+   "lon": -123.26306,
+   "sog_knots": 5.7,
+   "cog_deg": 128.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:25.072944558 +0000 UTC"
+  },
+  {
+   "mmsi": "226017440",
+   "name": "EVIDENCE",
+   "lat": 49.44045,
+   "lon": 1.08223,
+   "sog_knots": 0.9,
+   "cog_deg": 319.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:29.906085702 +0000 UTC"
+  },
+  {
+   "mmsi": "368029450",
+   "name": "EXPORTER",
+   "lat": 28.94548,
+   "lon": -95.30732,
+   "sog_knots": 0.1,
+   "cog_deg": 189.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:05.571338487 +0000 UTC"
+  },
+  {
+   "mmsi": "215381000",
+   "name": "EXPRESS BLACK SEA",
+   "lat": -32.04768,
+   "lon": 115.74158,
+   "sog_knots": 0.0,
+   "cog_deg": 357.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:31.194198097 +0000 UTC"
+  },
+  {
+   "mmsi": "538007247",
+   "name": "F.OCEAN",
+   "lat": -33.40188,
+   "lon": 152.10835,
+   "sog_knots": 2.0,
+   "cog_deg": 236.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:59.188053379 +0000 UTC"
+  },
+  {
+   "mmsi": "477254200",
+   "name": "FENG DA HAI",
+   "lat": 29.74441,
+   "lon": -95.10573,
+   "sog_knots": 0.0,
+   "cog_deg": 9.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:47.367194635 +0000 UTC"
+  },
+  {
+   "mmsi": "241211000",
+   "name": "FIGALIA PRUDENCE",
+   "lat": -23.968,
+   "lon": -46.29015,
+   "sog_knots": 0.0,
+   "cog_deg": 63.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:45:24.412775907 +0000 UTC"
+  },
+  {
+   "mmsi": "316013688",
+   "name": "FINLAY",
+   "lat": 49.29847,
+   "lon": -123.02938,
+   "sog_knots": 0.0,
+   "cog_deg": 174.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:20.655405998 +0000 UTC"
+  },
+  {
+   "mmsi": "338438943",
+   "name": "FIREBOAT DEFIANCE",
+   "lat": 47.30562,
+   "lon": -122.51157,
+   "sog_knots": 0.0,
+   "cog_deg": 0.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:58.069885707 +0000 UTC"
+  },
+  {
+   "mmsi": "366843280",
+   "name": "FLING",
+   "lat": 28.95413,
+   "lon": -95.35497,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:08.262544167 +0000 UTC"
+  },
+  {
+   "mmsi": "226002590",
+   "name": "FLORE",
+   "lat": 49.4404,
+   "lon": 1.07685,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:29.580902817 +0000 UTC"
+  },
+  {
+   "mmsi": "367688280",
+   "name": "FORKED ISLAND",
+   "lat": 29.7768,
+   "lon": -92.18064,
+   "sog_knots": 0.0,
+   "cog_deg": 199.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:34.522890417 +0000 UTC"
+  },
+  {
+   "mmsi": "367505030",
+   "name": "FRANK JAHN",
+   "lat": 29.51967,
+   "lon": -94.887,
+   "sog_knots": 6.9,
+   "cog_deg": 150.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:01.572996042 +0000 UTC"
+  },
+  {
+   "mmsi": "316007335",
+   "name": "FRASER WARRIOR",
+   "lat": 54.22779,
+   "lon": -130.34855,
+   "sog_knots": 4.4,
+   "cog_deg": 180.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:49.088722998 +0000 UTC"
+  },
+  {
+   "mmsi": "368278590",
+   "name": "FREDERICK PAUP",
+   "lat": 28.91105,
+   "lon": -95.26988,
+   "sog_knots": 1.6,
+   "cog_deg": 315.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:01.77788809 +0000 UTC"
+  },
+  {
+   "mmsi": "316006988",
+   "name": "FREEPORT",
+   "lat": 54.2259,
+   "lon": -130.29655,
+   "sog_knots": 0.0,
+   "cog_deg": 4.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:18.505590014 +0000 UTC"
+  },
+  {
+   "mmsi": "366818870",
+   "name": "FREEPORT PILOT 1",
+   "lat": 28.92252,
+   "lon": -95.33744,
+   "sog_knots": 0.0,
+   "cog_deg": 225.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:14.333927358 +0000 UTC"
+  },
+  {
+   "mmsi": "255804550",
+   "name": "FRIEDHELM",
+   "lat": 49.42889,
+   "lon": 0.60837,
+   "sog_knots": 7.6,
+   "cog_deg": 258.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:11.95203624 +0000 UTC"
+  },
+  {
+   "mmsi": "245066000",
+   "name": "FRISIAN FUTURE",
+   "lat": 46.10037,
+   "lon": -122.9415,
+   "sog_knots": 0.0,
+   "cog_deg": 27.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:45:24.699951568 +0000 UTC"
+  },
+  {
+   "mmsi": "246596000",
+   "name": "FRISIAN OCTA",
+   "lat": 29.73475,
+   "lon": -95.27703,
+   "sog_knots": 0.0,
+   "cog_deg": 70.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:45.735717362 +0000 UTC"
+  },
+  {
+   "mmsi": "538009132",
+   "name": "FRONTIER MARINER",
+   "lat": 49.30482,
+   "lon": -123.10419,
+   "sog_knots": 0.0,
+   "cog_deg": 100.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:53.41826551 +0000 UTC"
+  },
+  {
+   "mmsi": "352006695",
+   "name": "FUJI MARU",
+   "lat": -32.88356,
+   "lon": 151.75621,
+   "sog_knots": 0.0,
+   "cog_deg": 27.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:41.907703953 +0000 UTC"
+  },
+  {
+   "mmsi": "227214530",
+   "name": "FUTE",
+   "lat": 49.38102,
+   "lon": 1.01293,
+   "sog_knots": 0.0,
+   "cog_deg": 0.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:53.835051836 +0000 UTC"
+  },
+  {
+   "mmsi": "367633210",
+   "name": "GALLIANO",
+   "lat": 27.82449,
+   "lon": -97.43585,
+   "sog_knots": 0.0,
+   "cog_deg": 130.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:38.397278139 +0000 UTC"
+  },
+  {
+   "mmsi": "368130570",
+   "name": "GEMINI",
+   "lat": 29.68414,
+   "lon": -94.98792,
+   "sog_knots": 4.1,
+   "cog_deg": 72.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:59.186423905 +0000 UTC"
+  },
+  {
+   "mmsi": "372213000",
+   "name": "GEMINI OCEAN",
+   "lat": 47.55822,
+   "lon": -122.48841,
+   "sog_knots": 0.1,
+   "cog_deg": 122.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:09.635834759 +0000 UTC"
+  },
+  {
+   "mmsi": "538012763",
+   "name": "GIA ASPIRANT",
+   "lat": 49.30773,
+   "lon": -123.18509,
+   "sog_knots": 0.0,
+   "cog_deg": 292.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:39.122690643 +0000 UTC"
+  },
+  {
+   "mmsi": "368076750",
+   "name": "GLACIER BAY",
+   "lat": 47.65935,
+   "lon": -122.37968,
+   "sog_knots": 0.0,
+   "cog_deg": 188.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:55.593683496 +0000 UTC"
+  },
+  {
+   "mmsi": "367767250",
+   "name": "GLEN K",
+   "lat": 27.85565,
+   "lon": -97.23953,
+   "sog_knots": 0.7,
+   "cog_deg": 96.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:45:33.662455774 +0000 UTC"
+  },
+  {
+   "mmsi": "367013040",
+   "name": "GOODTIME II",
+   "lat": 47.56848,
+   "lon": -122.34701,
+   "sog_knots": 0.0,
+   "cog_deg": 185.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:30.874399549 +0000 UTC"
+  },
+  {
+   "mmsi": "367508430",
+   "name": "GOV MIKE HUCKABEE",
+   "lat": 29.55491,
+   "lon": -94.9108,
+   "sog_knots": 7.8,
+   "cog_deg": 327.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:46.333173934 +0000 UTC"
+  },
+  {
+   "mmsi": "367008680",
+   "name": "GRACIE CLAIRE",
+   "lat": 29.54651,
+   "lon": -94.82147,
+   "sog_knots": 0.0,
+   "cog_deg": 219.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:18.507748231 +0000 UTC"
+  },
+  {
+   "mmsi": "367637350",
+   "name": "GRACIE LEE",
+   "lat": 29.47007,
+   "lon": -94.9616,
+   "sog_knots": 0.0,
+   "cog_deg": 314.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:06.491884291 +0000 UTC"
+  },
+  {
+   "mmsi": "538012802",
+   "name": "GRAND DAHLIA",
+   "lat": 28.93997,
+   "lon": -95.34017,
+   "sog_knots": 0.0,
+   "cog_deg": 309.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:11.128122938 +0000 UTC"
+  },
+  {
+   "mmsi": "367667060",
+   "name": "GRANITE POINT",
+   "lat": 45.6473,
+   "lon": -122.73997,
+   "sog_knots": 0.0,
+   "cog_deg": 18.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:44.82181744 +0000 UTC"
+  },
+  {
+   "mmsi": "477019800",
+   "name": "GREAT FLOURISH",
+   "lat": 46.26185,
+   "lon": -123.46312,
+   "sog_knots": 0.0,
+   "cog_deg": 177.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:00.201832671 +0000 UTC"
+  },
+  {
+   "mmsi": "367301450",
+   "name": "GRIZZLY",
+   "lat": 45.58099,
+   "lon": -122.76028,
+   "sog_knots": 0.0,
+   "cog_deg": 234.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:06.467517905 +0000 UTC"
+  },
+  {
+   "mmsi": "366887300",
+   "name": "GUARD",
+   "lat": 47.58986,
+   "lon": -122.34963,
+   "sog_knots": 0.1,
+   "cog_deg": 203.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:35.990932721 +0000 UTC"
+  },
+  {
+   "mmsi": "503000221",
+   "name": "GUIDANCE",
+   "lat": -33.4695,
+   "lon": 151.84276,
+   "sog_knots": 0.5,
+   "cog_deg": 172.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:46.6556501 +0000 UTC"
+  },
+  {
+   "mmsi": "701006740",
+   "name": "GUILLERMO C",
+   "lat": -32.63452,
+   "lon": -60.72568,
+   "sog_knots": 0.0,
+   "cog_deg": 0.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:17.313591399 +0000 UTC"
+  },
+  {
+   "mmsi": "503187620",
+   "name": "GWARDAR",
+   "lat": -32.04803,
+   "lon": 115.73242,
+   "sog_knots": 0.0,
+   "cog_deg": 16.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:52.841664431 +0000 UTC"
+  },
+  {
+   "mmsi": "366978710",
+   "name": "GYRFALCON",
+   "lat": 47.59544,
+   "lon": -122.35085,
+   "sog_knots": 0.0,
+   "cog_deg": 69.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:54.254181709 +0000 UTC"
+  },
+  {
+   "mmsi": "563186300",
+   "name": "HAFNIA AMMOLITE",
+   "lat": -32.75063,
+   "lon": -60.72078,
+   "sog_knots": 0.0,
+   "cog_deg": 249.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:31.075643584 +0000 UTC"
+  },
+  {
+   "mmsi": "367041530",
+   "name": "HAIDA CHIEF",
+   "lat": 47.65809,
+   "lon": -122.3823,
+   "sog_knots": 0.0,
+   "cog_deg": 10.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:05.63971076 +0000 UTC"
+  },
+  {
+   "mmsi": "316054424",
+   "name": "HAISEA WARRIOR",
+   "lat": 54.21117,
+   "lon": -130.77298,
+   "sog_knots": 0.7,
+   "cog_deg": 279.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:13.446477007 +0000 UTC"
+  },
+  {
+   "mmsi": "316039572",
+   "name": "HAISLA NORTHWIND",
+   "lat": 49.29118,
+   "lon": -123.05995,
+   "sog_knots": 0.1,
+   "cog_deg": 229.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:12.010394044 +0000 UTC"
+  },
+  {
+   "mmsi": "367461350",
+   "name": "HALLE H.",
+   "lat": 47.53752,
+   "lon": -122.32849,
+   "sog_knots": 0.0,
+   "cog_deg": 128.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:42.976729694 +0000 UTC"
   },
   {
    "mmsi": "538012241",
    "name": "HAPPINESS DIVA",
    "lat": -23.97884,
-   "lon": -46.28671,
+   "lon": -46.2867,
    "sog_knots": 0.0,
    "cog_deg": 89.7,
    "destination": "",
-   "timestamp": "2026-10-05 15:38:09.976035834 +0000 UTC"
+   "timestamp": "2026-10-05 15:50:08.568125998 +0000 UTC"
+  },
+  {
+   "mmsi": "316022498",
+   "name": "HARBOUR PRINCESS",
+   "lat": 49.29492,
+   "lon": -123.13303,
+   "sog_knots": 0.0,
+   "cog_deg": 308.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:24.01841927 +0000 UTC"
+  },
+  {
+   "mmsi": "316018605",
+   "name": "HARKEN 5",
+   "lat": 49.231,
+   "lon": -122.77082,
+   "sog_knots": 0.1,
+   "cog_deg": 12.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:14.584636147 +0000 UTC"
+  },
+  {
+   "mmsi": "368063040",
+   "name": "HASKELL",
+   "lat": 27.82437,
+   "lon": -97.43539,
+   "sog_knots": 0.0,
+   "cog_deg": 280.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:22.312407334 +0000 UTC"
+  },
+  {
+   "mmsi": "368266590",
+   "name": "HAYDEN GRACE",
+   "lat": 29.74061,
+   "lon": -95.11181,
+   "sog_knots": 6.6,
+   "cog_deg": 247.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:00.988230152 +0000 UTC"
+  },
+  {
+   "mmsi": "368440320",
+   "name": "HEATHER S",
+   "lat": 45.64145,
+   "lon": -122.73212,
+   "sog_knots": 8.0,
+   "cog_deg": 288.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:58.331025256 +0000 UTC"
+  },
+  {
+   "mmsi": "477899500",
+   "name": "HEBEI ZHANGJIAKOU",
+   "lat": -33.05347,
+   "lon": 152.17911,
+   "sog_knots": 0.9,
+   "cog_deg": 317.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:27.481626063 +0000 UTC"
+  },
+  {
+   "mmsi": "636025629",
+   "name": "HG AUCKLAND",
+   "lat": 45.63179,
+   "lon": -122.69761,
+   "sog_knots": 0.0,
+   "cog_deg": 62.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:54.118141517 +0000 UTC"
   },
   {
    "mmsi": "352003285",
    "name": "HOANH SON UNIVERSE",
    "lat": -23.93498,
-   "lon": -46.31403,
+   "lon": -46.31408,
    "sog_knots": 0.0,
    "cog_deg": 188.0,
    "destination": "",
-   "timestamp": "2026-10-05 15:37:50.092823985 +0000 UTC"
+   "timestamp": "2026-10-05 15:49:46.980604546 +0000 UTC"
+  },
+  {
+   "mmsi": "368124040",
+   "name": "HOCKLEY",
+   "lat": 27.82197,
+   "lon": -97.47974,
+   "sog_knots": 0.0,
+   "cog_deg": 153.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:23.97732123 +0000 UTC"
+  },
+  {
+   "mmsi": "563180200",
+   "name": "HOEGH GIANT",
+   "lat": -23.91232,
+   "lon": -46.36578,
+   "sog_knots": 0.0,
+   "cog_deg": 178.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:43.565601164 +0000 UTC"
+  },
+  {
+   "mmsi": "368072280",
+   "name": "HOKULANI",
+   "lat": 47.66209,
+   "lon": -122.38639,
+   "sog_knots": 0.0,
+   "cog_deg": 140.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:46.865134938 +0000 UTC"
+  },
+  {
+   "mmsi": "316058939",
+   "name": "HOLLY RAE",
+   "lat": 49.28585,
+   "lon": -123.10024,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:07.395755675 +0000 UTC"
+  },
+  {
+   "mmsi": "352006533",
+   "name": "HPC GLOBAL",
+   "lat": -32.25373,
+   "lon": 115.74329,
+   "sog_knots": 0.1,
+   "cog_deg": 176.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:50.596457793 +0000 UTC"
+  },
+  {
+   "mmsi": "316045828",
+   "name": "HS HOOD",
+   "lat": 54.27902,
+   "lon": -130.37789,
+   "sog_knots": 0.0,
+   "cog_deg": 70.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:53.552969516 +0000 UTC"
+  },
+  {
+   "mmsi": "369080000",
+   "name": "HUDSON",
+   "lat": 47.71603,
+   "lon": -122.43886,
+   "sog_knots": 7.6,
+   "cog_deg": 10.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:25.064240089 +0000 UTC"
+  },
+  {
+   "mmsi": "367402050",
+   "name": "HUNTER M",
+   "lat": 28.9346,
+   "lon": -95.32157,
+   "sog_knots": 0.0,
+   "cog_deg": 52.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:45:59.539599396 +0000 UTC"
+  },
+  {
+   "mmsi": "368245970",
+   "name": "HUSKY",
+   "lat": 47.65522,
+   "lon": -122.36851,
+   "sog_knots": 0.0,
+   "cog_deg": 293.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:58.448195548 +0000 UTC"
+  },
+  {
+   "mmsi": "367425870",
+   "name": "HUSKY",
+   "lat": 45.56086,
+   "lon": -122.71803,
+   "sog_knots": 0.0,
+   "cog_deg": 229.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:12.953347272 +0000 UTC"
+  },
+  {
+   "mmsi": "755171000",
+   "name": "IB CONCEPCION",
+   "lat": -32.55183,
+   "lon": -60.79282,
+   "sog_knots": 0.0,
+   "cog_deg": 85.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:42.167713644 +0000 UTC"
+  },
+  {
+   "mmsi": "701001114",
+   "name": "IGUAZU",
+   "lat": -32.75258,
+   "lon": -60.72413,
+   "sog_knots": 20.1,
+   "cog_deg": 170.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:52.816047558 +0000 UTC"
+  },
+  {
+   "mmsi": "755074000",
+   "name": "IMPALA SAN ANTONIO",
+   "lat": -32.59248,
+   "lon": -60.74522,
+   "sog_knots": 9.1,
+   "cog_deg": 201.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:45:30.620163601 +0000 UTC"
+  },
+  {
+   "mmsi": "368077830",
+   "name": "INDEPENDENCE",
+   "lat": 29.6569,
+   "lon": -94.97355,
+   "sog_knots": 4.7,
+   "cog_deg": 162.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:04.452295186 +0000 UTC"
+  },
+  {
+   "mmsi": "305034000",
+   "name": "INDUSTRIAL DREAM",
+   "lat": 29.69069,
+   "lon": -94.98776,
+   "sog_knots": 11.9,
+   "cog_deg": 313.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:07.912116718 +0000 UTC"
+  },
+  {
+   "mmsi": "367564240",
+   "name": "INNOVATOR",
+   "lat": 28.90431,
+   "lon": -95.36926,
+   "sog_knots": 0.0,
+   "cog_deg": 265.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:05.912559342 +0000 UTC"
+  },
+  {
+   "mmsi": "367610650",
+   "name": "IRISH",
+   "lat": 28.96751,
+   "lon": -95.28535,
+   "sog_knots": 0.0,
+   "cog_deg": 175.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:23.573668226 +0000 UTC"
+  },
+  {
+   "mmsi": "367439390",
+   "name": "ISLAND BREEZE",
+   "lat": 47.57362,
+   "lon": -122.35752,
+   "sog_knots": 0.0,
+   "cog_deg": 27.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:15.800422774 +0000 UTC"
+  },
+  {
+   "mmsi": "366838990",
+   "name": "ISLAND CHIEF",
+   "lat": 47.13511,
+   "lon": -122.6459,
+   "sog_knots": 0.0,
+   "cog_deg": 313.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:09.090625491 +0000 UTC"
+  },
+  {
+   "mmsi": "367413350",
+   "name": "ISLAND STAR",
+   "lat": 47.66468,
+   "lon": -122.392,
+   "sog_knots": 0.0,
+   "cog_deg": 269.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:01.877128544 +0000 UTC"
+  },
+  {
+   "mmsi": "368637000",
+   "name": "ISLAND VIKING",
+   "lat": 47.57265,
+   "lon": -122.3561,
+   "sog_knots": 0.0,
+   "cog_deg": 0.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:25.200209169 +0000 UTC"
+  },
+  {
+   "mmsi": "755048000",
+   "name": "ITAPUA I",
+   "lat": -32.56738,
+   "lon": -60.78354,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:29.911928158 +0000 UTC"
+  },
+  {
+   "mmsi": "367673340",
+   "name": "J THOMAS",
+   "lat": 29.73458,
+   "lon": -95.2018,
+   "sog_knots": 0.0,
+   "cog_deg": 340.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:44.508390915 +0000 UTC"
+  },
+  {
+   "mmsi": "367010030",
+   "name": "J.O.BRADFORD",
+   "lat": 28.93488,
+   "lon": -95.31849,
+   "sog_knots": 0.0,
+   "cog_deg": 225.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:26.460507817 +0000 UTC"
+  },
+  {
+   "mmsi": "366795290",
+   "name": "JADE PANAMA",
+   "lat": 47.57088,
+   "lon": -122.18905,
+   "sog_knots": 0.0,
+   "cog_deg": 239.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:23.159766678 +0000 UTC"
+  },
+  {
+   "mmsi": "269057512",
+   "name": "JANE AUSTEN",
+   "lat": 49.52386,
+   "lon": 0.72477,
+   "sog_knots": 0.0,
+   "cog_deg": 277.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:10.504402351 +0000 UTC"
+  },
+  {
+   "mmsi": "367799260",
+   "name": "JANE L",
+   "lat": 29.74766,
+   "lon": -95.29182,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:22.215419846 +0000 UTC"
+  },
+  {
+   "mmsi": "367171930",
+   "name": "JANICE ROBERTS",
+   "lat": 29.46503,
+   "lon": -94.85015,
+   "sog_knots": 7.1,
+   "cog_deg": 335.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:03.727608533 +0000 UTC"
+  },
+  {
+   "mmsi": "316016341",
+   "name": "JEANNA MARIE",
+   "lat": 49.30122,
+   "lon": -123.0227,
+   "sog_knots": 0.0,
+   "cog_deg": 248.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:27.93720013 +0000 UTC"
+  },
+  {
+   "mmsi": "367340440",
+   "name": "JEFF BRUMFIELD",
+   "lat": 29.37594,
+   "lon": -94.89306,
+   "sog_knots": 1.0,
+   "cog_deg": 277.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:41.287658162 +0000 UTC"
+  },
+  {
+   "mmsi": "563305700",
+   "name": "JERVIS BAY",
+   "lat": 46.10354,
+   "lon": -122.95029,
+   "sog_knots": 0.1,
+   "cog_deg": 216.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:10.367871478 +0000 UTC"
+  },
+  {
+   "mmsi": "316004317",
+   "name": "JERVIS PIPER",
+   "lat": 49.4,
+   "lon": -123.50451,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:19.54467832 +0000 UTC"
+  },
+  {
+   "mmsi": "503003840",
+   "name": "JETWAVE ORION",
+   "lat": -32.06035,
+   "lon": 115.74593,
+   "sog_knots": 0.0,
+   "cog_deg": 216.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:32.033804964 +0000 UTC"
+  },
+  {
+   "mmsi": "366939780",
+   "name": "JOHN JOSEPH",
+   "lat": 29.70843,
+   "lon": -95.02092,
+   "sog_knots": 4.2,
+   "cog_deg": 165.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:36.531902639 +0000 UTC"
+  },
+  {
+   "mmsi": "368237080",
+   "name": "JOHNNY O",
+   "lat": 27.85515,
+   "lon": -97.23934,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:37.909416923 +0000 UTC"
+  },
+  {
+   "mmsi": "367384650",
+   "name": "JORDYN PAIGE",
+   "lat": 29.75764,
+   "lon": -95.18103,
+   "sog_knots": 3.2,
+   "cog_deg": 47.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:35.469984438 +0000 UTC"
+  },
+  {
+   "mmsi": "477205800",
+   "name": "JOSCO WANZHOU",
+   "lat": 27.81513,
+   "lon": -97.41578,
+   "sog_knots": 0.0,
+   "cog_deg": 133.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:28.636309037 +0000 UTC"
+  },
+  {
+   "mmsi": "368250110",
+   "name": "JOSEPH ALFRED DEVALL",
+   "lat": 29.51575,
+   "lon": -94.88119,
+   "sog_knots": 8.6,
+   "cog_deg": 324.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:20.932937127 +0000 UTC"
+  },
+  {
+   "mmsi": "367350190",
+   "name": "JOSEPH F. MORRISON",
+   "lat": 28.98474,
+   "lon": -95.26385,
+   "sog_knots": 3.5,
+   "cog_deg": 59.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:44.697910149 +0000 UTC"
   },
   {
    "mmsi": "368225760",
    "name": "JOSEPH G",
-   "lat": 29.78033,
-   "lon": -92.18577,
+   "lat": 29.78035,
+   "lon": -92.1858,
    "sog_knots": 0.0,
-   "cog_deg": 291.1,
+   "cog_deg": 271.6,
    "destination": "",
-   "timestamp": "2026-10-05 15:39:06.224672696 +0000 UTC"
+   "timestamp": "2026-10-05 15:49:45.396599189 +0000 UTC"
+  },
+  {
+   "mmsi": "316009843",
+   "name": "JRW",
+   "lat": 49.31159,
+   "lon": -123.10694,
+   "sog_knots": 0.0,
+   "cog_deg": 197.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:47.752691306 +0000 UTC"
+  },
+  {
+   "mmsi": "368104540",
+   "name": "JUDY MORAN",
+   "lat": 28.93367,
+   "lon": -95.32207,
+   "sog_knots": 0.0,
+   "cog_deg": 77.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:57.821968453 +0000 UTC"
+  },
+  {
+   "mmsi": "367790040",
+   "name": "KAIA",
+   "lat": 47.57402,
+   "lon": -122.19983,
+   "sog_knots": 4.9,
+   "cog_deg": 3.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:40.785640929 +0000 UTC"
+  },
+  {
+   "mmsi": "352986193",
+   "name": "KANAVU BENEFIT",
+   "lat": -32.24162,
+   "lon": 115.75487,
+   "sog_knots": 0.0,
+   "cog_deg": 247.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:58.608193767 +0000 UTC"
+  },
+  {
+   "mmsi": "636017076",
+   "name": "KARLINO",
+   "lat": -32.69163,
+   "lon": -60.72366,
+   "sog_knots": 0.0,
+   "cog_deg": 257.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:15.054443177 +0000 UTC"
+  },
+  {
+   "mmsi": "538008520",
+   "name": "KASSIOPI.GR",
+   "lat": -32.94666,
+   "lon": 152.14941,
+   "sog_knots": 1.3,
+   "cog_deg": 278.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:24.067907136 +0000 UTC"
+  },
+  {
+   "mmsi": "366993790",
+   "name": "KATHLEEN K",
+   "lat": 47.66013,
+   "lon": -122.38088,
+   "sog_knots": 0.0,
+   "cog_deg": 43.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:04.699152942 +0000 UTC"
+  },
+  {
+   "mmsi": "366499000",
+   "name": "KATIE ANN",
+   "lat": 47.64608,
+   "lon": -122.3397,
+   "sog_knots": 0.0,
+   "cog_deg": 308.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:36.788877489 +0000 UTC"
+  },
+  {
+   "mmsi": "368206450",
+   "name": "KEEWAYDIN",
+   "lat": 47.64543,
+   "lon": -122.31116,
+   "sog_knots": 0.0,
+   "cog_deg": 218.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:45:23.75536293 +0000 UTC"
+  },
+  {
+   "mmsi": "367327540",
+   "name": "KEITH GELVIN",
+   "lat": 29.76248,
+   "lon": -95.11066,
+   "sog_knots": 0.0,
+   "cog_deg": 170.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:45:44.082477445 +0000 UTC"
+  },
+  {
+   "mmsi": "636016576",
+   "name": "KEN COLON",
+   "lat": 54.35209,
+   "lon": -130.27518,
+   "sog_knots": 0.0,
+   "cog_deg": 288.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:40.298731571 +0000 UTC"
+  },
+  {
+   "mmsi": "316060435",
+   "name": "KENLEY JONES",
+   "lat": 49.28577,
+   "lon": -123.10085,
+   "sog_knots": 0.0,
+   "cog_deg": 99.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:21.833135878 +0000 UTC"
+  },
+  {
+   "mmsi": "304625000",
+   "name": "KILLU",
+   "lat": 49.43679,
+   "lon": 1.04772,
+   "sog_knots": 0.0,
+   "cog_deg": 164.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:43.18139595 +0000 UTC"
+  },
+  {
+   "mmsi": "227098290",
+   "name": "KINGSTON",
+   "lat": 49.38266,
+   "lon": 1.11883,
+   "sog_knots": 7.7,
+   "cog_deg": 9.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:18.474483246 +0000 UTC"
+  },
+  {
+   "mmsi": "567279000",
+   "name": "KIRANA NAREE",
+   "lat": -23.94936,
+   "lon": -46.31168,
+   "sog_knots": 0.0,
+   "cog_deg": 254.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:05.346173789 +0000 UTC"
+  },
+  {
+   "mmsi": "368062270",
+   "name": "KIRSTEN GOLDING",
+   "lat": 29.73354,
+   "lon": -95.136,
+   "sog_knots": 0.0,
+   "cog_deg": 168.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:38.691645777 +0000 UTC"
+  },
+  {
+   "mmsi": "338205553",
+   "name": "KITSAP MARINE 81_",
+   "lat": 47.79619,
+   "lon": -122.49927,
+   "sog_knots": 0.7,
+   "cog_deg": 0.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:53.099455973 +0000 UTC"
+  },
+  {
+   "mmsi": "503684000",
+   "name": "KOGARAH",
+   "lat": -32.05988,
+   "lon": 115.74291,
+   "sog_knots": 0.0,
+   "cog_deg": 119.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:02.811950006 +0000 UTC"
+  },
+  {
+   "mmsi": "538006281",
+   "name": "KONKAR VENTURE",
+   "lat": 49.29871,
+   "lon": -123.1907,
+   "sog_knots": 0.0,
+   "cog_deg": 189.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:05.797036859 +0000 UTC"
+  },
+  {
+   "mmsi": "316023608",
+   "name": "KOOTENAY",
+   "lat": 49.15432,
+   "lon": -122.95026,
+   "sog_knots": 0.0,
+   "cog_deg": 222.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:02.761752899 +0000 UTC"
+  },
+  {
+   "mmsi": "226019840",
+   "name": "KRAKEN",
+   "lat": 49.48279,
+   "lon": 0.51699,
+   "sog_knots": 12.6,
+   "cog_deg": 121.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:53.394837016 +0000 UTC"
+  },
+  {
+   "mmsi": "227277040",
+   "name": "LA LONDE",
+   "lat": 49.4472,
+   "lon": 1.05915,
+   "sog_knots": 0.0,
+   "cog_deg": 6.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:00.449457533 +0000 UTC"
+  },
+  {
+   "mmsi": "755134000",
+   "name": "LADOCE H",
+   "lat": -32.56645,
+   "lon": -60.78434,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:17.504115764 +0000 UTC"
+  },
+  {
+   "mmsi": "368424140",
+   "name": "LAGUNA GULF",
+   "lat": 27.81173,
+   "lon": -97.40939,
+   "sog_knots": 0.0,
+   "cog_deg": 59.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:13.982360451 +0000 UTC"
+  },
+  {
+   "mmsi": "636021695",
+   "name": "LAKSHMI",
+   "lat": 49.46287,
+   "lon": 0.5461,
+   "sog_knots": 0.0,
+   "cog_deg": 56.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:57.365050559 +0000 UTC"
+  },
+  {
+   "mmsi": "503042000",
+   "name": "LEEUWIN 2",
+   "lat": -32.03019,
+   "lon": 115.73187,
+   "sog_knots": 0.1,
+   "cog_deg": 104.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:35.231189429 +0000 UTC"
+  },
+  {
+   "mmsi": "316057451",
+   "name": "LEGASEA",
+   "lat": 49.16356,
+   "lon": -122.99169,
+   "sog_knots": 0.1,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:10.735031026 +0000 UTC"
+  },
+  {
+   "mmsi": "367616040",
+   "name": "LEISA GAIL STRAFUSS",
+   "lat": 27.81181,
+   "lon": -97.40064,
+   "sog_knots": 0.0,
+   "cog_deg": 345.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:56.24216999 +0000 UTC"
+  },
+  {
+   "mmsi": "316005496",
+   "name": "LEROY S LEDCOR",
+   "lat": 49.19844,
+   "lon": -123.10177,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:22.799170717 +0000 UTC"
+  },
+  {
+   "mmsi": "548784000",
+   "name": "LILIAN TRADER",
+   "lat": 49.30981,
+   "lon": -123.11979,
+   "sog_knots": 0.0,
+   "cog_deg": 92.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:25.312206098 +0000 UTC"
+  },
+  {
+   "mmsi": "368142010",
+   "name": "LINDA HUGHES FARLEY",
+   "lat": 28.91913,
+   "lon": -95.34708,
+   "sog_knots": 0.0,
+   "cog_deg": 136.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:56.42701799 +0000 UTC"
+  },
+  {
+   "mmsi": "316039286",
+   "name": "LINGBANK",
+   "lat": 49.12431,
+   "lon": -123.18995,
+   "sog_knots": 0.0,
+   "cog_deg": 190.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:58.08008579 +0000 UTC"
+  },
+  {
+   "mmsi": "367069430",
+   "name": "LISERON",
+   "lat": 47.6424,
+   "lon": -122.34174,
+   "sog_knots": 0.0,
+   "cog_deg": 212.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:05.926101737 +0000 UTC"
   },
   {
    "mmsi": "710014630",
    "name": "LOCAR LH XXIII",
-   "lat": -23.9329,
-   "lon": -46.3191,
+   "lat": -23.93288,
+   "lon": -46.31909,
    "sog_knots": 0.0,
-   "cog_deg": 160.8,
+   "cog_deg": 36.8,
    "destination": "",
-   "timestamp": "2026-10-05 15:38:48.568179128 +0000 UTC"
+   "timestamp": "2026-10-05 15:50:08.912236697 +0000 UTC"
+  },
+  {
+   "mmsi": "538072348",
+   "name": "LOGOS",
+   "lat": 49.29191,
+   "lon": -123.12458,
+   "sog_knots": 0.0,
+   "cog_deg": 309.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:57.814948883 +0000 UTC"
+  },
+  {
+   "mmsi": "247439300",
+   "name": "LORD LUPO",
+   "lat": 49.46827,
+   "lon": 0.53971,
+   "sog_knots": 0.0,
+   "cog_deg": 28.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:31.252509808 +0000 UTC"
+  },
+  {
+   "mmsi": "538008683",
+   "name": "LOUISA BOLTEN",
+   "lat": 49.43947,
+   "lon": 1.04903,
+   "sog_knots": 0.0,
+   "cog_deg": 327.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:33.522410312 +0000 UTC"
+  },
+  {
+   "mmsi": "563246500",
+   "name": "LOWLANDS MUZE",
+   "lat": 45.60109,
+   "lon": -122.77483,
+   "sog_knots": 0.0,
+   "cog_deg": 304.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:07.541786503 +0000 UTC"
+  },
+  {
+   "mmsi": "366997240",
+   "name": "LUKE BRYAN",
+   "lat": 29.69014,
+   "lon": -94.98827,
+   "sog_knots": 8.2,
+   "cog_deg": 145.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:04.935306353 +0000 UTC"
+  },
+  {
+   "mmsi": "367602150",
+   "name": "LUNA",
+   "lat": 45.61111,
+   "lon": -122.6129,
+   "sog_knots": 0.0,
+   "cog_deg": 260.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:38.969680981 +0000 UTC"
+  },
+  {
+   "mmsi": "368337650",
+   "name": "LUNA",
+   "lat": 47.66745,
+   "lon": -122.39333,
+   "sog_knots": 0.0,
+   "cog_deg": 75.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:25.16716517 +0000 UTC"
+  },
+  {
+   "mmsi": "366919770",
+   "name": "LYNN MARIE",
+   "lat": 47.59937,
+   "lon": -122.33872,
+   "sog_knots": 0.0,
+   "cog_deg": 303.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:11.109392238 +0000 UTC"
+  },
+  {
+   "mmsi": "367419590",
+   "name": "M/V STARR",
+   "lat": 47.66178,
+   "lon": -122.38547,
+   "sog_knots": 0.0,
+   "cog_deg": 152.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:03.090793023 +0000 UTC"
+  },
+  {
+   "mmsi": "367075320",
+   "name": "MACY LYNN",
+   "lat": 28.91644,
+   "lon": -95.35018,
+   "sog_knots": 0.2,
+   "cog_deg": 90.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:41.875036537 +0000 UTC"
+  },
+  {
+   "mmsi": "303561000",
+   "name": "MADISON HUNTER",
+   "lat": 47.66686,
+   "lon": -122.39075,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:48.371347739 +0000 UTC"
+  },
+  {
+   "mmsi": "477174900",
+   "name": "MAERSK CHACHAI",
+   "lat": -23.92153,
+   "lon": -46.34784,
+   "sog_knots": 0.0,
+   "cog_deg": 206.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:16.593335206 +0000 UTC"
+  },
+  {
+   "mmsi": "563000800",
+   "name": "MAERSK SARNIA",
+   "lat": 49.30065,
+   "lon": -123.22004,
+   "sog_knots": 0.0,
+   "cog_deg": 145.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:49.239439796 +0000 UTC"
+  },
+  {
+   "mmsi": "219179000",
+   "name": "MAERSK TRIESTE",
+   "lat": 47.59443,
+   "lon": -122.35135,
+   "sog_knots": 0.1,
+   "cog_deg": 17.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:21.693556648 +0000 UTC"
+  },
+  {
+   "mmsi": "226004180",
+   "name": "MAGISTER",
+   "lat": 49.35248,
+   "lon": 0.97773,
+   "sog_knots": 0.0,
+   "cog_deg": 229.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:51.18485804 +0000 UTC"
+  },
+  {
+   "mmsi": "226002380",
+   "name": "MAGNUM",
+   "lat": 49.40818,
+   "lon": 1.01265,
+   "sog_knots": 0.0,
+   "cog_deg": 0.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:45:29.243498185 +0000 UTC"
+  },
+  {
+   "mmsi": "367530220",
+   "name": "MARIA MARU",
+   "lat": 47.65726,
+   "lon": -122.37945,
+   "sog_knots": 0.0,
+   "cog_deg": 9.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:34.064119007 +0000 UTC"
+  },
+  {
+   "mmsi": "367506240",
+   "name": "MARINER",
+   "lat": 45.60842,
+   "lon": -122.68621,
+   "sog_knots": 0.0,
+   "cog_deg": 192.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:12.746060752 +0000 UTC"
+  },
+  {
+   "mmsi": "368067690",
+   "name": "MARK GLAAB",
+   "lat": 27.82461,
+   "lon": -97.44662,
+   "sog_knots": 0.0,
+   "cog_deg": 268.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:54.710674606 +0000 UTC"
+  },
+  {
+   "mmsi": "367156870",
+   "name": "MARLINDA",
+   "lat": 47.66217,
+   "lon": -122.38688,
+   "sog_knots": 0.0,
+   "cog_deg": 262.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:52.575327647 +0000 UTC"
+  },
+  {
+   "mmsi": "366933730",
+   "name": "MARTHA OLIVER",
+   "lat": 27.82246,
+   "lon": -97.43034,
+   "sog_knots": 0.0,
+   "cog_deg": 1.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:53.843027248 +0000 UTC"
+  },
+  {
+   "mmsi": "356660000",
+   "name": "MARTIN ISLAND",
+   "lat": 45.53728,
+   "lon": -122.67911,
+   "sog_knots": 0.0,
+   "cog_deg": 220.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:34.190329268 +0000 UTC"
+  },
+  {
+   "mmsi": "367565450",
+   "name": "MARY PEARL",
+   "lat": 47.70475,
+   "lon": -122.6249,
+   "sog_knots": 0.0,
+   "cog_deg": 254.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:26.891450845 +0000 UTC"
+  },
+  {
+   "mmsi": "226011270",
+   "name": "MATADOR",
+   "lat": 49.36256,
+   "lon": 0.99424,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:06.035741404 +0000 UTC"
+  },
+  {
+   "mmsi": "367324020",
+   "name": "MAVERICK",
+   "lat": 46.19963,
+   "lon": -123.38521,
+   "sog_knots": 0.0,
+   "cog_deg": 317.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:18.5449276 +0000 UTC"
+  },
+  {
+   "mmsi": "367047170",
+   "name": "MAVERICK",
+   "lat": 45.63419,
+   "lon": -122.7149,
+   "sog_knots": 0.5,
+   "cog_deg": 180.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:30.328006303 +0000 UTC"
+  },
+  {
+   "mmsi": "701006443",
+   "name": "MAYU",
+   "lat": -32.64673,
+   "lon": -60.73042,
+   "sog_knots": 0.0,
+   "cog_deg": 0.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:37.575029848 +0000 UTC"
+  },
+  {
+   "mmsi": "356242000",
+   "name": "MEDI CHIBA",
+   "lat": -32.88614,
+   "lon": 151.76182,
+   "sog_knots": 0.0,
+   "cog_deg": 6.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:22.625983143 +0000 UTC"
+  },
+  {
+   "mmsi": "405000345",
+   "name": "MEGHNA DREAM",
+   "lat": 29.74812,
+   "lon": -95.28758,
+   "sog_knots": 0.0,
+   "cog_deg": 214.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:16.347942215 +0000 UTC"
+  },
+  {
+   "mmsi": "538007680",
+   "name": "MELINA",
+   "lat": 29.68378,
+   "lon": -94.98791,
+   "sog_knots": 3.2,
+   "cog_deg": 81.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:24.646725872 +0000 UTC"
+  },
+  {
+   "mmsi": "226013510",
+   "name": "MERCATOR",
+   "lat": 49.43105,
+   "lon": 1.02799,
+   "sog_knots": 6.8,
+   "cog_deg": 214.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:02.269559254 +0000 UTC"
+  },
+  {
+   "mmsi": "367104940",
+   "name": "MESSING AROUND",
+   "lat": 47.33699,
+   "lon": -122.5817,
+   "sog_knots": 0.0,
+   "cog_deg": 0.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:04.895790191 +0000 UTC"
+  },
+  {
+   "mmsi": "538008889",
+   "name": "METIS HORIZON",
+   "lat": -33.16059,
+   "lon": 152.12033,
+   "sog_knots": 0.4,
+   "cog_deg": 292.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:06.016025674 +0000 UTC"
+  },
+  {
+   "mmsi": "367428440",
+   "name": "MICHAEL MCCREERY",
+   "lat": 29.7428,
+   "lon": -95.19626,
+   "sog_knots": 0.0,
+   "cog_deg": 276.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:20.001987582 +0000 UTC"
+  },
+  {
+   "mmsi": "368339380",
+   "name": "MICHELLE ELISE",
+   "lat": 28.95068,
+   "lon": -95.33389,
+   "sog_knots": 0.0,
+   "cog_deg": 172.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:43.871028166 +0000 UTC"
+  },
+  {
+   "mmsi": "367709140",
+   "name": "MIKE QUIGG",
+   "lat": 47.26176,
+   "lon": -122.36169,
+   "sog_knots": 0.0,
+   "cog_deg": 289.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:39.739442763 +0000 UTC"
+  },
+  {
+   "mmsi": "368141810",
+   "name": "MIKI HANA",
+   "lat": 47.54381,
+   "lon": -122.33596,
+   "sog_knots": 0.0,
+   "cog_deg": 301.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:27.689060355 +0000 UTC"
+  },
+  {
+   "mmsi": "368277260",
+   "name": "MILA KATE",
+   "lat": 29.47239,
+   "lon": -94.95557,
+   "sog_knots": 0.0,
+   "cog_deg": 105.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:20.066966336 +0000 UTC"
+  },
+  {
+   "mmsi": "636016404",
+   "name": "MINOAN COURAGE",
+   "lat": -24.03395,
+   "lon": -46.3485,
+   "sog_knots": 6.7,
+   "cog_deg": 26.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:31.382507882 +0000 UTC"
+  },
+  {
+   "mmsi": "368370360",
+   "name": "MIRAMARE",
+   "lat": 47.65241,
+   "lon": -122.36055,
+   "sog_knots": 5.7,
+   "cog_deg": 302.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:16.557326528 +0000 UTC"
+  },
+  {
+   "mmsi": "368133590",
+   "name": "MISS CATHERINE",
+   "lat": 29.58016,
+   "lon": -94.93016,
+   "sog_knots": 6.7,
+   "cog_deg": 328.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:26.426968037 +0000 UTC"
+  },
+  {
+   "mmsi": "368091250",
+   "name": "MISS KATE",
+   "lat": 29.01011,
+   "lon": -95.24218,
+   "sog_knots": 0.0,
+   "cog_deg": 312.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:45:49.475559143 +0000 UTC"
+  },
+  {
+   "mmsi": "367413340",
+   "name": "MISS LINDA C",
+   "lat": 29.47337,
+   "lon": -94.96072,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:51.665096062 +0000 UTC"
+  },
+  {
+   "mmsi": "366940860",
+   "name": "MISS MICHELLE",
+   "lat": 29.47323,
+   "lon": -94.96039,
+   "sog_knots": 0.0,
+   "cog_deg": 333.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:01.957759208 +0000 UTC"
   },
   {
    "mmsi": "367309990",
    "name": "MISS PEGGY ANN",
-   "lat": 29.77981,
-   "lon": -92.18379,
+   "lat": 29.77984,
+   "lon": -92.1838,
    "sog_knots": 0.0,
    "cog_deg": 125.1,
    "destination": "",
-   "timestamp": "2026-10-05 15:39:31.643504704 +0000 UTC"
+   "timestamp": "2026-10-05 15:48:40.361471452 +0000 UTC"
+  },
+  {
+   "mmsi": "367451110",
+   "name": "MISS ROLANETTE",
+   "lat": 29.63275,
+   "lon": -94.96319,
+   "sog_knots": 6.9,
+   "cog_deg": 161.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:18.827077056 +0000 UTC"
+  },
+  {
+   "mmsi": "367415090",
+   "name": "MOANA HALE",
+   "lat": 47.65674,
+   "lon": -122.38152,
+   "sog_knots": 0.0,
+   "cog_deg": 245.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:18.069634403 +0000 UTC"
+  },
+  {
+   "mmsi": "538008524",
+   "name": "MONDIAL SUN",
+   "lat": 49.29349,
+   "lon": -123.21671,
+   "sog_knots": 0.1,
+   "cog_deg": 211.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:14.905325263 +0000 UTC"
+  },
+  {
+   "mmsi": "367570750",
+   "name": "MONICA MEANS",
+   "lat": 29.37688,
+   "lon": -94.87186,
+   "sog_knots": 0.0,
+   "cog_deg": 332.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:06.127160065 +0000 UTC"
+  },
+  {
+   "mmsi": "477195600",
+   "name": "MOUNT HIKURANGI",
+   "lat": -32.66943,
+   "lon": -60.72658,
+   "sog_knots": 0.3,
+   "cog_deg": 205.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:31.363457911 +0000 UTC"
   },
   {
    "mmsi": "366983730",
    "name": "MR LLOYD",
-   "lat": 29.77995,
-   "lon": -92.18428,
+   "lat": 29.77997,
+   "lon": -92.18433,
    "sog_knots": 0.0,
-   "cog_deg": 329.5,
+   "cog_deg": 327.1,
    "destination": "",
-   "timestamp": "2026-10-05 15:39:02.558977143 +0000 UTC"
+   "timestamp": "2026-10-05 15:47:31.525237842 +0000 UTC"
+  },
+  {
+   "mmsi": "366874650",
+   "name": "MR.HENRY",
+   "lat": 29.77936,
+   "lon": -92.18304,
+   "sog_knots": 0.0,
+   "cog_deg": 268.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:43.32284584 +0000 UTC"
+  },
+  {
+   "mmsi": "636023312",
+   "name": "MSC NAHARA",
+   "lat": -32.03587,
+   "lon": 115.69741,
+   "sog_knots": 7.9,
+   "cog_deg": 341.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:56.357410418 +0000 UTC"
+  },
+  {
+   "mmsi": "636022984",
+   "name": "MSC UNIFIC VI",
+   "lat": -23.93099,
+   "lon": -46.31335,
+   "sog_knots": 4.3,
+   "cog_deg": 325.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:18.811650334 +0000 UTC"
+  },
+  {
+   "mmsi": "367767410",
+   "name": "MULE",
+   "lat": 46.10797,
+   "lon": -122.959,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:06.510236382 +0000 UTC"
+  },
+  {
+   "mmsi": "316018634",
+   "name": "MV DOROTHY MACKENZIE",
+   "lat": 49.2152,
+   "lon": -123.17796,
+   "sog_knots": 1.8,
+   "cog_deg": 101.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:45:39.848676543 +0000 UTC"
+  },
+  {
+   "mmsi": "316004659",
+   "name": "MV FW WRIGHT",
+   "lat": 49.36651,
+   "lon": -123.291,
+   "sog_knots": 0.1,
+   "cog_deg": 190.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:30.088888797 +0000 UTC"
+  },
+  {
+   "mmsi": "316012342",
+   "name": "MV KEN MACKENZIE",
+   "lat": 49.21477,
+   "lon": -123.16985,
+   "sog_knots": 1.9,
+   "cog_deg": 105.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:13.948303747 +0000 UTC"
+  },
+  {
+   "mmsi": "316014836",
+   "name": "MV OCEAN GAYLE",
+   "lat": 49.30816,
+   "lon": -123.20125,
+   "sog_knots": 8.0,
+   "cog_deg": 258.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:46.854215056 +0000 UTC"
+  },
+  {
+   "mmsi": "316004661",
+   "name": "MV OCEAN WARLOCK",
+   "lat": 49.21836,
+   "lon": -122.86026,
+   "sog_knots": 5.7,
+   "cog_deg": 83.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:52.297726232 +0000 UTC"
+  },
+  {
+   "mmsi": "316009165",
+   "name": "MV SEA IMP VIII",
+   "lat": 49.12415,
+   "lon": -123.19093,
+   "sog_knots": 0.0,
+   "cog_deg": 3.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:47.594071785 +0000 UTC"
+  },
+  {
+   "mmsi": "636025414",
+   "name": "NANAMI FORTUNE",
+   "lat": -32.18959,
+   "lon": 115.7731,
+   "sog_knots": 0.0,
+   "cog_deg": 88.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:59.662584927 +0000 UTC"
+  },
+  {
+   "mmsi": "357153000",
+   "name": "NAVIOS AMITIE",
+   "lat": 49.28914,
+   "lon": -123.19508,
+   "sog_knots": 0.1,
+   "cog_deg": 231.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:19.222986704 +0000 UTC"
+  },
+  {
+   "mmsi": "710006767",
+   "name": "NC BRUMA",
+   "lat": -23.92661,
+   "lon": -46.33577,
+   "sog_knots": 0.0,
+   "cog_deg": 221.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:05.871650461 +0000 UTC"
+  },
+  {
+   "mmsi": "367715930",
+   "name": "NEPTUNE",
+   "lat": 29.73829,
+   "lon": -95.20484,
+   "sog_knots": 0.0,
+   "cog_deg": 242.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:20.649580517 +0000 UTC"
+  },
+  {
+   "mmsi": "701006466",
+   "name": "NEPTUNO",
+   "lat": -32.57295,
+   "lon": -60.74769,
+   "sog_knots": 0.0,
+   "cog_deg": 268.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:55.423819787 +0000 UTC"
+  },
+  {
+   "mmsi": "316028652",
+   "name": "NEW FRONTIER",
+   "lat": 49.20408,
+   "lon": -123.14641,
+   "sog_knots": 0.0,
+   "cog_deg": 278.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:07.69879151 +0000 UTC"
+  },
+  {
+   "mmsi": "636018843",
+   "name": "NEW NOBLE",
+   "lat": 46.23671,
+   "lon": -123.42944,
+   "sog_knots": 12.5,
+   "cog_deg": 158.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:44.473884592 +0000 UTC"
+  },
+  {
+   "mmsi": "316009853",
+   "name": "NITA DAWN",
+   "lat": 49.08575,
+   "lon": -123.10959,
+   "sog_knots": 0.0,
+   "cog_deg": 1.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:23.073832898 +0000 UTC"
+  },
+  {
+   "mmsi": "316013198",
+   "name": "NITA MARIA",
+   "lat": 49.20595,
+   "lon": -123.08988,
+   "sog_knots": 0.0,
+   "cog_deg": 231.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:37.730771305 +0000 UTC"
+  },
+  {
+   "mmsi": "368309740",
+   "name": "NOKE",
+   "lat": 47.26549,
+   "lon": -122.36694,
+   "sog_knots": 0.0,
+   "cog_deg": 273.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:25.953672 +0000 UTC"
+  },
+  {
+   "mmsi": "755045702",
+   "name": "NORA E",
+   "lat": -32.60312,
+   "lon": -60.76143,
+   "sog_knots": 2.6,
+   "cog_deg": 330.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:31.315262813 +0000 UTC"
+  },
+  {
+   "mmsi": "316005551",
+   "name": "NORTH ARM PROWLER",
+   "lat": 49.20509,
+   "lon": -123.05452,
+   "sog_knots": 0.0,
+   "cog_deg": 181.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:34.762656561 +0000 UTC"
+  },
+  {
+   "mmsi": "316003008",
+   "name": "NORTH ARM VICTOR",
+   "lat": 49.38146,
+   "lon": -123.66158,
+   "sog_knots": 7.1,
+   "cog_deg": 115.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:45:53.516980846 +0000 UTC"
+  },
+  {
+   "mmsi": "366062000",
+   "name": "NORTHERN HAWK",
+   "lat": 47.63528,
+   "lon": -122.32973,
+   "sog_knots": 0.0,
+   "cog_deg": 67.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:58.164041911 +0000 UTC"
+  },
+  {
+   "mmsi": "368450240",
+   "name": "NORTHERN TITAN",
+   "lat": 47.65535,
+   "lon": -122.36515,
+   "sog_knots": 0.0,
+   "cog_deg": 220.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:05.639308506 +0000 UTC"
+  },
+  {
+   "mmsi": "316001670",
+   "name": "NOVA SPIRIT",
+   "lat": 49.29163,
+   "lon": -123.12393,
+   "sog_knots": 0.0,
+   "cog_deg": 158.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:49.669341722 +0000 UTC"
+  },
+  {
+   "mmsi": "548743000",
+   "name": "NY SUNRISE",
+   "lat": 45.69086,
+   "lon": -122.77138,
+   "sog_knots": 0.0,
+   "cog_deg": 189.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:56.075360551 +0000 UTC"
+  },
+  {
+   "mmsi": "226016380",
+   "name": "O'RANA",
+   "lat": 49.42056,
+   "lon": 1.02007,
+   "sog_knots": 9.7,
+   "cog_deg": 203.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:39.230838731 +0000 UTC"
+  },
+  {
+   "mmsi": "477131800",
+   "name": "OCEAN ADORE",
+   "lat": 49.28914,
+   "lon": -123.07939,
+   "sog_knots": 0.0,
+   "cog_deg": 229.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:08.309441754 +0000 UTC"
+  },
+  {
+   "mmsi": "352005009",
+   "name": "OCEAN DELIGHT",
+   "lat": -32.75677,
+   "lon": -60.72016,
+   "sog_knots": 0.0,
+   "cog_deg": 71.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:45.249446385 +0000 UTC"
+  },
+  {
+   "mmsi": "316016013",
+   "name": "OCEAN GEORGIE BAIN",
+   "lat": 49.29832,
+   "lon": -123.02834,
+   "sog_knots": 0.0,
+   "cog_deg": 234.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:31.144774933 +0000 UTC"
+  },
+  {
+   "mmsi": "316022038",
+   "name": "OCEAN GORDON",
+   "lat": 47.55534,
+   "lon": -122.34212,
+   "sog_knots": 0.0,
+   "cog_deg": 54.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:47.477057949 +0000 UTC"
+  },
+  {
+   "mmsi": "316020998",
+   "name": "OCEAN GRANVILLE",
+   "lat": 49.02496,
+   "lon": -123.14792,
+   "sog_knots": 0.0,
+   "cog_deg": 54.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:50.532279681 +0000 UTC"
+  },
+  {
+   "mmsi": "563119600",
+   "name": "OCEAN JADE",
+   "lat": 49.30038,
+   "lon": -123.04449,
+   "sog_knots": 0.0,
+   "cog_deg": 206.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:04.927808635 +0000 UTC"
+  },
+  {
+   "mmsi": "316042039",
+   "name": "OCEAN KITSILANO",
+   "lat": 49.29837,
+   "lon": -123.02876,
+   "sog_knots": 0.0,
+   "cog_deg": 35.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:37.560374895 +0000 UTC"
+  },
+  {
+   "mmsi": "316004658",
+   "name": "OCEAN MONARCH",
+   "lat": 49.19634,
+   "lon": -123.13545,
+   "sog_knots": 0.0,
+   "cog_deg": 200.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:26.587839163 +0000 UTC"
+  },
+  {
+   "mmsi": "367062120",
+   "name": "OCEAN NAVIGATOR",
+   "lat": 47.27591,
+   "lon": -122.38947,
+   "sog_knots": 0.0,
+   "cog_deg": 227.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:33.319884112 +0000 UTC"
+  },
+  {
+   "mmsi": "316002950",
+   "name": "OCEAN PEARL",
+   "lat": 49.1228,
+   "lon": -123.18566,
+   "sog_knots": 0.0,
+   "cog_deg": 209.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:23.620773749 +0000 UTC"
+  },
+  {
+   "mmsi": "256978000",
+   "name": "OCEAN PERA",
+   "lat": 49.30444,
+   "lon": -123.06683,
+   "sog_knots": 0.0,
+   "cog_deg": 338.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:31.27067943 +0000 UTC"
+  },
+  {
+   "mmsi": "316006786",
+   "name": "OCEAN RANGER",
+   "lat": 54.31989,
+   "lon": -130.32147,
+   "sog_knots": 0.0,
+   "cog_deg": 5.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:45:25.937123325 +0000 UTC"
+  },
+  {
+   "mmsi": "338752000",
+   "name": "OCEAN RANGER",
+   "lat": 47.6551,
+   "lon": -122.36475,
+   "sog_knots": 0.0,
+   "cog_deg": 48.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:53.189469365 +0000 UTC"
+  },
+  {
+   "mmsi": "316001193",
+   "name": "OCEAN YALETOWN",
+   "lat": 49.2981,
+   "lon": -123.02858,
+   "sog_knots": 0.0,
+   "cog_deg": 189.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:31.864305782 +0000 UTC"
+  },
+  {
+   "mmsi": "227009790",
+   "name": "OCEANITE",
+   "lat": 49.44709,
+   "lon": 1.05924,
+   "sog_knots": 0.0,
+   "cog_deg": 321.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:07.738848638 +0000 UTC"
+  },
+  {
+   "mmsi": "367735750",
+   "name": "OCEANUS",
+   "lat": 28.93516,
+   "lon": -95.32218,
+   "sog_knots": 5.5,
+   "cog_deg": 198.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:03.694593682 +0000 UTC"
+  },
+  {
+   "mmsi": "366996610",
+   "name": "OLD PUSH",
+   "lat": 28.99614,
+   "lon": -95.38716,
+   "sog_knots": 0.0,
+   "cog_deg": 303.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:07.142553761 +0000 UTC"
+  },
+  {
+   "mmsi": "477314200",
+   "name": "OLIVE BAY",
+   "lat": 49.29336,
+   "lon": -123.08568,
+   "sog_knots": 0.0,
+   "cog_deg": 254.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:45.802927587 +0000 UTC"
+  },
+  {
+   "mmsi": "226003980",
+   "name": "OLSE",
+   "lat": 49.38719,
+   "lon": 1.12063,
+   "sog_knots": 7.1,
+   "cog_deg": 16.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:49.700794855 +0000 UTC"
+  },
+  {
+   "mmsi": "367183360",
+   "name": "OLYMPIC SCOUT",
+   "lat": 47.57378,
+   "lon": -122.34524,
+   "sog_knots": 0.0,
+   "cog_deg": 267.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:12.15913496 +0000 UTC"
   },
   {
    "mmsi": "712204006",
    "name": "OMS XVII",
-   "lat": -23.97628,
-   "lon": -46.28729,
+   "lat": -23.97625,
+   "lon": -46.28727,
    "sog_knots": 0.0,
    "cog_deg": 360.0,
    "destination": "",
-   "timestamp": "2026-10-05 15:38:27.38607745 +0000 UTC"
+   "timestamp": "2026-10-05 15:50:06.100576477 +0000 UTC"
+  },
+  {
+   "mmsi": "431929000",
+   "name": "ONE MINATO",
+   "lat": 47.27273,
+   "lon": -122.40671,
+   "sog_knots": 0.0,
+   "cog_deg": 329.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:17.725080058 +0000 UTC"
+  },
+  {
+   "mmsi": "220442000",
+   "name": "ORAHOLM",
+   "lat": 49.36388,
+   "lon": 0.99552,
+   "sog_knots": 0.0,
+   "cog_deg": 234.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:16.078242782 +0000 UTC"
+  },
+  {
+   "mmsi": "368136580",
+   "name": "ORIN L GREEN",
+   "lat": 46.14605,
+   "lon": -123.35638,
+   "sog_knots": 0.2,
+   "cog_deg": 344.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:17.60841222 +0000 UTC"
+  },
+  {
+   "mmsi": "367653630",
+   "name": "OSCAR B",
+   "lat": 46.15342,
+   "lon": -123.37714,
+   "sog_knots": 0.0,
+   "cog_deg": 0.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:47.735805733 +0000 UTC"
+  },
+  {
+   "mmsi": "367115000",
+   "name": "OSPREY",
+   "lat": 47.59493,
+   "lon": -122.3516,
+   "sog_knots": 0.1,
+   "cog_deg": 27.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:30.64774035 +0000 UTC"
+  },
+  {
+   "mmsi": "316005998",
+   "name": "OSPREY 1",
+   "lat": 49.29141,
+   "lon": -123.05837,
+   "sog_knots": 0.0,
+   "cog_deg": 204.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:48.918040617 +0000 UTC"
+  },
+  {
+   "mmsi": "227788990",
+   "name": "OURAGAN",
+   "lat": 49.49081,
+   "lon": 0.77409,
+   "sog_knots": 7.6,
+   "cog_deg": 4.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:37.230836233 +0000 UTC"
+  },
+  {
+   "mmsi": "366995670",
+   "name": "PACESETTER",
+   "lat": 28.95076,
+   "lon": -95.33243,
+   "sog_knots": 0.0,
+   "cog_deg": 246.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:40.51450004 +0000 UTC"
+  },
+  {
+   "mmsi": "338855000",
+   "name": "PACIFC TITAN",
+   "lat": 47.66968,
+   "lon": -122.47472,
+   "sog_knots": 8.9,
+   "cog_deg": 176.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:55.965429897 +0000 UTC"
+  },
+  {
+   "mmsi": "369083000",
+   "name": "PACIFIC ARROW",
+   "lat": 47.5996,
+   "lon": -122.34297,
+   "sog_knots": 15.7,
+   "cog_deg": 276.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:51.566629225 +0000 UTC"
+  },
+  {
+   "mmsi": "367130000",
+   "name": "PACIFIC COLLECTOR",
+   "lat": 45.5686,
+   "lon": -122.72126,
+   "sog_knots": 0.0,
+   "cog_deg": 215.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:45:25.608056115 +0000 UTC"
+  },
+  {
+   "mmsi": "316004787",
+   "name": "PACIFIC DISCOVERY",
+   "lat": 49.08561,
+   "lon": -123.10994,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:47.939637565 +0000 UTC"
+  },
+  {
+   "mmsi": "316005574",
+   "name": "PACIFIC MARINER II",
+   "lat": 49.29147,
+   "lon": -123.24889,
+   "sog_knots": 11.9,
+   "cog_deg": 64.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:04.239452526 +0000 UTC"
+  },
+  {
+   "mmsi": "316011982",
+   "name": "PACIFIC NAVIGATOR",
+   "lat": 49.12293,
+   "lon": -123.18648,
+   "sog_knots": 0.0,
+   "cog_deg": 97.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:46.159222605 +0000 UTC"
+  },
+  {
+   "mmsi": "316003484",
+   "name": "PACIFIC PATHFINDER",
+   "lat": 54.33098,
+   "lon": -130.46165,
+   "sog_knots": 23.6,
+   "cog_deg": 75.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:30.098714112 +0000 UTC"
+  },
+  {
+   "mmsi": "368949000",
+   "name": "PACIFIC TRACKER",
+   "lat": 45.56867,
+   "lon": -122.72257,
+   "sog_knots": 0.0,
+   "cog_deg": 0.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:58.674206074 +0000 UTC"
+  },
+  {
+   "mmsi": "366822520",
+   "name": "PACK MULE",
+   "lat": 29.46759,
+   "lon": -94.97027,
+   "sog_knots": 0.0,
+   "cog_deg": 282.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:17.592893226 +0000 UTC"
+  },
+  {
+   "mmsi": "367355120",
+   "name": "PAIGE MARIE",
+   "lat": 47.33424,
+   "lon": -122.58354,
+   "sog_knots": 0.0,
+   "cog_deg": 157.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:31.933184243 +0000 UTC"
+  },
+  {
+   "mmsi": "636026036",
+   "name": "PAIWAN DIAMOND",
+   "lat": -32.63765,
+   "lon": -60.74841,
+   "sog_knots": 0.0,
+   "cog_deg": 332.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:34.304303661 +0000 UTC"
+  },
+  {
+   "mmsi": "367419960",
+   "name": "PALOUSE",
+   "lat": 45.67069,
+   "lon": -122.77039,
+   "sog_knots": 8.7,
+   "cog_deg": 168.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:23.712656774 +0000 UTC"
+  },
+  {
+   "mmsi": "352001183",
+   "name": "PAN MAJESTY",
+   "lat": 45.98398,
+   "lon": -122.83516,
+   "sog_knots": 0.1,
+   "cog_deg": 301.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:43.672070586 +0000 UTC"
+  },
+  {
+   "mmsi": "636023182",
+   "name": "PAN PEGASUS",
+   "lat": -33.40237,
+   "lon": 152.1815,
+   "sog_knots": 2.7,
+   "cog_deg": 252.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:29.722583306 +0000 UTC"
+  },
+  {
+   "mmsi": "503170350",
+   "name": "PARKER",
+   "lat": -32.04352,
+   "lon": 115.70613,
+   "sog_knots": 22.4,
+   "cog_deg": 133.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:25.769725421 +0000 UTC"
+  },
+  {
+   "mmsi": "368526000",
+   "name": "PATRICIA_LEE",
+   "lat": 47.64635,
+   "lon": -122.33928,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:04.890545818 +0000 UTC"
+  },
+  {
+   "mmsi": "538012089",
+   "name": "PEKA PIONEER",
+   "lat": 46.02718,
+   "lon": -122.8696,
+   "sog_knots": 0.0,
+   "cog_deg": 262.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:29.647960629 +0000 UTC"
+  },
+  {
+   "mmsi": "367608420",
+   "name": "PETER J BRIX",
+   "lat": 45.58761,
+   "lon": -122.77036,
+   "sog_knots": 0.0,
+   "cog_deg": 246.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:00.782597663 +0000 UTC"
+  },
+  {
+   "mmsi": "636022353",
+   "name": "PETROS S",
+   "lat": -32.80062,
+   "lon": -60.70194,
+   "sog_knots": 0.0,
+   "cog_deg": 204.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:01.107332884 +0000 UTC"
+  },
+  {
+   "mmsi": "368313380",
+   "name": "PIXIE",
+   "lat": 45.60838,
+   "lon": -122.68628,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:42.728857208 +0000 UTC"
+  },
+  {
+   "mmsi": "367764250",
+   "name": "PJ BRIX",
+   "lat": 46.08972,
+   "lon": -122.92931,
+   "sog_knots": 0.0,
+   "cog_deg": 101.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:11.391933474 +0000 UTC"
+  },
+  {
+   "mmsi": "367676010",
+   "name": "POLAR LADY",
+   "lat": 47.65592,
+   "lon": -122.37887,
+   "sog_knots": 0.0,
+   "cog_deg": 314.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:54.235411143 +0000 UTC"
+  },
+  {
+   "mmsi": "366736140",
+   "name": "POLARIS",
+   "lat": 47.65711,
+   "lon": -122.38238,
+   "sog_knots": 0.1,
+   "cog_deg": 215.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:05.989024125 +0000 UTC"
+  },
+  {
+   "mmsi": "368146810",
+   "name": "PONTCHARTRAIN",
+   "lat": 29.6488,
+   "lon": -94.2709,
+   "sog_knots": 5.8,
+   "cog_deg": 242.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:11.992807478 +0000 UTC"
+  },
+  {
+   "mmsi": "636019016",
+   "name": "PORO NUPURI MARU",
+   "lat": -32.88709,
+   "lon": 151.76489,
+   "sog_knots": 0.0,
+   "cog_deg": 156.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:45:54.94328891 +0000 UTC"
+  },
+  {
+   "mmsi": "368379440",
+   "name": "PRISCILLA T STUDDERT",
+   "lat": 27.83115,
+   "lon": -97.49845,
+   "sog_knots": 1.2,
+   "cog_deg": 272.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:56.320162129 +0000 UTC"
+  },
+  {
+   "mmsi": "755991013",
+   "name": "PUMA",
+   "lat": -32.64485,
+   "lon": -60.72923,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:18.087264334 +0000 UTC"
+  },
+  {
+   "mmsi": "316028909",
+   "name": "QUADRANT COMMANDER",
+   "lat": 49.22165,
+   "lon": -123.20057,
+   "sog_knots": 1.4,
+   "cog_deg": 102.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:32.250676846 +0000 UTC"
+  },
+  {
+   "mmsi": "316046453",
+   "name": "QUADRANT DEFENDER",
+   "lat": 49.2223,
+   "lon": -122.8395,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:13.320868083 +0000 UTC"
+  },
+  {
+   "mmsi": "316001247",
+   "name": "QUEEN OF CAPILANO",
+   "lat": 49.37932,
+   "lon": -123.33072,
+   "sog_knots": 0.0,
+   "cog_deg": 274.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:20.426727869 +0000 UTC"
+  },
+  {
+   "mmsi": "316001249",
+   "name": "QUEEN OF COQUITLAM",
+   "lat": 49.12357,
+   "lon": -123.08479,
+   "sog_knots": 0.0,
+   "cog_deg": 60.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:28.015461486 +0000 UTC"
+  },
+  {
+   "mmsi": "316001251",
+   "name": "QUEEN OF COWICHAN",
+   "lat": 49.34214,
+   "lon": -123.33871,
+   "sog_knots": 19.3,
+   "cog_deg": 214.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:02.426395874 +0000 UTC"
+  },
+  {
+   "mmsi": "316001262",
+   "name": "QUEEN OF SURREY",
+   "lat": 49.42265,
+   "lon": -123.44445,
+   "sog_knots": 18.3,
+   "cog_deg": 97.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:29.848573562 +0000 UTC"
+  },
+  {
+   "mmsi": "228495600",
+   "name": "QUI QU'EN GROGNE",
+   "lat": 49.43854,
+   "lon": 1.04042,
+   "sog_knots": 0.0,
+   "cog_deg": 34.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:40.309740161 +0000 UTC"
+  },
+  {
+   "mmsi": "368005670",
+   "name": "RACHEL CARSON",
+   "lat": 47.64947,
+   "lon": -122.31293,
+   "sog_knots": 0.0,
+   "cog_deg": 77.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:11.931962059 +0000 UTC"
+  },
+  {
+   "mmsi": "256936000",
+   "name": "RARAKA",
+   "lat": -33.15496,
+   "lon": 152.03851,
+   "sog_knots": 0.9,
+   "cog_deg": 318.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:46.494791173 +0000 UTC"
+  },
+  {
+   "mmsi": "368127060",
+   "name": "RAYMOND BUTLER",
+   "lat": 29.58112,
+   "lon": -94.93424,
+   "sog_knots": 8.0,
+   "cog_deg": 146.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:08.208557033 +0000 UTC"
+  },
+  {
+   "mmsi": "370066000",
+   "name": "RAYSUT",
+   "lat": 27.83237,
+   "lon": -97.12243,
+   "sog_knots": 11.1,
+   "cog_deg": 258.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:08.826075025 +0000 UTC"
+  },
+  {
+   "mmsi": "755024000",
+   "name": "RE CAVALIER XII",
+   "lat": -32.35654,
+   "lon": -60.74029,
+   "sog_knots": 6.3,
+   "cog_deg": 141.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:32.995889415 +0000 UTC"
+  },
+  {
+   "mmsi": "369970099",
+   "name": "REDLINGER",
+   "lat": 45.86454,
+   "lon": -122.7845,
+   "sog_knots": 17.9,
+   "cog_deg": 353.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:21.44391886 +0000 UTC"
+  },
+  {
+   "mmsi": "431978000",
+   "name": "REIHOU",
+   "lat": -32.88945,
+   "lon": 151.7725,
+   "sog_knots": 0.0,
+   "cog_deg": 152.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:20.57541392 +0000 UTC"
+  },
+  {
+   "mmsi": "368067090",
+   "name": "RELIANCE",
+   "lat": 47.60104,
+   "lon": -122.33908,
+   "sog_knots": 3.1,
+   "cog_deg": 227.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:55.56193906 +0000 UTC"
+  },
+  {
+   "mmsi": "367348240",
+   "name": "RELIANCE",
+   "lat": 47.66259,
+   "lon": -122.38745,
+   "sog_knots": 0.0,
+   "cog_deg": 222.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:38.315385335 +0000 UTC"
+  },
+  {
+   "mmsi": "367604190",
+   "name": "RENE",
+   "lat": 45.80868,
+   "lon": -122.82531,
+   "sog_knots": 3.7,
+   "cog_deg": 157.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:24.386844964 +0000 UTC"
+  },
+  {
+   "mmsi": "338439091",
+   "name": "RESCUE 1",
+   "lat": 27.81739,
+   "lon": -97.45402,
+   "sog_knots": 0.1,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:08.009505557 +0000 UTC"
+  },
+  {
+   "mmsi": "368612000",
+   "name": "RICH PASSAGE 1",
+   "lat": 47.56184,
+   "lon": -122.62304,
+   "sog_knots": 0.0,
+   "cog_deg": 303.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:05.86786972 +0000 UTC"
+  },
+  {
+   "mmsi": "368010320",
+   "name": "RICHARD O",
+   "lat": 45.56397,
+   "lon": -122.70977,
+   "sog_knots": 0.0,
+   "cog_deg": 359.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:49.696413493 +0000 UTC"
+  },
+  {
+   "mmsi": "367538940",
+   "name": "RITA ANN",
+   "lat": 27.82082,
+   "lon": -97.42718,
+   "sog_knots": 0.1,
+   "cog_deg": 30.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:35.581329382 +0000 UTC"
+  },
+  {
+   "mmsi": "316059831",
+   "name": "RIVERFLOW SPIRIT",
+   "lat": 49.12577,
+   "lon": -123.25156,
+   "sog_knots": 8.3,
+   "cog_deg": 237.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:06.139078697 +0000 UTC"
+  },
+  {
+   "mmsi": "367647210",
+   "name": "ROBERT J SHEA",
+   "lat": 27.82271,
+   "lon": -97.43313,
+   "sog_knots": 5.7,
+   "cog_deg": 107.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:15.346657658 +0000 UTC"
+  },
+  {
+   "mmsi": "367705000",
+   "name": "ROLLO",
+   "lat": 47.65887,
+   "lon": -122.38152,
+   "sog_knots": 0.0,
+   "cog_deg": 335.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:53.798927032 +0000 UTC"
+  },
+  {
+   "mmsi": "369371000",
+   "name": "RONNIE MURPH",
+   "lat": 29.73694,
+   "lon": -95.15534,
+   "sog_knots": 0.0,
+   "cog_deg": 262.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:28.826895355 +0000 UTC"
+  },
+  {
+   "mmsi": "316020878",
+   "name": "ROSE MACKENZIE",
+   "lat": 49.23064,
+   "lon": -122.77147,
+   "sog_knots": 0.1,
+   "cog_deg": 183.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:57.128142809 +0000 UTC"
+  },
+  {
+   "mmsi": "366851370",
+   "name": "ROYAL ATLANTIC",
+   "lat": 47.66673,
+   "lon": -122.38857,
+   "sog_knots": 0.0,
+   "cog_deg": 11.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:07.269595842 +0000 UTC"
+  },
+  {
+   "mmsi": "316005667",
+   "name": "ROYAL CANADIAN",
+   "lat": 49.1245,
+   "lon": -123.19028,
+   "sog_knots": 0.1,
+   "cog_deg": 5.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:38.683363974 +0000 UTC"
+  },
+  {
+   "mmsi": "366998830",
+   "name": "ROYAL MELBOURNE",
+   "lat": 45.66732,
+   "lon": -122.76676,
+   "sog_knots": 0.1,
+   "cog_deg": 225.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:09.340016565 +0000 UTC"
+  },
+  {
+   "mmsi": "367636270",
+   "name": "RUSHMORE",
+   "lat": 47.62799,
+   "lon": -122.3935,
+   "sog_knots": 0.0,
+   "cog_deg": 278.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:24.997585916 +0000 UTC"
+  },
+  {
+   "mmsi": "368380070",
+   "name": "RUSSELL STEINER",
+   "lat": 29.7077,
+   "lon": -95.04337,
+   "sog_knots": 0.0,
+   "cog_deg": 235.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:51.666119136 +0000 UTC"
+  },
+  {
+   "mmsi": "518873000",
+   "name": "RV WHALE SONG",
+   "lat": -32.06252,
+   "lon": 115.74325,
+   "sog_knots": 0.1,
+   "cog_deg": 335.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:05.822315338 +0000 UTC"
+  },
+  {
+   "mmsi": "368237160",
+   "name": "RYAN JAMES",
+   "lat": 27.81207,
+   "lon": -97.4129,
+   "sog_knots": 0.0,
+   "cog_deg": 181.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:28.585428848 +0000 UTC"
   },
   {
    "mmsi": "710032570",
    "name": "SAAM AIMORE",
-   "lat": -23.97828,
-   "lon": -46.28872,
-   "sog_knots": 6.2,
-   "cog_deg": 355.5,
+   "lat": -23.9665,
+   "lon": -46.29487,
+   "sog_knots": 3.4,
+   "cog_deg": 317.8,
    "destination": "",
-   "timestamp": "2026-10-05 15:39:29.592134709 +0000 UTC"
+   "timestamp": "2026-10-05 15:49:38.86901145 +0000 UTC"
+  },
+  {
+   "mmsi": "316011473",
+   "name": "SAAM CLYDE",
+   "lat": 54.29235,
+   "lon": -130.35638,
+   "sog_knots": 0.0,
+   "cog_deg": 253.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:57.393204198 +0000 UTC"
+  },
+  {
+   "mmsi": "316041968",
+   "name": "SAAM ERIKS",
+   "lat": 49.29106,
+   "lon": -122.97446,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:39.631728003 +0000 UTC"
+  },
+  {
+   "mmsi": "316020345",
+   "name": "SAAM HUMBER",
+   "lat": 54.29228,
+   "lon": -130.35647,
+   "sog_knots": 0.0,
+   "cog_deg": 349.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:24.999631338 +0000 UTC"
+  },
+  {
+   "mmsi": "316009844",
+   "name": "SAAM HUNTER",
+   "lat": 49.29116,
+   "lon": -122.97445,
+   "sog_knots": 0.0,
+   "cog_deg": 225.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:17.381359108 +0000 UTC"
+  },
+  {
+   "mmsi": "316049371",
+   "name": "SAAM JAMES POINT",
+   "lat": 49.29659,
+   "lon": -122.94586,
+   "sog_knots": 3.7,
+   "cog_deg": 68.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:59.926801342 +0000 UTC"
+  },
+  {
+   "mmsi": "316005651",
+   "name": "SAAM PRIDE",
+   "lat": 49.19994,
+   "lon": -122.91062,
+   "sog_knots": 0.0,
+   "cog_deg": 354.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:42.784774087 +0000 UTC"
+  },
+  {
+   "mmsi": "316028504",
+   "name": "SAAM SABA",
+   "lat": 49.2906,
+   "lon": -122.97489,
+   "sog_knots": 0.0,
+   "cog_deg": 262.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:54.59467411 +0000 UTC"
+  },
+  {
+   "mmsi": "316028782",
+   "name": "SAAM VENTA",
+   "lat": 54.29224,
+   "lon": -130.35587,
+   "sog_knots": 0.0,
+   "cog_deg": 259.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:21.179483529 +0000 UTC"
+  },
+  {
+   "mmsi": "366339000",
+   "name": "SAFARI EXPLORER",
+   "lat": 47.66727,
+   "lon": -122.388,
+   "sog_knots": 0.0,
+   "cog_deg": 265.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:45:48.63290767 +0000 UTC"
+  },
+  {
+   "mmsi": "311001606",
+   "name": "SAGA ENTERPRISE",
+   "lat": 49.29749,
+   "lon": -123.035,
+   "sog_knots": 0.0,
+   "cog_deg": 33.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:34.014299552 +0000 UTC"
+  },
+  {
+   "mmsi": "636022998",
+   "name": "SAIC ANJI HARMONY",
+   "lat": 47.55847,
+   "lon": -122.50407,
+   "sog_knots": 0.0,
+   "cog_deg": 283.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:40.625449103 +0000 UTC"
+  },
+  {
+   "mmsi": "538004639",
+   "name": "SAINT VASSILIOS",
+   "lat": -23.9259,
+   "lon": -46.33811,
+   "sog_knots": 0.0,
+   "cog_deg": 172.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:27.786371188 +0000 UTC"
+  },
+  {
+   "mmsi": "357573000",
+   "name": "SAKIZAYA DIAMOND",
+   "lat": 49.29196,
+   "lon": -123.18465,
+   "sog_knots": 0.1,
+   "cog_deg": 354.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:25.779089405 +0000 UTC"
+  },
+  {
+   "mmsi": "369307000",
+   "name": "SALISH EXPLORER",
+   "lat": 47.60478,
+   "lon": -122.34076,
+   "sog_knots": 0.1,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:12.947942544 +0000 UTC"
+  },
+  {
+   "mmsi": "316047943",
+   "name": "SALISH HERON",
+   "lat": 49.00577,
+   "lon": -123.12914,
+   "sog_knots": 0.0,
+   "cog_deg": 216.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:44.441507064 +0000 UTC"
+  },
+  {
+   "mmsi": "338790000",
+   "name": "SALLY FOX",
+   "lat": 47.60125,
+   "lon": -122.33913,
+   "sog_knots": 0.0,
+   "cog_deg": 332.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:56.588406133 +0000 UTC"
+  },
+  {
+   "mmsi": "367337690",
+   "name": "SAM HOUSTON",
+   "lat": 29.74844,
+   "lon": -95.29225,
+   "sog_knots": 0.0,
+   "cog_deg": 200.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:48.694033077 +0000 UTC"
+  },
+  {
+   "mmsi": "368041480",
+   "name": "SAMANTHA S",
+   "lat": 45.56064,
+   "lon": -122.72854,
+   "sog_knots": 0.0,
+   "cog_deg": 29.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:12.004762516 +0000 UTC"
+  },
+  {
+   "mmsi": "368220940",
+   "name": "SAMANTHA TRUEHEART",
+   "lat": 29.7854,
+   "lon": -95.09285,
+   "sog_knots": 0.1,
+   "cog_deg": 38.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:27.604068851 +0000 UTC"
+  },
+  {
+   "mmsi": "366834350",
+   "name": "SAN JOAQUIN",
+   "lat": 29.72097,
+   "lon": -95.27548,
+   "sog_knots": 0.0,
+   "cog_deg": 275.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:34.26958272 +0000 UTC"
+  },
+  {
+   "mmsi": "219085000",
+   "name": "SANTA RITA MAERSK",
+   "lat": 49.29052,
+   "lon": -123.09974,
+   "sog_knots": 0.0,
+   "cog_deg": 235.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:47.16407531 +0000 UTC"
+  },
+  {
+   "mmsi": "367702780",
+   "name": "SARAH",
+   "lat": 46.08971,
+   "lon": -122.92896,
+   "sog_knots": 0.0,
+   "cog_deg": 172.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:47.722055449 +0000 UTC"
+  },
+  {
+   "mmsi": "538009587",
+   "name": "SARONIC SPIRIT",
+   "lat": -32.81124,
+   "lon": -60.69825,
+   "sog_knots": 0.0,
+   "cog_deg": 65.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:41.404153453 +0000 UTC"
+  },
+  {
+   "mmsi": "367411070",
+   "name": "SATURN",
+   "lat": 47.65782,
+   "lon": -122.37865,
+   "sog_knots": 0.0,
+   "cog_deg": 19.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:53.425667467 +0000 UTC"
+  },
+  {
+   "mmsi": "367669370",
+   "name": "SBS PROVIDER",
+   "lat": 47.65476,
+   "lon": -122.36713,
+   "sog_knots": 0.0,
+   "cog_deg": 25.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:42.161676533 +0000 UTC"
+  },
+  {
+   "mmsi": "229784000",
+   "name": "SCENIC GEM",
+   "lat": 49.43763,
+   "lon": 1.09223,
+   "sog_knots": 0.0,
+   "cog_deg": 31.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:38.484360247 +0000 UTC"
+  },
+  {
+   "mmsi": "368331640",
+   "name": "SCHWEIGER",
+   "lat": 45.58413,
+   "lon": -122.76615,
+   "sog_knots": 0.0,
+   "cog_deg": 294.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:22.022155686 +0000 UTC"
+  },
+  {
+   "mmsi": "366816020",
+   "name": "SCOTT R. WILSON",
+   "lat": 29.74014,
+   "lon": -95.20431,
+   "sog_knots": 0.0,
+   "cog_deg": 38.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:29.894247081 +0000 UTC"
+  },
+  {
+   "mmsi": "316050855",
+   "name": "SEA ALICE",
+   "lat": 49.16337,
+   "lon": -122.9933,
+   "sog_knots": 0.0,
+   "cog_deg": 0.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:01.974943741 +0000 UTC"
   },
   {
    "mmsi": "352003770",
    "name": "SEA DIAMOND 1",
-   "lat": -24.03827,
-   "lon": -46.34662,
-   "sog_knots": 9.4,
-   "cog_deg": 11.0,
+   "lat": -24.01852,
+   "lon": -46.34252,
+   "sog_knots": 6.5,
+   "cog_deg": 12.0,
    "destination": "",
-   "timestamp": "2026-10-05 15:39:26.17368631 +0000 UTC"
+   "timestamp": "2026-10-05 15:48:45.111243325 +0000 UTC"
+  },
+  {
+   "mmsi": "367425950",
+   "name": "SEA HAWK",
+   "lat": 45.65015,
+   "lon": -122.74765,
+   "sog_knots": 0.0,
+   "cog_deg": 38.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:05.409045338 +0000 UTC"
+  },
+  {
+   "mmsi": "241627000",
+   "name": "SEA PUMA",
+   "lat": 29.61308,
+   "lon": -95.02691,
+   "sog_knots": 0.0,
+   "cog_deg": 191.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:09.372295067 +0000 UTC"
+  },
+  {
+   "mmsi": "367740630",
+   "name": "SEA ROSE",
+   "lat": 47.6493,
+   "lon": -122.32946,
+   "sog_knots": 0.0,
+   "cog_deg": 49.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:01.401754494 +0000 UTC"
+  },
+  {
+   "mmsi": "367566160",
+   "name": "SEA TIGER",
+   "lat": 29.47283,
+   "lon": -94.95866,
+   "sog_knots": 0.0,
+   "cog_deg": 134.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:01.972469696 +0000 UTC"
+  },
+  {
+   "mmsi": "368314830",
+   "name": "SEA VENTURE",
+   "lat": 47.65492,
+   "lon": -122.36797,
+   "sog_knots": 0.0,
+   "cog_deg": 314.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:56.158982945 +0000 UTC"
+  },
+  {
+   "mmsi": "368481420",
+   "name": "SEABOLD",
+   "lat": 47.53734,
+   "lon": -122.32827,
+   "sog_knots": 0.0,
+   "cog_deg": 301.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:45.244682756 +0000 UTC"
+  },
+  {
+   "mmsi": "316033419",
+   "name": "SEASPAN  SWIFT",
+   "lat": 49.3064,
+   "lon": -123.07776,
+   "sog_knots": 0.0,
+   "cog_deg": 0.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:14.674049901 +0000 UTC"
+  },
+  {
+   "mmsi": "352004308",
+   "name": "SEASPAN BAKER",
+   "lat": 49.28624,
+   "lon": -123.16647,
+   "sog_knots": 0.0,
+   "cog_deg": 74.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:45:45.159844673 +0000 UTC"
+  },
+  {
+   "mmsi": "316020871",
+   "name": "SEASPAN EAGLE",
+   "lat": 49.31071,
+   "lon": -123.1067,
+   "sog_knots": 0.0,
+   "cog_deg": 147.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:33.782630376 +0000 UTC"
+  },
+  {
+   "mmsi": "316003667",
+   "name": "SEASPAN FALCON",
+   "lat": 49.3112,
+   "lon": -123.10715,
+   "sog_knots": 0.1,
+   "cog_deg": 110.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:17.066819312 +0000 UTC"
+  },
+  {
+   "mmsi": "316046128",
+   "name": "SEASPAN HARRIER",
+   "lat": 49.31036,
+   "lon": -123.10708,
+   "sog_knots": 0.0,
+   "cog_deg": 193.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:42.44120936 +0000 UTC"
+  },
+  {
+   "mmsi": "316005715",
+   "name": "SEASPAN HAWK",
+   "lat": 49.29505,
+   "lon": -122.94275,
+   "sog_knots": 8.8,
+   "cog_deg": 88.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:58.151818353 +0000 UTC"
+  },
+  {
+   "mmsi": "316020868",
+   "name": "SEASPAN OSPREY",
+   "lat": 49.31252,
+   "lon": -123.10703,
+   "sog_knots": 0.0,
+   "cog_deg": 321.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:13.107126233 +0000 UTC"
+  },
+  {
+   "mmsi": "316042022",
+   "name": "SEASPAN RAPTOR",
+   "lat": 49.29464,
+   "lon": -122.93161,
+   "sog_knots": 8.3,
+   "cog_deg": 95.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:06.206825243 +0000 UTC"
+  },
+  {
+   "mmsi": "316018851",
+   "name": "SEASPAN RAVEN",
+   "lat": 49.31257,
+   "lon": -123.1067,
+   "sog_knots": 0.1,
+   "cog_deg": 134.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:05.082783352 +0000 UTC"
+  },
+  {
+   "mmsi": "316033814",
+   "name": "SEASPAN RELIANT",
+   "lat": 49.14363,
+   "lon": -123.03608,
+   "sog_knots": 0.0,
+   "cog_deg": 89.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:36.926906809 +0000 UTC"
+  },
+  {
+   "mmsi": "316014995",
+   "name": "SEASPAN RESOLUTION",
+   "lat": 49.31067,
+   "lon": -123.10687,
+   "sog_knots": 0.0,
+   "cog_deg": 315.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:25.023915647 +0000 UTC"
+  },
+  {
+   "mmsi": "316005718",
+   "name": "SEASPAN SCOUT",
+   "lat": 49.17001,
+   "lon": -122.92438,
+   "sog_knots": 0.0,
+   "cog_deg": 160.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:43.720164042 +0000 UTC"
+  },
+  {
+   "mmsi": "316005716",
+   "name": "SEASPAN TEMPEST",
+   "lat": 49.31137,
+   "lon": -123.10668,
+   "sog_knots": 0.1,
+   "cog_deg": 168.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:12.756390831 +0000 UTC"
+  },
+  {
+   "mmsi": "710000596",
+   "name": "SEBASTIAO CABOTO",
+   "lat": -23.92555,
+   "lon": -46.31699,
+   "sog_knots": 0.0,
+   "cog_deg": 1.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:01.869682396 +0000 UTC"
+  },
+  {
+   "mmsi": "227789160",
+   "name": "SEINE PRINCESS",
+   "lat": 49.43692,
+   "lon": 1.09488,
+   "sog_knots": 0.0,
+   "cog_deg": 288.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:28.177241412 +0000 UTC"
+  },
+  {
+   "mmsi": "316005649",
+   "name": "SENTRY SHIELD",
+   "lat": 54.2356,
+   "lon": -130.31288,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:45:29.938634303 +0000 UTC"
+  },
+  {
+   "mmsi": "269057151",
+   "name": "SERENE",
+   "lat": 49.4379,
+   "lon": 1.08856,
+   "sog_knots": 7.7,
+   "cog_deg": 292.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:28.380182469 +0000 UTC"
+  },
+  {
+   "mmsi": "249645000",
+   "name": "SERIFOS I",
+   "lat": 49.30388,
+   "lon": -123.05477,
+   "sog_knots": 0.0,
+   "cog_deg": 308.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:20.357698757 +0000 UTC"
   },
   {
    "mmsi": "710000022",
    "name": "SERRA POLAR",
-   "lat": -23.97744,
+   "lat": -23.97739,
    "lon": -46.29108,
    "sog_knots": 0.0,
    "cog_deg": 360.0,
    "destination": "",
-   "timestamp": "2026-10-05 15:38:29.933874306 +0000 UTC"
+   "timestamp": "2026-10-05 15:49:51.160935558 +0000 UTC"
+  },
+  {
+   "mmsi": "316016663",
+   "name": "SEYMOUR CROWN",
+   "lat": 49.30152,
+   "lon": -122.96963,
+   "sog_knots": 6.4,
+   "cog_deg": 95.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:23.502005717 +0000 UTC"
+  },
+  {
+   "mmsi": "368286340",
+   "name": "SHAVER",
+   "lat": 46.09076,
+   "lon": -122.93205,
+   "sog_knots": 0.0,
+   "cog_deg": 123.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:53.114688979 +0000 UTC"
+  },
+  {
+   "mmsi": "431794000",
+   "name": "SHOFU MARU",
+   "lat": -33.03811,
+   "lon": 152.10772,
+   "sog_knots": 0.9,
+   "cog_deg": 320.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:46.468403177 +0000 UTC"
+  },
+  {
+   "mmsi": "431847000",
+   "name": "SHOYO",
+   "lat": -33.1305,
+   "lon": 152.14736,
+   "sog_knots": 1.0,
+   "cog_deg": 330.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:01.108500945 +0000 UTC"
+  },
+  {
+   "mmsi": "316020067",
+   "name": "SHUSWAP",
+   "lat": 49.15425,
+   "lon": -122.95053,
+   "sog_knots": 0.0,
+   "cog_deg": 234.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:21.950490789 +0000 UTC"
+  },
+  {
+   "mmsi": "368139720",
+   "name": "SIGNET VOLUNTEER",
+   "lat": 29.68576,
+   "lon": -94.985,
+   "sog_knots": 0.1,
+   "cog_deg": 252.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:39.669256602 +0000 UTC"
+  },
+  {
+   "mmsi": "316012880",
+   "name": "SILVER DOLPHIN",
+   "lat": 49.20051,
+   "lon": -123.08934,
+   "sog_knots": 0.0,
+   "cog_deg": 7.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:45.833348528 +0000 UTC"
+  },
+  {
+   "mmsi": "355398000",
+   "name": "SINLAU BULKER",
+   "lat": 49.28554,
+   "lon": -123.17723,
+   "sog_knots": 0.0,
+   "cog_deg": 21.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:45:32.745605426 +0000 UTC"
+  },
+  {
+   "mmsi": "316001749",
+   "name": "SIYAY",
+   "lat": 49.18093,
+   "lon": -123.18443,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:09.149359206 +0000 UTC"
+  },
+  {
+   "mmsi": "226015090",
+   "name": "SLOP EXPRESS II",
+   "lat": 49.35949,
+   "lon": 0.98958,
+   "sog_knots": 0.0,
+   "cog_deg": 41.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:07.608185405 +0000 UTC"
+  },
+  {
+   "mmsi": "710005753",
+   "name": "SM FLAMENGO",
+   "lat": -23.97584,
+   "lon": -46.28749,
+   "sog_knots": 0.0,
+   "cog_deg": 8.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:04.308149814 +0000 UTC"
+  },
+  {
+   "mmsi": "440086000",
+   "name": "SM KWANGYANG",
+   "lat": 45.63984,
+   "lon": -122.74714,
+   "sog_knots": 0.0,
+   "cog_deg": 334.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:18.646038277 +0000 UTC"
+  },
+  {
+   "mmsi": "710007232",
+   "name": "SN CARIRI",
+   "lat": -23.94658,
+   "lon": -46.30778,
+   "sog_knots": 0.0,
+   "cog_deg": 116.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:50.829074635 +0000 UTC"
   },
   {
    "mmsi": "710400549",
    "name": "SN-CARAIVA",
-   "lat": -23.94649,
-   "lon": -46.30803,
-   "sog_knots": 0.1,
+   "lat": -23.94648,
+   "lon": -46.30802,
+   "sog_knots": 0.0,
    "cog_deg": 337.6,
    "destination": "",
-   "timestamp": "2026-10-05 15:37:29.972647457 +0000 UTC"
+   "timestamp": "2026-10-05 15:47:49.147558931 +0000 UTC"
+  },
+  {
+   "mmsi": "316003447",
+   "name": "SNOW DRIFT",
+   "lat": 49.11835,
+   "lon": -123.16465,
+   "sog_knots": 0.0,
+   "cog_deg": 224.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:24.159823403 +0000 UTC"
+  },
+  {
+   "mmsi": "226002850",
+   "name": "SOLANA",
+   "lat": 49.36074,
+   "lon": 0.99204,
+   "sog_knots": 0.0,
+   "cog_deg": 127.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:37.431409474 +0000 UTC"
+  },
+  {
+   "mmsi": "368206330",
+   "name": "SOLANO",
+   "lat": 47.79399,
+   "lon": -122.4953,
+   "sog_knots": 0.0,
+   "cog_deg": 17.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:47.489112313 +0000 UTC"
+  },
+  {
+   "mmsi": "367741020",
+   "name": "SOUNDGUARDIAN",
+   "lat": 47.74357,
+   "lon": -122.42769,
+   "sog_knots": 0.1,
+   "cog_deg": 3.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:35.672351245 +0000 UTC"
+  },
+  {
+   "mmsi": "316023452",
+   "name": "SOUTHERN RIDGE",
+   "lat": 49.11816,
+   "lon": -123.1641,
+   "sog_knots": 0.0,
+   "cog_deg": 233.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:13.282139333 +0000 UTC"
+  },
+  {
+   "mmsi": "372014000",
+   "name": "SPINNAKER SW",
+   "lat": -32.05076,
+   "lon": 115.7396,
+   "sog_knots": 0.1,
+   "cog_deg": 239.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:23.639375276 +0000 UTC"
+  },
+  {
+   "mmsi": "338754000",
+   "name": "SPIRIT OF KINGSTON",
+   "lat": 47.60105,
+   "lon": -122.33905,
+   "sog_knots": 1.4,
+   "cog_deg": 261.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:09.462971012 +0000 UTC"
+  },
+  {
+   "mmsi": "367013020",
+   "name": "SPIRIT OF SEATTLE",
+   "lat": 47.60505,
+   "lon": -122.34076,
+   "sog_knots": 0.1,
+   "cog_deg": 357.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:41.225671547 +0000 UTC"
+  },
+  {
+   "mmsi": "316001269",
+   "name": "SPIRIT OF VI",
+   "lat": 49.00623,
+   "lon": -123.13268,
+   "sog_knots": 0.0,
+   "cog_deg": 79.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:02.908449066 +0000 UTC"
+  },
+  {
+   "mmsi": "352001247",
+   "name": "SPRING AWOBA",
+   "lat": -33.08567,
+   "lon": 152.10073,
+   "sog_knots": 11.5,
+   "cog_deg": 102.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:17.015623489 +0000 UTC"
+  },
+  {
+   "mmsi": "316005845",
+   "name": "SST APACHE",
+   "lat": 54.29186,
+   "lon": -130.35558,
+   "sog_knots": 0.0,
+   "cog_deg": 328.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:21.564395936 +0000 UTC"
+  },
+  {
+   "mmsi": "316031048",
+   "name": "SST CAPILANO",
+   "lat": 49.19978,
+   "lon": -122.91084,
+   "sog_knots": 0.0,
+   "cog_deg": 75.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:46.365436474 +0000 UTC"
+  },
+  {
+   "mmsi": "316014107",
+   "name": "SST GRIZZLY",
+   "lat": 49.27988,
+   "lon": -123.28894,
+   "sog_knots": 9.6,
+   "cog_deg": 38.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:52.869643176 +0000 UTC"
+  },
+  {
+   "mmsi": "316012721",
+   "name": "SST ORLEANS",
+   "lat": 54.29262,
+   "lon": -130.35624,
+   "sog_knots": 0.0,
+   "cog_deg": 278.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:13.527849712 +0000 UTC"
+  },
+  {
+   "mmsi": "316033399",
+   "name": "SST SALISH",
+   "lat": 49.29325,
+   "lon": -123.04526,
+   "sog_knots": 0.0,
+   "cog_deg": 329.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:10.092948022 +0000 UTC"
+  },
+  {
+   "mmsi": "316005623",
+   "name": "SST TIGER SUN",
+   "lat": 49.29128,
+   "lon": -122.97468,
+   "sog_knots": 0.0,
+   "cog_deg": 354.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:41.473860155 +0000 UTC"
+  },
+  {
+   "mmsi": "367613940",
+   "name": "ST.ROSE",
+   "lat": 29.7263,
+   "lon": -95.21085,
+   "sog_knots": 0.0,
+   "cog_deg": 164.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:53.014163864 +0000 UTC"
   },
   {
    "mmsi": "538002630",
    "name": "STAR HELENA",
-   "lat": -23.93816,
-   "lon": -46.31359,
+   "lat": -23.93815,
+   "lon": -46.31358,
    "sog_knots": 0.0,
    "cog_deg": 230.1,
    "destination": "",
-   "timestamp": "2026-10-05 15:38:20.125605789 +0000 UTC"
+   "timestamp": "2026-10-05 15:50:18.977834073 +0000 UTC"
+  },
+  {
+   "mmsi": "636024942",
+   "name": "STAR TOKYO",
+   "lat": -32.6043,
+   "lon": -60.76203,
+   "sog_knots": 0.0,
+   "cog_deg": 236.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:46.783760504 +0000 UTC"
+  },
+  {
+   "mmsi": "316014214",
+   "name": "STAR WARS II",
+   "lat": 54.22748,
+   "lon": -130.29743,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:19.232205653 +0000 UTC"
+  },
+  {
+   "mmsi": "257450000",
+   "name": "STAVANGER PRIDE",
+   "lat": -23.92348,
+   "lon": -46.3331,
+   "sog_knots": 0.0,
+   "cog_deg": 47.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:33.726779838 +0000 UTC"
+  },
+  {
+   "mmsi": "367153930",
+   "name": "STEILACOOM II",
+   "lat": 47.17876,
+   "lon": -122.67694,
+   "sog_knots": 0.0,
+   "cog_deg": 251.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:42.156217379 +0000 UTC"
+  },
+  {
+   "mmsi": "255915984",
+   "name": "STEN AURORA",
+   "lat": 27.82248,
+   "lon": -97.43593,
+   "sog_knots": 0.0,
+   "cog_deg": 277.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:43.433408148 +0000 UTC"
+  },
+  {
+   "mmsi": "367388580",
+   "name": "STEPHEN L.",
+   "lat": 29.47291,
+   "lon": -94.95902,
+   "sog_knots": 0.0,
+   "cog_deg": 159.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:43.118586429 +0000 UTC"
+  },
+  {
+   "mmsi": "316052438",
+   "name": "STHUQI",
+   "lat": 49.29025,
+   "lon": -123.1163,
+   "sog_knots": 0.0,
+   "cog_deg": 252.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:42.207404532 +0000 UTC"
+  },
+  {
+   "mmsi": "319488000",
+   "name": "STOLT EFFICIENCY",
+   "lat": 29.60903,
+   "lon": -95.02116,
+   "sog_knots": 0.0,
+   "cog_deg": 198.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:34.432997441 +0000 UTC"
+  },
+  {
+   "mmsi": "367013390",
+   "name": "STUD",
+   "lat": 29.7247,
+   "lon": -95.21595,
+   "sog_knots": 7.0,
+   "cog_deg": 254.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:43.899059579 +0000 UTC"
+  },
+  {
+   "mmsi": "370737000",
+   "name": "SUN EXCELSIOR",
+   "lat": -33.33355,
+   "lon": 152.25236,
+   "sog_knots": 2.7,
+   "cog_deg": 208.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:40.749305291 +0000 UTC"
+  },
+  {
+   "mmsi": "316042032",
+   "name": "SUNDEROEY",
+   "lat": 49.28718,
+   "lon": -123.09811,
+   "sog_knots": 0.0,
+   "cog_deg": 74.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:42.571032614 +0000 UTC"
+  },
+  {
+   "mmsi": "368083770",
+   "name": "SUPPORT",
+   "lat": 46.00897,
+   "lon": -122.84843,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:24.632688771 +0000 UTC"
+  },
+  {
+   "mmsi": "367771030",
+   "name": "SURFBIRD",
+   "lat": 47.66208,
+   "lon": -122.38655,
+   "sog_knots": 0.0,
+   "cog_deg": 0.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:21.746162728 +0000 UTC"
   },
   {
    "mmsi": "710006712",
    "name": "SVITZER ATANASIO",
-   "lat": -23.95998,
-   "lon": -46.30488,
+   "lat": -23.96,
+   "lon": -46.30487,
    "sog_knots": 0.0,
    "cog_deg": 360.0,
    "destination": "",
-   "timestamp": "2026-10-05 15:38:50.676423912 +0000 UTC"
+   "timestamp": "2026-10-05 15:50:02.500074764 +0000 UTC"
   },
   {
-   "mmsi": "710007272",
-   "name": "SVITZER BABITONGA",
-   "lat": -23.93773,
-   "lon": -46.30928,
-   "sog_knots": 0.1,
-   "cog_deg": 360.0,
+   "mmsi": "503754000",
+   "name": "SVITZER GLENROCK",
+   "lat": -32.92162,
+   "lon": 151.77304,
+   "sog_knots": 0.0,
+   "cog_deg": 332.3,
    "destination": "",
-   "timestamp": "2026-10-05 15:37:02.480153735 +0000 UTC"
+   "timestamp": "2026-10-05 15:45:41.687078852 +0000 UTC"
   },
   {
    "mmsi": "710007000",
    "name": "SVITZER IRLANDA D",
-   "lat": -23.96098,
-   "lon": -46.30431,
+   "lat": -23.96095,
+   "lon": -46.30432,
    "sog_knots": 0.0,
    "cog_deg": 348.9,
    "destination": "",
-   "timestamp": "2026-10-05 15:37:54.787208468 +0000 UTC"
+   "timestamp": "2026-10-05 15:50:03.71171609 +0000 UTC"
   },
   {
    "mmsi": "710006591",
    "name": "SVITZER MONTE K.T.",
-   "lat": -23.93338,
-   "lon": -46.31776,
-   "sog_knots": 0.2,
+   "lat": -23.93343,
+   "lon": -46.31765,
+   "sog_knots": 0.0,
    "cog_deg": 360.0,
    "destination": "",
-   "timestamp": "2026-10-05 15:39:34.171864489 +0000 UTC"
+   "timestamp": "2026-10-05 15:49:42.721588642 +0000 UTC"
+  },
+  {
+   "mmsi": "503625000",
+   "name": "SVITZER MYALL",
+   "lat": -32.92125,
+   "lon": 151.77278,
+   "sog_knots": 0.0,
+   "cog_deg": 80.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:25.400164943 +0000 UTC"
+  },
+  {
+   "mmsi": "503772000",
+   "name": "SVITZER NAIAD",
+   "lat": -32.04958,
+   "lon": 115.74512,
+   "sog_knots": 0.1,
+   "cog_deg": 70.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:27.501396937 +0000 UTC"
+  },
+  {
+   "mmsi": "503070250",
+   "name": "SVITZER NEWTON",
+   "lat": -32.92287,
+   "lon": 151.76674,
+   "sog_knots": 0.0,
+   "cog_deg": 283.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:38.68642493 +0000 UTC"
+  },
+  {
+   "mmsi": "503187210",
+   "name": "SVITZER NOBBYS",
+   "lat": -32.92062,
+   "lon": 151.77238,
+   "sog_knots": 0.0,
+   "cog_deg": 157.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:08.493473409 +0000 UTC"
   },
   {
    "mmsi": "710007151",
    "name": "SVITZER ROCHA PEDRO",
-   "lat": -23.93773,
-   "lon": -46.30936,
+   "lat": -23.93774,
+   "lon": -46.30937,
    "sog_knots": 0.0,
    "cog_deg": 360.0,
    "destination": "",
-   "timestamp": "2026-10-05 15:39:27.285691787 +0000 UTC"
+   "timestamp": "2026-10-05 15:48:27.46764164 +0000 UTC"
+  },
+  {
+   "mmsi": "503632000",
+   "name": "SVITZER ROWAN",
+   "lat": -32.15012,
+   "lon": 115.76535,
+   "sog_knots": 0.0,
+   "cog_deg": 71.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:10.203688466 +0000 UTC"
+  },
+  {
+   "mmsi": "538012733",
+   "name": "SW SUNBRIGHT",
+   "lat": 29.75918,
+   "lon": -95.07222,
+   "sog_knots": 11.3,
+   "cog_deg": 124.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:14.514331287 +0000 UTC"
+  },
+  {
+   "mmsi": "636016231",
+   "name": "SWANSEA",
+   "lat": 29.61257,
+   "lon": -95.01141,
+   "sog_knots": 0.0,
+   "cog_deg": 134.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:33.703888647 +0000 UTC"
+  },
+  {
+   "mmsi": "338519000",
+   "name": "SWIFTSURE",
+   "lat": 47.8082,
+   "lon": -122.39156,
+   "sog_knots": 0.1,
+   "cog_deg": 9.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:28.053231146 +0000 UTC"
+  },
+  {
+   "mmsi": "269057190",
+   "name": "SWISS PEARL",
+   "lat": 49.44278,
+   "lon": 1.07383,
+   "sog_knots": 0.0,
+   "cog_deg": 0.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:52.844561581 +0000 UTC"
+  },
+  {
+   "mmsi": "269057270",
+   "name": "SWISS SAPPHIRE",
+   "lat": 49.52376,
+   "lon": 0.72689,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:51.475048051 +0000 UTC"
+  },
+  {
+   "mmsi": "367114880",
+   "name": "SYDNEY ANN",
+   "lat": 29.73323,
+   "lon": -95.13351,
+   "sog_knots": 0.0,
+   "cog_deg": 29.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:13.793638366 +0000 UTC"
+  },
+  {
+   "mmsi": "316011245",
+   "name": "TAASKA",
+   "lat": 49.12362,
+   "lon": -123.18774,
+   "sog_knots": 0.0,
+   "cog_deg": 353.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:09.181606187 +0000 UTC"
+  },
+  {
+   "mmsi": "431659000",
+   "name": "TACHIBANA 2",
+   "lat": -32.88802,
+   "lon": 151.76762,
+   "sog_knots": 0.0,
+   "cog_deg": 25.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:59.055449292 +0000 UTC"
+  },
+  {
+   "mmsi": "636026004",
+   "name": "TAI HORIZON",
+   "lat": 45.54868,
+   "lon": -122.69341,
+   "sog_knots": 0.0,
+   "cog_deg": 302.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:18.840229312 +0000 UTC"
+  },
+  {
+   "mmsi": "477768700",
+   "name": "TAIHUA STAR",
+   "lat": -32.03271,
+   "lon": 115.66614,
+   "sog_knots": 0.2,
+   "cog_deg": 260.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:18.359318239 +0000 UTC"
+  },
+  {
+   "mmsi": "316014014",
+   "name": "TAKAYA",
+   "lat": 49.29215,
+   "lon": -123.09722,
+   "sog_knots": 10.3,
+   "cog_deg": 107.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:20.746027263 +0000 UTC"
+  },
+  {
+   "mmsi": "503678700",
+   "name": "TANCRED",
+   "lat": -32.23091,
+   "lon": 115.68869,
+   "sog_knots": 0.0,
+   "cog_deg": 229.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:56.418809002 +0000 UTC"
+  },
+  {
+   "mmsi": "368220970",
+   "name": "TANGLEWOOD",
+   "lat": 47.66162,
+   "lon": -122.38522,
+   "sog_knots": 0.0,
+   "cog_deg": 38.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:10.111144829 +0000 UTC"
+  },
+  {
+   "mmsi": "338460057",
+   "name": "TAYLOR MORGANNE",
+   "lat": 27.82144,
+   "lon": -97.43245,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:32.827686095 +0000 UTC"
+  },
+  {
+   "mmsi": "367061930",
+   "name": "TEBENKOF",
+   "lat": 47.65898,
+   "lon": -122.37953,
+   "sog_knots": 0.0,
+   "cog_deg": 228.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:29.362595499 +0000 UTC"
+  },
+  {
+   "mmsi": "367507220",
+   "name": "TEDDY MEYER",
+   "lat": 29.70603,
+   "lon": -95.03677,
+   "sog_knots": 0.0,
+   "cog_deg": 357.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:12.632567202 +0000 UTC"
+  },
+  {
+   "mmsi": "226002290",
+   "name": "TEXAS",
+   "lat": 49.3725,
+   "lon": 1.12095,
+   "sog_knots": 7.8,
+   "cog_deg": 348.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:36.305741211 +0000 UTC"
+  },
+  {
+   "mmsi": "538008283",
+   "name": "THALIS",
+   "lat": 49.39909,
+   "lon": 1.01268,
+   "sog_knots": 0.0,
+   "cog_deg": 164.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:05.827672009 +0000 UTC"
+  },
+  {
+   "mmsi": "316005611",
+   "name": "TIM MACKENZIE",
+   "lat": 49.23084,
+   "lon": -122.77145,
+   "sog_knots": 0.1,
+   "cog_deg": 344.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:13.839019542 +0000 UTC"
+  },
+  {
+   "mmsi": "338792000",
+   "name": "TITAN",
+   "lat": 47.63441,
+   "lon": -122.32908,
+   "sog_knots": 0.0,
+   "cog_deg": 236.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:45:36.895718348 +0000 UTC"
+  },
+  {
+   "mmsi": "373798000",
+   "name": "TOHMISAN MARU",
+   "lat": -33.02674,
+   "lon": 152.20771,
+   "sog_knots": 11.1,
+   "cog_deg": 139.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:26.359992008 +0000 UTC"
+  },
+  {
+   "mmsi": "368329050",
+   "name": "TOIVO T",
+   "lat": 45.61204,
+   "lon": -122.64536,
+   "sog_knots": 0.0,
+   "cog_deg": 218.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:15.859751642 +0000 UTC"
+  },
+  {
+   "mmsi": "368070380",
+   "name": "TOKITAE",
+   "lat": 45.63191,
+   "lon": -122.70594,
+   "sog_knots": 0.1,
+   "cog_deg": 103.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:07.626574505 +0000 UTC"
+  },
+  {
+   "mmsi": "316049055",
+   "name": "TRIDENT SHIELD",
+   "lat": 49.29858,
+   "lon": -123.02929,
+   "sog_knots": 0.0,
+   "cog_deg": 3.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:37.668877155 +0000 UTC"
+  },
+  {
+   "mmsi": "316026483",
+   "name": "TRIDENT TRANSPORTER",
+   "lat": 49.29908,
+   "lon": -123.02952,
+   "sog_knots": 0.1,
+   "cog_deg": 208.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:13.954776022 +0000 UTC"
+  },
+  {
+   "mmsi": "316041691",
+   "name": "TRIDENT WARRIOR",
+   "lat": 49.29662,
+   "lon": -123.03743,
+   "sog_knots": 7.4,
+   "cog_deg": 100.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:36.716212507 +0000 UTC"
+  },
+  {
+   "mmsi": "368257130",
+   "name": "TRIUMPH VII",
+   "lat": 46.00986,
+   "lon": -122.84834,
+   "sog_knots": 0.0,
+   "cog_deg": 287.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:42.789557379 +0000 UTC"
+  },
+  {
+   "mmsi": "636023390",
+   "name": "TROUVAILLE",
+   "lat": -32.64879,
+   "lon": -60.74296,
+   "sog_knots": 0.0,
+   "cog_deg": 256.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:57.288642056 +0000 UTC"
+  },
+  {
+   "mmsi": "316039951",
+   "name": "TSIMSHIAN WARRIOR",
+   "lat": 54.29242,
+   "lon": -130.3556,
+   "sog_knots": 0.0,
+   "cog_deg": 176.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:18.485586875 +0000 UTC"
+  },
+  {
+   "mmsi": "228293950",
+   "name": "TSM BREST",
+   "lat": 49.38791,
+   "lon": 1.00904,
+   "sog_knots": 0.0,
+   "cog_deg": 97.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:28.073804806 +0000 UTC"
+  },
+  {
+   "mmsi": "228293960",
+   "name": "TSM DIEPPE",
+   "lat": 49.38764,
+   "lon": 1.00902,
+   "sog_knots": 0.0,
+   "cog_deg": 311.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:44.130167677 +0000 UTC"
+  },
+  {
+   "mmsi": "227397840",
+   "name": "TSM MOLENE",
+   "lat": 49.45937,
+   "lon": 0.55044,
+   "sog_knots": 0.0,
+   "cog_deg": 92.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:40.925467923 +0000 UTC"
+  },
+  {
+   "mmsi": "352300000",
+   "name": "TSUKUBA MARU",
+   "lat": 49.05042,
+   "lon": -123.68267,
+   "sog_knots": 0.1,
+   "cog_deg": 210.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:38.598377396 +0000 UTC"
+  },
+  {
+   "mmsi": "367630830",
+   "name": "TUG DEVALL",
+   "lat": 29.5603,
+   "lon": -94.91475,
+   "sog_knots": 7.8,
+   "cog_deg": 326.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:12.628421192 +0000 UTC"
+  },
+  {
+   "mmsi": "367525770",
+   "name": "TUGIDAK",
+   "lat": 47.65469,
+   "lon": -122.36807,
+   "sog_knots": 0.0,
+   "cog_deg": 346.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:19.651748852 +0000 UTC"
+  },
+  {
+   "mmsi": "316052572",
+   "name": "TWC ENDURANCE",
+   "lat": 49.29079,
+   "lon": -122.97396,
+   "sog_knots": 0.0,
+   "cog_deg": 12.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:07.333673739 +0000 UTC"
+  },
+  {
+   "mmsi": "369970257",
+   "name": "TWR-8 DECEPTION PASS",
+   "lat": 47.72918,
+   "lon": -122.84385,
+   "sog_knots": 0.2,
+   "cog_deg": 13.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:41.472959473 +0000 UTC"
+  },
+  {
+   "mmsi": "369970258",
+   "name": "TWR7 PRESIDENT POINT",
+   "lat": 47.6925,
+   "lon": -122.85975,
+   "sog_knots": 0.2,
+   "cog_deg": 349.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:46.916845625 +0000 UTC"
+  },
+  {
+   "mmsi": "316056881",
+   "name": "TYMAC FORCE",
+   "lat": 49.28577,
+   "lon": -123.10031,
+   "sog_knots": 0.0,
+   "cog_deg": 328.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:10.778246612 +0000 UTC"
+  },
+  {
+   "mmsi": "316027848",
+   "name": "TYMAC TIDE",
+   "lat": 49.29752,
+   "lon": -122.97988,
+   "sog_knots": 7.1,
+   "cog_deg": 94.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:19.160655719 +0000 UTC"
+  },
+  {
+   "mmsi": "269308000",
+   "name": "TZOUMAZ",
+   "lat": -33.16027,
+   "lon": 152.22671,
+   "sog_knots": 0.8,
+   "cog_deg": 312.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:05.215787131 +0000 UTC"
+  },
+  {
+   "mmsi": "255806331",
+   "name": "UAL CASTLE",
+   "lat": 29.73026,
+   "lon": -95.2753,
+   "sog_knots": 0.0,
+   "cog_deg": 70.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:27.208627458 +0000 UTC"
+  },
+  {
+   "mmsi": "255806176",
+   "name": "UHL FAME",
+   "lat": -32.01702,
+   "lon": 115.67523,
+   "sog_knots": 0.2,
+   "cog_deg": 264.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:23.187804158 +0000 UTC"
+  },
+  {
+   "mmsi": "255806344",
+   "name": "UHL FIGHTER",
+   "lat": -32.03361,
+   "lon": 115.67477,
+   "sog_knots": 0.0,
+   "cog_deg": 63.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:59.745697261 +0000 UTC"
+  },
+  {
+   "mmsi": "226001960",
+   "name": "ULTIMO",
+   "lat": 49.43707,
+   "lon": 1.08941,
+   "sog_knots": 0.0,
+   "cog_deg": 50.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:47.509902033 +0000 UTC"
+  },
+  {
+   "mmsi": "352006488",
+   "name": "ULTRA DETERMINATION",
+   "lat": -33.17625,
+   "lon": 151.9685,
+   "sog_knots": 10.8,
+   "cog_deg": 96.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:15.629107822 +0000 UTC"
+  },
+  {
+   "mmsi": "477066200",
+   "name": "UNI PHOENIX",
+   "lat": 49.29543,
+   "lon": -123.0674,
+   "sog_knots": 0.1,
+   "cog_deg": 1.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:42.279633108 +0000 UTC"
   },
   {
    "mmsi": "720001258",
    "name": "UNKNOWN",
-   "lat": -23.96851,
-   "lon": -46.29031,
+   "lat": -23.96854,
+   "lon": -46.29033,
    "sog_knots": 0.0,
    "cog_deg": 360.0,
    "destination": "",
-   "timestamp": "2026-10-05 15:38:17.57249076 +0000 UTC"
+   "timestamp": "2026-10-05 15:47:27.832732007 +0000 UTC"
+  },
+  {
+   "mmsi": "503000098",
+   "name": "UNKNOWN",
+   "lat": -32.2304,
+   "lon": 115.68925,
+   "sog_knots": 0.0,
+   "cog_deg": 26.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:07.099455285 +0000 UTC"
+  },
+  {
+   "mmsi": "368106880",
+   "name": "UNKNOWN",
+   "lat": 29.73043,
+   "lon": -95.20872,
+   "sog_knots": 5.1,
+   "cog_deg": 206.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:08.6684361 +0000 UTC"
+  },
+  {
+   "mmsi": "338808000",
+   "name": "US GOV VESSEL",
+   "lat": 45.5668,
+   "lon": -122.72728,
+   "sog_knots": 0.0,
+   "cog_deg": 106.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:09.262658392 +0000 UTC"
+  },
+  {
+   "mmsi": "367002480",
+   "name": "VANESSA RAE",
+   "lat": 29.47239,
+   "lon": -94.95708,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:15.636037924 +0000 UTC"
+  },
+  {
+   "mmsi": "226002270",
+   "name": "VAUBAN",
+   "lat": 49.35343,
+   "lon": 0.9322,
+   "sog_knots": 8.8,
+   "cog_deg": 304.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:09.852816568 +0000 UTC"
+  },
+  {
+   "mmsi": "316027733",
+   "name": "VFPA4",
+   "lat": 49.28636,
+   "lon": -123.10067,
+   "sog_knots": 0.0,
+   "cog_deg": 84.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:24.354218126 +0000 UTC"
+  },
+  {
+   "mmsi": "367681630",
+   "name": "VICKI B",
+   "lat": 45.78315,
+   "lon": -122.77712,
+   "sog_knots": 5.7,
+   "cog_deg": 155.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:39.271244548 +0000 UTC"
+  },
+  {
+   "mmsi": "367057380",
+   "name": "VICTOR GUZMAN",
+   "lat": 29.0356,
+   "lon": -95.22843,
+   "sog_knots": 6.3,
+   "cog_deg": 19.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:47.51097547 +0000 UTC"
+  },
+  {
+   "mmsi": "311001249",
+   "name": "VICTORIA CLIPPER V",
+   "lat": 47.86216,
+   "lon": -122.46301,
+   "sog_knots": 25.9,
+   "cog_deg": 347.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:40.939776544 +0000 UTC"
+  },
+  {
+   "mmsi": "269057744",
+   "name": "VIKING SKAGA",
+   "lat": 49.43792,
+   "lon": 1.09095,
+   "sog_knots": 0.0,
+   "cog_deg": 298.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:39.534575287 +0000 UTC"
+  },
+  {
+   "mmsi": "316003331",
+   "name": "VIKING STAR",
+   "lat": 49.12323,
+   "lon": -123.18716,
+   "sog_knots": 0.0,
+   "cog_deg": 240.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:34.058944554 +0000 UTC"
+  },
+  {
+   "mmsi": "367309480",
+   "name": "W E IVANOFF",
+   "lat": 46.14609,
+   "lon": -123.34355,
+   "sog_knots": 8.2,
+   "cog_deg": 282.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:10.636319525 +0000 UTC"
+  },
+  {
+   "mmsi": "316009929",
+   "name": "W. PEARCE",
+   "lat": 54.27903,
+   "lon": -130.37796,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:17.499487979 +0000 UTC"
+  },
+  {
+   "mmsi": "366988880",
+   "name": "W.L.CALLAHAN",
+   "lat": 47.17281,
+   "lon": -122.60401,
+   "sog_knots": 0.1,
+   "cog_deg": 339.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:18.134125088 +0000 UTC"
+  },
+  {
+   "mmsi": "368268210",
+   "name": "WALKER BOONE",
+   "lat": 28.93738,
+   "lon": -95.30956,
+   "sog_knots": 0.0,
+   "cog_deg": 217.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:18.472753267 +0000 UTC"
+  },
+  {
+   "mmsi": "366993810",
+   "name": "WASP",
+   "lat": 47.51485,
+   "lon": -122.48334,
+   "sog_knots": 7.7,
+   "cog_deg": 198.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:24.966909063 +0000 UTC"
+  },
+  {
+   "mmsi": "367531220",
+   "name": "WATCHMAN",
+   "lat": 46.19999,
+   "lon": -123.3854,
+   "sog_knots": 0.0,
+   "cog_deg": 0.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:44.837328563 +0000 UTC"
+  },
+  {
+   "mmsi": "368072240",
+   "name": "WATERMAN",
+   "lat": 47.55341,
+   "lon": -122.62572,
+   "sog_knots": 10.6,
+   "cog_deg": 204.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:21.57145135 +0000 UTC"
+  },
+  {
+   "mmsi": "367424750",
+   "name": "WAYNE T MOSLEY",
+   "lat": 27.81195,
+   "lon": -97.39857,
+   "sog_knots": 0.0,
+   "cog_deg": 25.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:38.56950826 +0000 UTC"
+  },
+  {
+   "mmsi": "366976920",
+   "name": "WEDELL FOSS",
+   "lat": 47.59923,
+   "lon": -122.33878,
+   "sog_knots": 0.0,
+   "cog_deg": 10.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:51.962702934 +0000 UTC"
+  },
+  {
+   "mmsi": "367347000",
+   "name": "WENDY SEAA",
+   "lat": 46.19966,
+   "lon": -123.38514,
+   "sog_knots": 0.0,
+   "cog_deg": 0.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:55.649320916 +0000 UTC"
+  },
+  {
+   "mmsi": "367503760",
+   "name": "WES SELLARS",
+   "lat": 29.01318,
+   "lon": -95.23967,
+   "sog_knots": 0.0,
+   "cog_deg": 93.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:58.867141013 +0000 UTC"
+  },
+  {
+   "mmsi": "366993820",
+   "name": "WEST POINT",
+   "lat": 47.65885,
+   "lon": -122.37799,
+   "sog_knots": 0.2,
+   "cog_deg": 180.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:22.583831591 +0000 UTC"
+  },
+  {
+   "mmsi": "316004037",
+   "name": "WESTCO MONARCH",
+   "lat": 49.30291,
+   "lon": -122.9513,
+   "sog_knots": 0.0,
+   "cog_deg": 20.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:27.476295273 +0000 UTC"
+  },
+  {
+   "mmsi": "367148050",
+   "name": "WESTERN GULL",
+   "lat": 47.68357,
+   "lon": -122.40653,
+   "sog_knots": 0.0,
+   "cog_deg": 333.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:45.56914487 +0000 UTC"
+  },
+  {
+   "mmsi": "374553000",
+   "name": "WHISTLER",
+   "lat": 46.10901,
+   "lon": -122.96151,
+   "sog_knots": 0.0,
+   "cog_deg": 350.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:47.734712014 +0000 UTC"
+  },
+  {
+   "mmsi": "367799340",
+   "name": "WIDGEON",
+   "lat": 29.64374,
+   "lon": -94.96515,
+   "sog_knots": 7.0,
+   "cog_deg": 341.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:06.928115439 +0000 UTC"
+  },
+  {
+   "mmsi": "367578110",
+   "name": "WILDERNESS LEGACY",
+   "lat": 47.65882,
+   "lon": -122.3819,
+   "sog_knots": 0.0,
+   "cog_deg": 247.8,
+   "destination": "",
+   "timestamp": "2026-10-05 15:45:37.731681737 +0000 UTC"
+  },
+  {
+   "mmsi": "367513230",
+   "name": "WILLAMETTE",
+   "lat": 45.62751,
+   "lon": -122.70028,
+   "sog_knots": 0.1,
+   "cog_deg": 322.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:46.546906689 +0000 UTC"
+  },
+  {
+   "mmsi": "367019240",
+   "name": "WILLIAM M",
+   "lat": 29.72349,
+   "lon": -95.24872,
+   "sog_knots": 0.0,
+   "cog_deg": 0.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:12.71912197 +0000 UTC"
+  },
+  {
+   "mmsi": "316001221",
+   "name": "WILLIAM MACK",
+   "lat": 49.23091,
+   "lon": -122.77125,
+   "sog_knots": 0.0,
+   "cog_deg": 126.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:30.736413712 +0000 UTC"
+  },
+  {
+   "mmsi": "316053534",
+   "name": "WOLVERINE SPIRIT 1",
+   "lat": 54.30428,
+   "lon": -130.34929,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:32.866451828 +0000 UTC"
+  },
+  {
+   "mmsi": "710014320",
+   "name": "WS ZEUS",
+   "lat": -23.93302,
+   "lon": -46.31257,
+   "sog_knots": 5.5,
+   "cog_deg": 334.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:59.293706681 +0000 UTC"
+  },
+  {
+   "mmsi": "366773070",
+   "name": "WSF CATHLAMET",
+   "lat": 47.51074,
+   "lon": -122.46318,
+   "sog_knots": 0.0,
+   "cog_deg": 218.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:11.856067259 +0000 UTC"
+  },
+  {
+   "mmsi": "367463060",
+   "name": "WSF CHETZEMOKA",
+   "lat": 47.33186,
+   "lon": -122.50788,
+   "sog_knots": 0.0,
+   "cog_deg": 25.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:03.514866218 +0000 UTC"
+  },
+  {
+   "mmsi": "367712660",
+   "name": "WSF CHIMACUM",
+   "lat": 47.56157,
+   "lon": -122.62475,
+   "sog_knots": 0.0,
+   "cog_deg": 326.5,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:20.851803514 +0000 UTC"
+  },
+  {
+   "mmsi": "366773040",
+   "name": "WSF ISSAQUAH",
+   "lat": 47.62006,
+   "lon": -122.5131,
+   "sog_knots": 0.0,
+   "cog_deg": 293.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:51.025453377 +0000 UTC"
+  },
+  {
+   "mmsi": "366772980",
+   "name": "WSF KITSAP",
+   "lat": 47.51111,
+   "lon": -122.46394,
+   "sog_knots": 0.0,
+   "cog_deg": 147.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:16.912046042 +0000 UTC"
+  },
+  {
+   "mmsi": "366772960",
+   "name": "WSF KITTITAS",
+   "lat": 47.51109,
+   "lon": -122.46329,
+   "sog_knots": 0.0,
+   "cog_deg": 345.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:20.559473421 +0000 UTC"
+  },
+  {
+   "mmsi": "366759130",
+   "name": "WSF PUYALLUP",
+   "lat": 47.62243,
+   "lon": -122.50907,
+   "sog_knots": 0.0,
+   "cog_deg": 278.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:19.811677829 +0000 UTC"
+  },
+  {
+   "mmsi": "366710820",
+   "name": "WSF SEALTH",
+   "lat": 47.60198,
+   "lon": -122.34009,
+   "sog_knots": 0.0,
+   "cog_deg": 41.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:07.322862081 +0000 UTC"
+  },
+  {
+   "mmsi": "366709780",
+   "name": "WSF SPOKANE",
+   "lat": 47.79452,
+   "lon": -122.49457,
+   "sog_knots": 0.0,
+   "cog_deg": 303.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:59.090622027 +0000 UTC"
+  },
+  {
+   "mmsi": "366772760",
+   "name": "WSF TACOMA",
+   "lat": 47.62051,
+   "lon": -122.51424,
+   "sog_knots": 0.4,
+   "cog_deg": 187.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:47:15.700330496 +0000 UTC"
+  },
+  {
+   "mmsi": "366772780",
+   "name": "WSF WALLA WALLA",
+   "lat": 47.79489,
+   "lon": -122.49424,
+   "sog_knots": 0.0,
+   "cog_deg": 296.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:00.697706472 +0000 UTC"
+  },
+  {
+   "mmsi": "366749710",
+   "name": "WSF WENATCHEE",
+   "lat": 47.62213,
+   "lon": -122.50919,
+   "sog_knots": 0.0,
+   "cog_deg": 279.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:41.170004304 +0000 UTC"
+  },
+  {
+   "mmsi": "413153000",
+   "name": "XIN DAN DONG",
+   "lat": 47.66207,
+   "lon": -122.45922,
+   "sog_knots": 15.0,
+   "cog_deg": 4.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:57.02292014 +0000 UTC"
+  },
+  {
+   "mmsi": "563174700",
+   "name": "XING FU HAI",
+   "lat": -33.04041,
+   "lon": 152.02575,
+   "sog_knots": 1.0,
+   "cog_deg": 320.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:03.372266494 +0000 UTC"
+  },
+  {
+   "mmsi": "538011124",
+   "name": "YASA AQUALINA",
+   "lat": 29.74543,
+   "lon": -95.06191,
+   "sog_knots": 6.4,
+   "cog_deg": 335.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:46:08.750465378 +0000 UTC"
+  },
+  {
+   "mmsi": "636022798",
+   "name": "YM COURAGE",
+   "lat": 49.3667,
+   "lon": 0.9986,
+   "sog_knots": 0.0,
+   "cog_deg": 38.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:53.534818383 +0000 UTC"
+  },
+  {
+   "mmsi": "503071000",
+   "name": "YOUNG ENDEAVOUR",
+   "lat": -32.74593,
+   "lon": 152.18556,
+   "sog_knots": 0.2,
+   "cog_deg": 143.4,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:19.186238347 +0000 UTC"
+  },
+  {
+   "mmsi": "368926640",
+   "name": "YT812 BAKER",
+   "lat": 47.74515,
+   "lon": -122.40967,
+   "sog_knots": 10.9,
+   "cog_deg": 359.2,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:45.568691014 +0000 UTC"
+  },
+  {
+   "mmsi": "538012548",
+   "name": "YU YAN",
+   "lat": -23.98026,
+   "lon": -46.29079,
+   "sog_knots": 0.0,
+   "cog_deg": 271.6,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:09.001722964 +0000 UTC"
+  },
+  {
+   "mmsi": "319036500",
+   "name": "ZENITH",
+   "lat": 47.61928,
+   "lon": -122.41922,
+   "sog_knots": 11.6,
+   "cog_deg": 64.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:50:18.46982871 +0000 UTC"
+  },
+  {
+   "mmsi": "352911000",
+   "name": "ZUIYO",
+   "lat": -32.88166,
+   "lon": 151.75287,
+   "sog_knots": 0.0,
+   "cog_deg": 335.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:35.137451886 +0000 UTC"
+  },
+  {
+   "mmsi": "477285100",
+   "name": "ZWI HONG KONG",
+   "lat": 28.93506,
+   "lon": -95.32255,
+   "sog_knots": 5.0,
+   "cog_deg": 200.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:49:50.468510166 +0000 UTC"
+  },
+  {
+   "mmsi": "367719610",
+   "name": "ZYANA K",
+   "lat": 28.93544,
+   "lon": -95.32235,
+   "sog_knots": 4.5,
+   "cog_deg": 206.3,
+   "destination": "",
+   "timestamp": "2026-10-05 15:48:48.175210373 +0000 UTC"
   }
  ],
  "sample_data": false
