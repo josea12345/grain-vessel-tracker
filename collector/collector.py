@@ -48,7 +48,7 @@ except ImportError:
 PORTS = {
     # --- US Gulf ---
     "new-orleans": {
-        "name": "New Orleans / S. Louisiana",
+        "name": "Mississippi River (New Orleans / S. Louisiana)",
         "country": "USA",
         "bbox": [[28.6, -92.2], [30.6, -88.6]],
         "marker": [-90.06, 29.95],
@@ -264,7 +264,46 @@ def build_subscription(api_key):
     return {
         "APIKey": api_key,
         "BoundingBoxes": [p["bbox"] for p in PORTS.values()],
-        "FilterMessageTypes": ["PositionReport"],
+        # PositionReport gives live positions (+ navigational status).
+        # ShipStaticData (type 5) carries the crew-declared destination + ETA.
+        "FilterMessageTypes": ["PositionReport", "ShipStaticData"],
+    }
+
+
+# AIS navigational-status codes -> plain-English labels (ITU-1371).
+NAV_STATUS_LABELS = {
+    0: "Underway", 1: "At anchor", 2: "Not under command",
+    3: "Restricted", 4: "Restricted", 5: "Moored",
+    6: "Aground", 7: "Fishing", 8: "Underway",
+}
+
+
+def format_eta(eta):
+    """Turn AISStream's Eta object into a short readable string."""
+    if not isinstance(eta, dict):
+        return ""
+    try:
+        mo, d, h, mi = (int(eta.get("Month", 0)), int(eta.get("Day", 0)),
+                        int(eta.get("Hour", 0)), int(eta.get("Minute", 0)))
+    except (TypeError, ValueError):
+        return ""
+    if not (1 <= mo <= 12 and 1 <= d <= 31):
+        return ""
+    months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+              "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+    return f"{months[mo - 1]} {d}, {h:02d}:{mi:02d} UTC"
+
+
+def extract_static(msg):
+    """Pull destination + ETA from a ShipStaticData message."""
+    meta = msg.get("MetaData", {}) or {}
+    body = (msg.get("Message", {}) or {}).get("ShipStaticData", {}) or {}
+    mmsi = str(meta.get("MMSI", ""))
+    if not mmsi:
+        return None, None
+    return mmsi, {
+        "destination": (body.get("Destination") or "").strip(),
+        "eta": format_eta(body.get("Eta")),
     }
 
 
@@ -289,6 +328,13 @@ def extract_vessel(msg):
         cog = float(body.get("Cog", 0) or 0)
     except (TypeError, ValueError):
         cog = 0.0
+    # Navigational status is the honest "what is it doing" signal AIS gives:
+    # underway / at anchor / moored. AIS cannot show loading vs unloading.
+    try:
+        nav = int(body.get("NavigationalStatus",
+                           body.get("NavStatus", 15)) or 0)
+    except (TypeError, ValueError):
+        nav = 15
     return {
         "mmsi": mmsi,
         "name": (meta.get("ShipName") or "UNKNOWN").strip(),
@@ -296,6 +342,7 @@ def extract_vessel(msg):
         "lon": lon,
         "sog_knots": round(sog, 1),          # speed over ground
         "cog_deg": round(cog, 1),            # course over ground
+        "nav_status": nav,                   # raw AIS code; UI maps to label
         "destination": (meta.get("Destination") or "").strip(),
         "timestamp": meta.get("time_utc") or datetime.now(timezone.utc).isoformat(),
     }
@@ -309,17 +356,24 @@ def archive_snapshot(vessels):
     conn.execute(
         """CREATE TABLE IF NOT EXISTS positions (
                mmsi TEXT, name TEXT, lat REAL, lon REAL,
-               sog_knots REAL, cog_deg REAL, destination TEXT,
+               sog_knots REAL, cog_deg REAL, nav_status INTEGER,
+               destination TEXT, eta TEXT,
                seen_at TEXT,
                PRIMARY KEY (mmsi, seen_at))"""
     )
+    # Migrate older DBs that lack the new columns.
+    cols = {r[1] for r in conn.execute("PRAGMA table_info(positions)")}
+    for col, typ in (("nav_status", "INTEGER"), ("eta", "TEXT")):
+        if col not in cols:
+            conn.execute(f"ALTER TABLE positions ADD COLUMN {col} {typ}")
     now = datetime.now(timezone.utc).isoformat()
     rows = [
         (v["mmsi"], v["name"], v["lat"], v["lon"],
-         v["sog_knots"], v["cog_deg"], v["destination"], now)
+         v["sog_knots"], v["cog_deg"], v.get("nav_status", 15),
+         v["destination"], v.get("eta", ""), now)
         for v in vessels.values()
     ]
-    conn.executemany("INSERT OR IGNORE INTO positions VALUES (?,?,?,?,?,?,?,?)", rows)
+    conn.executemany("INSERT OR IGNORE INTO positions VALUES (?,?,?,?,?,?,?,?,?,?)", rows)
     conn.commit()
     total = conn.execute("SELECT COUNT(*) FROM positions").fetchone()[0]
     conn.close()
@@ -328,6 +382,7 @@ def archive_snapshot(vessels):
 
 async def collect(api_key, seconds):
     vessels = {}
+    static = {}  # mmsi -> {destination, eta} from ShipStaticData messages
     subscription = json.dumps(build_subscription(api_key))
     # Honor standard proxy env vars (some sandboxes/VPNs require egress via proxy).
     proxy = os.environ.get("HTTPS_PROXY") or os.environ.get("https_proxy")
@@ -349,10 +404,28 @@ async def collect(api_key, seconds):
                 msg = json.loads(raw)
             except json.JSONDecodeError:
                 continue
-            if msg.get("MessageType") != "PositionReport":
+            mtype = msg.get("MessageType")
+            if mtype == "ShipStaticData":
+                mmsi, info = extract_static(msg)
+                if mmsi and (info["destination"] or info["eta"]):
+                    static[mmsi] = info
+                    # Backfill vessels already seen this run.
+                    if mmsi in vessels:
+                        if info["destination"]:
+                            vessels[mmsi]["destination"] = info["destination"]
+                        vessels[mmsi]["eta"] = info["eta"]
+                continue
+            if mtype != "PositionReport":
                 continue
             v = extract_vessel(msg)
             if v:
+                info = static.get(v["mmsi"])
+                if info:
+                    if info["destination"]:
+                        v["destination"] = info["destination"]
+                    v["eta"] = info["eta"]
+                else:
+                    v["eta"] = ""
                 vessels[v["mmsi"]] = v
     return vessels, n_messages
 

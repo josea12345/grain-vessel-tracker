@@ -25,12 +25,17 @@ with real-time AIS data. The physical flow behind the futures prices.
 ## Honest limitations (read before citing this in an interview)
 
 - AISStream's position reports do **not** include ship type — it arrives in separate
-  static-data messages the free feed doesn't bundle. So v1 shows **all** vessel traffic
+  static-data messages the free feed doesn't bundle. So this tracker shows **all** vessel traffic
   inside the port zones (bulkers, tankers, tugs, everything with AIS on), labeled honestly
-  as such. "Grain vessel" here means *a vessel inside a grain-port bounding box* — a
-  heuristic, not a cargo manifest. Commercial platforms (e.g. Kpler) combine AIS with port
-  lineup data to identify actual cargoes; this project does not. Ship-type filtering via
-  static-data integration is the v2 improvement.
+  as such. "Grain vessel" here means *a vessel inside a grain-port bounding box* —
+  a heuristic, not a cargo manifest. Commercial platforms (e.g. Kpler) combine AIS with port
+  lineup data to identify actual cargoes; this project does not.
+- The collector also listens to **ShipStaticData** messages, so cards show the crew-declared
+  **destination**, the declared **ETA**, and the real AIS **navigational status**
+  (underway / at anchor / moored). "Est. transit" is a rough great-circle distance ÷ current
+  speed calculation, labeled as such.
+- What AIS **cannot** tell you: whether a vessel is loading vs unloading, or what cargo
+  it carries. Movement status and destinations are as deep as free AIS goes.
 - AISStream is **real-time only** — there is no free historical endpoint. The SQLite
   archive is how history accumulates: it starts the day you first run the collector.
 - Mid-ocean AIS coverage can be patchy; port zones are solid.

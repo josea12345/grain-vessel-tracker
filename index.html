@@ -134,6 +134,9 @@
   .pill { font-size: 11.5px; font-weight: 600; padding: 4px 11px; border-radius: 999px; white-space: nowrap; }
   .pill.mmsi { background: var(--grey-pill); color: var(--body); }
   .pill.type { background: var(--peach); color: var(--peach-ink); }
+  .pillGo { background: #dcfce7; color: #166534; }
+  .pillWarn { background: #fef3c7; color: #92400e; }
+  .pillInfo { background: #dbeafe; color: #1e40af; }
   .vchev { margin-left: auto; color: var(--muted); font-size: 18px; transition: transform 0.2s; flex: 0 0 auto; }
   .vessel.open .vchev { transform: rotate(180deg); }
   .vdetail { display: none; padding: 4px 18px 18px; }
@@ -145,6 +148,10 @@
   .miniCard .v { font-size: 14px; font-weight: 700; color: var(--ink); word-break: break-word; }
   .vActions { display: flex; justify-content: space-between; align-items: center; }
   .btnClose { background: var(--grey-pill); color: var(--body); font-weight: 600; padding: 10px 20px; }
+  .btnTracked { background: #fef3c7; color: #92400e; border: 1px solid #fcd34d; font-weight: 700; padding: 10px 20px; }
+  .btnTracked:hover { background: #fde68a; }
+  #fleetChip { display: none; align-items: center; gap: 6px; }
+  #fleetChip.active { background: var(--green); color: #fff; border-color: var(--green); }
 
   #empty { background: var(--card); border: 1px dashed var(--border); border-radius: 14px; padding: 40px 20px;
     text-align: center; color: var(--muted); font-size: 14px; display: none; }
@@ -211,6 +218,7 @@
       <div id="mapLegend">
         <span><i style="background:#f59e0b"></i>Vessel (AIS)</span>
         <span><i style="background:#22c55e"></i>Grain export port</span>
+        <span><i style="background:#22d3ee"></i>Tracked by you</span>
       </div>
     </div>
   </section>
@@ -226,6 +234,7 @@
       </div>
       <button class="btn btnPrimary" id="searchBtn">Search</button>
       <button class="btn btnOutline" id="sortBtn">Sort by: Name <span>⇅</span></button>
+      <button class="btn btnOutline" id="fleetChip" title="Show only vessels you're tracking">★ My Fleet (<span id="fleetCount">0</span>)</button>
     </div>
     <div id="chips"></div>
 
@@ -303,7 +312,7 @@ const ZONE_PRODUCTS = {
 };
 const PRODUCT_ICON = { 'Corn': '🌽', 'Soybeans': '🫘', 'Soybean Meal': '🟤', 'Soybean Oil': '🫗', 'Wheat': '🌾' };
 
-const state = { q: '', product: 'All', zones: new Set(), underway: new Set(['underway', 'anchored']), sort: 'name' };
+const state = { q: '', product: 'All', zones: new Set(), underway: new Set(['underway', 'anchored', 'moored']), sort: 'name', fleetOnly: false };
 let vessels = [];       // enriched vessel records
 let ports = {};
 const cardByMmsi = new Map();
@@ -318,7 +327,119 @@ function zoneKeyOf(v) {
   }
   return bestD < 4 ? best : null;
 }
-const statusOf = v => (v.sog_knots != null && v.sog_knots >= 0.5) ? 'underway' : 'anchored';
+const NAV_LABELS = {0:'Underway',1:'At anchor',2:'Not under command',3:'Restricted',4:'Restricted',
+  5:'Moored',6:'Aground',7:'Fishing',8:'Underway'};
+// Real AIS navigational status when the collector has it; speed heuristic as fallback.
+const statusOf = v => {
+  const n = v.nav_status;
+  if (n === 0 || n === 8) return 'underway';
+  if (n === 1) return 'anchored';
+  if (n === 5) return 'moored';
+  return (v.sog_knots || 0) >= 0.5 ? 'underway' : 'anchored';
+};
+const statusLabel = v => {
+  const n = v.nav_status;
+  if (n != null && NAV_LABELS[n] != null) return NAV_LABELS[n];
+  return (v.sog_knots || 0) >= 0.5 ? 'Underway' : 'At anchor';
+};
+const statusPillClass = v => ({underway:'pillGo', anchored:'pillWarn', moored:'pillInfo'}[statusOf(v)] || 'pillWarn');
+
+/* ---------- destination matching: AIS destination text -> port coordinates ----------
+   Crew-entered and messy ("SANTOS", "BR SSZ", "US NOLA"), so we fuzzy-match aliases.
+   Used only for a rough transit-time estimate, clearly labeled as such. */
+const DEST_PORTS = [
+  // tracked grain zones
+  [-46.33,-23.96,'SANTOS','SSZ'], [-48.50,-25.50,'PARANAGUA','PNG'],
+  [-52.10,-32.03,'RIO GRANDE'], [-44.38,-2.57,'ITAQUI','SAO LUIS','SÃO LUIS'],
+  [-48.97,-1.53,'BARCARENA','VILA DO CONDE'], [-48.63,-26.23,'SAO FRANCISCO','SÃO FRANCISCO'],
+  [-38.51,-12.97,'SALVADOR'], [-60.63,-32.95,'ROSARIO','SAN LORENZO'],
+  [-62.27,-38.72,'BAHIA BLANCA'], [-58.53,-38.55,'NECOCHEA','QUEQUEN'],
+  [-59.10,-34.10,'ZARATE','ZÁRATE','CAMPANA'], [-58.42,-33.90,'NUEVA PALMIRA','PALMIRA'],
+  [-56.22,-34.90,'MONTEVIDEO'], [-90.06,29.95,'NEW ORLEANS','NOLA','MISSISSIPPI','S LOUISIANA','GRAMERCY','BATON ROUGE','CONVENT','GEISMAR','DARROW','MYRTLE GROVE'],
+  [-94.80,29.70,'HOUSTON','GALVESTON','TEXAS CITY'], [-97.40,27.83,'CORPUS CHRISTI'],
+  [-122.90,46.10,'KALAMA','LONGVIEW','PORTLAND','VANCOUVER WA'],
+  [-122.40,47.60,'SEATTLE','TACOMA'], [-123.10,49.28,'VANCOUVER'], [-130.32,54.32,'PRINCE RUPERT'],
+  [-79.92,9.35,'CRISTOBAL','COLON'], [-79.56,8.95,'BALBOA','PANAMA'],
+  [-96.13,19.19,'VERACRUZ'], [-87.18,12.48,'CORINTO'], [-87.94,15.83,'PUERTO CORTES','CORTES'],
+  [-90.48,13.92,'QUETZAL'], [30.72,46.48,'ODESA','ODESSA','CHORNOMORSK','YUGNIY','YUGNY','PIVDENNY'],
+  [37.77,44.72,'NOVOROSSIYSK'], [28.66,44.17,'CONSTANTA','CONSTANŢA'],
+  [1.08,49.43,'ROUEN'], [115.74,-32.06,'KWINANA','PERTH'], [151.78,-32.92,'NEWCASTLE'],
+  // major world import destinations
+  [4.48,51.95,'ROTTERDAM'], [4.90,52.37,'AMSTERDAM'], [8.98,53.88,'HAMBURG'],
+  [3.73,51.22,'GHENT','GENT','ANTWERP','ANTWERPEN'], [31.21,31.19,'ALEXANDRIA','EL DEKHEILA'],
+  [31.82,31.42,'DAMIETTA'], [39.17,21.49,'JEDDAH'], [35.50,29.52,'AQABA'],
+  [56.42,26.35,'BANDAR ABBAS'], [55.06,24.79,'JEBEL ALI','DUBAI'],
+  [121.49,31.22,'SHANGHAI'], [120.38,36.07,'QINGDAO'], [117.79,39.02,'TIANJIN','XINGANG'],
+  [121.95,29.95,'NINGBO','ZHOUSHAN'], [113.60,22.70,'GUANGZHOU','HUANGPU'],
+  [121.68,38.94,'DALIAN'], [129.04,35.10,'BUSAN','PUSAN'], [126.60,37.45,'INCHEON'],
+  [140.61,35.89,'KASHIMA'], [136.88,35.05,'NAGOYA'], [139.83,35.60,'CHIBA','TOKYO'],
+  [106.78,20.86,'HAIPHONG'], [106.78,10.76,'HO CHI MINH','VUNG TAU','CAT LAI'],
+  [106.88,-6.10,'JAKARTA','TANJUNG PRIOK'], [112.72,-7.20,'SURABAYA'],
+  [91.83,22.25,'CHITTAGONG','CHATTAGRAM'], [72.94,22.24,'KANDLA','MUNDRA','HAZIRA'],
+  [39.66,-4.07,'MOMBASA'], [31.03,-29.87,'DURBAN'], [3.40,6.45,'LAGOS','APAPA','TINCAN'],
+  [-4.02,5.29,'ABIDJAN'], [0.02,5.63,'TEMA'], [-7.62,33.60,'CASABLANCA'],
+  [3.06,36.76,'ALGIERS'], [10.30,36.80,'TUNIS','RADES'],
+  [28.98,41.02,'ISTANBUL','HAYDARPASA'], [27.14,38.41,'IZMIR','ALIAGA'],
+  [35.90,36.77,'MERSIN','ISKENDERUN'], [34.65,31.83,'ASHDOD'], [35.02,32.82,'HAIFA'],
+  [-74.78,10.96,'BARRANQUILLA'], [-75.53,10.42,'CARTAGENA'],
+  [-77.15,-12.05,'CALLAO'], [-79.90,-2.19,'GUAYAQUIL'],
+  [-71.63,-33.03,'VALPARAISO','SAN ANTONIO'],
+];
+function matchDestPort(destText) {
+  if (!destText) return null;
+  const t = ' ' + destText.toUpperCase().replace(/[^A-Z0-9 ]/g, ' ') + ' ';
+  let best = null;
+  for (const [lon, lat, ...aliases] of DEST_PORTS) {
+    for (const a of aliases) {
+      if (a.length >= 3 && t.includes(' ' + a + ' ') || (a.length >= 4 && t.includes(a))) {
+        // prefer longer (more specific) alias matches
+        if (!best || a.length > best.alias.length) best = { lon, lat, alias: a };
+      }
+    }
+  }
+  return best;
+}
+function haversineNm(lat1, lon1, lat2, lon2) {
+  const R = 3440.065, r = Math.PI / 180;
+  const dLat = (lat2 - lat1) * r, dLon = (lon2 - lon1) * r;
+  const a = Math.sin(dLat/2)**2 + Math.cos(lat1*r) * Math.cos(lat2*r) * Math.sin(dLon/2)**2;
+  return 2 * R * Math.asin(Math.sqrt(a));
+}
+// Rough transit estimate: great-circle distance / current speed. Labeled as rough.
+function estimateTransit(v) {
+  const dest = matchDestPort(v.destination);
+  const sog = v.sog_knots || 0;
+  if (!dest || sog < 3) return null;
+  const nm = haversineNm(v.lat, v.lon, dest.lat, dest.lon);
+  const hours = nm / sog;
+  if (!isFinite(hours) || hours <= 0 || hours > 24*120) return null;
+  const d = Math.floor(hours / 24), h = Math.round(hours % 24);
+  return `≈ ${d > 0 ? d + 'd ' : ''}${h}h · ${Math.round(nm).toLocaleString()} nm`;
+}
+
+/* ---------- watchlist ("My Fleet") — saved in this browser ---------- */
+let watch = new Set();
+try { watch = new Set(JSON.parse(localStorage.getItem('gvt_watch') || '[]')); } catch (e) {}
+function saveWatch() { try { localStorage.setItem('gvt_watch', JSON.stringify([...watch])); } catch (e) {} }
+function toggleWatch(mmsi) {
+  watch.has(mmsi) ? watch.delete(mmsi) : watch.add(mmsi);
+  saveWatch(); syncFleetUI(); drawWatched(); render();
+}
+function trackBtnHtml(v) {
+  const on = watch.has(v.mmsi);
+  return `<button class="btn ${on ? 'btnTracked' : 'btnOutline'}" data-track>${on ? '★ Tracked' : '☆ Track vessel'}</button>`;
+}
+function bindTrackBtn(card, mmsi) {
+  const b = card.querySelector('[data-track]');
+  if (b) b.addEventListener('click', ev => { ev.stopPropagation(); toggleWatch(mmsi); });
+}
+function syncFleetUI() {
+  document.getElementById('fleetCount').textContent = watch.size;
+  const chip = document.getElementById('fleetChip');
+  chip.classList.toggle('active', state.fleetOnly);
+  chip.style.display = watch.size ? 'inline-flex' : 'none';
+  if (!watch.size) state.fleetOnly = false;
+}
 
 /* ---------- map (MapLibre GL + CARTO dark basemap, globe projection) ---------- */
 const map = new maplibregl.Map({
@@ -396,6 +517,31 @@ function drawVessels(list) {
   });
 }
 
+function drawWatched() {
+  if (!mapReady) return;
+  const list = vessels.filter(v => watch.has(v.mmsi));
+  const fc = {
+    type: 'FeatureCollection',
+    features: list.map(v => ({
+      type: 'Feature',
+      geometry: { type: 'Point', coordinates: [v.lon, v.lat] },
+      properties: { mmsi: v.mmsi, name: v.name }
+    }))
+  };
+  const src = map.getSource('watched');
+  if (src) { src.setData(fc); return; }
+  map.addSource('watched', { type: 'geojson', data: fc });
+  map.addLayer({
+    id: 'watched-halo', type: 'circle', source: 'watched',
+    paint: { 'circle-radius': 14, 'circle-color': '#22d3ee', 'circle-opacity': 0.35, 'circle-blur': 1 }
+  });
+  map.addLayer({
+    id: 'watched-ring', type: 'circle', source: 'watched',
+    paint: { 'circle-radius': 9, 'circle-color': 'rgba(0,0,0,0)',
+             'circle-stroke-color': '#22d3ee', 'circle-stroke-width': 2.5 }
+  });
+}
+
 function drawPorts(portList) {
   if (!mapReady) { pendingMarkers.ports = portList; return; }
   if (map.getSource('ports')) return;
@@ -432,6 +578,7 @@ function filtered() {
     if (state.product !== 'All' && !(ZONE_PRODUCTS[v.zoneKey] || []).includes(state.product)) return false;
     if (!state.zones.has(v.zoneKey)) return false;
     if (!state.underway.has(statusOf(v))) return false;
+    if (state.fleetOnly && !watch.has(v.mmsi)) return false;
     return true;
   });
   out.sort(state.sort === 'speed'
@@ -449,6 +596,13 @@ function render() {
   document.getElementById('countShown').textContent = rows.length;
   document.getElementById('countTotal').textContent = vessels.length;
   emptyEl.style.display = rows.length ? 'none' : 'block';
+  if (!rows.length) {
+    emptyEl.innerHTML = state.fleetOnly && watch.size
+      ? 'No tracked vessels match those filters. Try clearing the search.'
+      : state.fleetOnly
+        ? '★ <b>My Fleet is empty.</b> Open any vessel card and tap “☆ Track vessel” to start tracking it here.'
+        : 'No vessels match those filters. Try clearing the search or choosing another product.';
+  }
   listEl.innerHTML = '';
   for (const v of rows) {
     const card = document.createElement('div');
@@ -460,7 +614,7 @@ function render() {
         <div class="vdot">🚢</div>
         <div>
           <div class="vname">${escapeHtml(v.name)}</div>
-          <div style="font-size:12px;color:var(--muted);margin-top:2px">${escapeHtml(v.zoneName)} · ${statusOf(v) === 'underway' ? 'Underway' : 'At anchor'}</div>
+          <div style="font-size:12px;color:var(--muted);margin-top:2px">${escapeHtml(v.zoneName)} · <span class="pill ${statusPillClass(v)}" style="margin-left:2px">${statusLabel(v)}</span></div>
         </div>
         <span class="pill mmsi">MMSI: ${v.mmsi}</span>
         <span class="pill type">Grain zone</span>
@@ -469,21 +623,27 @@ function render() {
       <div class="vdetail">
         ${prods ? `<div style="font-size:12.5px;color:var(--muted);margin-bottom:10px">Zone handles: <b style="color:var(--body)">${prods}</b></div>` : ''}
         <div class="statGrid">
+          ${statCard('Status', statusLabel(v))}
           ${statCard('Speed', v.sog_knots != null ? v.sog_knots + ' kn' : '—')}
           ${statCard('Course', v.cog_deg != null ? v.cog_deg + '°' : '—')}
-          ${statCard('Destination', escapeHtml(v.destination || '—'))}
+          ${statCard('Destination', escapeHtml(v.destination || '—') + (v.destination ? '<div style="font-size:10.5px;color:var(--muted)">declared by vessel</div>' : ''))}
+          ${statCard('Declared ETA', escapeHtml(v.eta || '—'))}
+          ${statCard('Est. transit', estimateTransit(v) || '—')}
           ${statCard('Position', `${v.lat.toFixed(3)}, ${v.lon.toFixed(3)}`)}
           ${statCard('Port zone', escapeHtml(v.zoneName))}
           ${statCard('Last update', fmtTime(v.timestamp))}
         </div>
+        <div style="font-size:11.5px;color:var(--muted);margin:2px 0 10px">📡 AIS shows movement (underway / at anchor / moored) and the crew-declared destination — it can't show loading vs unloading, and ETAs are the crew's own estimate.</div>
         <div class="vActions">
           <button class="btn btnClose" data-close>Close ▴</button>
+          ${trackBtnHtml(v)}
           <button class="btn btnPrimary" data-showmap>Show on map →</button>
         </div>
       </div>`;
     card.querySelector('.vrow').addEventListener('click', () => card.classList.toggle('open'));
     card.querySelector('[data-close]').addEventListener('click', (ev) => { ev.stopPropagation(); card.classList.remove('open'); });
     card.querySelector('[data-showmap]').addEventListener('click', (ev) => { ev.stopPropagation(); showOnMap(v.mmsi); });
+    bindTrackBtn(card, v.mmsi);
     listEl.appendChild(card);
     cardByMmsi.set(v.mmsi, card);
   }
@@ -562,7 +722,7 @@ function syncFilters() {
   // sidebar status
   const fs = document.getElementById('fStatus');
   fs.innerHTML = '';
-  [['underway', 'Underway'], ['anchored', 'At anchor']].forEach(([k, label]) => {
+  [['underway', 'Underway'], ['anchored', 'At anchor'], ['moored', 'Moored']].forEach(([k, label]) => {
     const n = vessels.filter(v => statusOf(v) === k).length;
     const lab = document.createElement('label');
     lab.className = 'fitem';
@@ -587,6 +747,10 @@ document.getElementById('sortBtn').addEventListener('click', (ev) => {
   state.sort = state.sort === 'name' ? 'speed' : 'name';
   ev.currentTarget.innerHTML = `Sort by: ${state.sort === 'name' ? 'Name' : 'Speed'} <span>⇅</span>`;
   render();
+});
+document.getElementById('fleetChip').addEventListener('click', () => {
+  state.fleetOnly = !state.fleetOnly;
+  syncFleetUI(); render();
 });
 
 /* ---------- load ---------- */
@@ -613,8 +777,10 @@ fetch('data/vessels.json')
     // map markers
     drawVessels(vessels);
     drawPorts(Object.values(ports).filter(p => p.marker));
+    drawWatched();
 
     syncFilters();
+    syncFleetUI();
     render();
   })
   .catch(err => {
