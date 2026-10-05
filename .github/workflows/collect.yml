@@ -26,4 +26,5 @@ jobs:
           git config user.email "vessel-bot@users.noreply.github.com"
           git add data/vessels.json data/vessels.db
           git diff --quiet --cached || git commit -m "vessel snapshot $(date -u +%F-%H%M)"
+          git pull --rebase origin master
           git push
