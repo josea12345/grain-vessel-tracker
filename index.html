@@ -2,54 +2,140 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Grain Vessel Tracker — 3D</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Grain Vessel Tracker — Live 3D AIS Map</title>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cesium@1.138/Build/Cesium/Widgets/widgets.css">
 <style>
+  :root {
+    --glass: rgba(8, 14, 26, 0.78);
+    --border: rgba(255, 255, 255, 0.09);
+    --text: #eef3f8;
+    --muted: #9fb0c3;
+    --amber: #ffb300;
+    --green: #34d399;
+  }
   html, body, #cesiumContainer { width: 100%; height: 100%; margin: 0; padding: 0; overflow: hidden;
-    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
-  #hud { position: absolute; top: 14px; left: 14px; z-index: 10; background: rgba(10, 18, 12, 0.82);
-    color: #e8f0e4; border: 1px solid #2c4a2e; border-radius: 10px; padding: 12px 16px; max-width: 320px;
-    backdrop-filter: blur(4px); }
-  #hud h1 { margin: 0 0 4px; font-size: 17px; letter-spacing: 0.3px; }
-  #hud h1 .grain { color: #9ccc65; }
-  #hud p { margin: 4px 0; font-size: 12.5px; line-height: 1.45; color: #c4d4bd; }
-  #hud .stats { display: flex; gap: 14px; margin-top: 8px; }
-  #hud .stat b { display: block; font-size: 20px; color: #fff; }
-  #hud .stat span { font-size: 11px; color: #9db394; text-transform: uppercase; letter-spacing: 0.6px; }
-  #banner { position: absolute; top: 14px; right: 14px; z-index: 10; background: rgba(120, 72, 0, 0.85);
-    color: #ffe9c4; border: 1px solid #a86e00; border-radius: 8px; padding: 8px 12px; font-size: 12px;
-    max-width: 260px; display: none; }
-  #legend { position: absolute; bottom: 14px; left: 14px; z-index: 10; background: rgba(10, 18, 12, 0.82);
-    color: #c4d4bd; border: 1px solid #2c4a2e; border-radius: 8px; padding: 8px 12px; font-size: 12px; }
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Helvetica, Arial, sans-serif;
+    background: #060b14; color: var(--text); }
+  .card { background: var(--glass); border: 1px solid var(--border); border-radius: 14px;
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.45); }
+
+  /* Header */
+  #hud { position: absolute; top: 14px; left: 14px; z-index: 10; padding: 14px 16px; max-width: 340px; }
+  #hud h1 { margin: 0 0 2px; font-size: 18px; font-weight: 700; letter-spacing: 0.2px; }
+  #hud h1 .grain { color: var(--green); }
+  #hud .sub { margin: 0 0 10px; font-size: 12.5px; line-height: 1.45; color: var(--muted); }
+  #hud .stats { display: flex; gap: 18px; }
+  #hud .stat b { display: block; font-size: 22px; font-weight: 700; }
+  #hud .stat span { font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.8px; }
+  #liveDot { display: inline-block; width: 8px; height: 8px; border-radius: 50%; background: #34d399;
+    margin-right: 6px; box-shadow: 0 0 8px #34d399; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.45; } }
+
+  /* Search */
+  #searchWrap { position: absolute; top: 14px; right: 14px; z-index: 11; width: 300px; }
+  #searchBox { display: flex; align-items: center; padding: 0 12px; height: 44px; }
+  #searchBox svg { flex: 0 0 auto; margin-right: 8px; opacity: 0.6; }
+  #searchInput { flex: 1; background: transparent; border: none; outline: none; color: var(--text);
+    font-size: 14px; height: 100%; }
+  #searchInput::placeholder { color: var(--muted); }
+  #results { display: none; margin-top: 6px; overflow: hidden; max-height: 320px; overflow-y: auto; }
+  #results.open { display: block; }
+  .result { padding: 10px 14px; cursor: pointer; border-top: 1px solid var(--border); }
+  .result:first-child { border-top: none; }
+  .result:hover, .result.active { background: rgba(255, 179, 0, 0.12); }
+  .result .rname { font-size: 13.5px; font-weight: 600; }
+  .result .rzone { font-size: 11.5px; color: var(--muted); margin-top: 2px; }
+  .noResult { padding: 12px 14px; font-size: 13px; color: var(--muted); }
+
+  /* Vessel detail sheet */
+  #detail { position: absolute; left: 50%; transform: translateX(-50%) translateY(20px); bottom: 18px;
+    z-index: 10; width: min(480px, calc(100vw - 28px)); padding: 16px 18px;
+    opacity: 0; pointer-events: none; transition: opacity 0.25s, transform 0.25s; }
+  #detail.open { opacity: 1; pointer-events: auto; transform: translateX(-50%) translateY(0); }
+  #detail .dhead { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+  #detail h2 { margin: 0; font-size: 17px; font-weight: 700; }
+  #detail .dsub { font-size: 12px; color: var(--muted); margin-top: 2px; }
+  #detailClose { background: rgba(255,255,255,0.08); border: 1px solid var(--border); color: var(--text);
+    width: 30px; height: 30px; border-radius: 50%; font-size: 15px; cursor: pointer; flex: 0 0 auto; }
+  #detailClose:hover { background: rgba(255,255,255,0.16); }
+  #detail .grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-top: 12px; }
+  #detail .fact b { display: block; font-size: 15px; font-weight: 650; }
+  #detail .fact span { font-size: 10.5px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.7px; }
+
+  /* Legend + credit */
+  #legend { position: absolute; bottom: 14px; left: 14px; z-index: 9; padding: 9px 13px; font-size: 12px;
+    color: var(--muted); display: flex; gap: 14px; }
   #legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
-  #credit { position: absolute; bottom: 14px; right: 14px; z-index: 10; color: rgba(255,255,255,0.55);
-    font-size: 11px; text-align: right; }
-  #credit a { color: rgba(255,255,255,0.75); }
+  #credit { position: absolute; bottom: 14px; right: 14px; z-index: 9; color: rgba(255,255,255,0.5);
+    font-size: 10.5px; text-align: right; max-width: 44vw; }
+  #credit a { color: rgba(255,255,255,0.7); }
+
+  #banner { position: absolute; top: 14px; left: 50%; transform: translateX(-50%); z-index: 12;
+    background: rgba(120, 72, 0, 0.9); color: #ffe9c4; border: 1px solid #a86e00; border-radius: 10px;
+    padding: 8px 14px; font-size: 12px; display: none; max-width: calc(100vw - 40px); }
+
+  @media (max-width: 640px) {
+    #hud { top: 10px; left: 10px; right: 10px; max-width: none; padding: 11px 13px; }
+    #hud h1 { font-size: 16px; }
+    #hud .sub { display: none; }
+    #hud .stats { gap: 14px; }
+    #hud .stat b { font-size: 18px; }
+    #searchWrap { top: auto; bottom: 76px; right: 10px; left: 10px; width: auto; }
+    #legend { display: none; }
+    #credit { display: none; }
+    #detail { bottom: 132px; }
+  }
 </style>
 </head>
 <body>
 <div id="cesiumContainer"></div>
 
-<div id="hud">
+<div id="hud" class="card">
   <h1>🚢 <span class="grain">Grain</span> Vessel Tracker</h1>
-  <p>Live vessel traffic inside grain-export port zones, rendered in 3D.
-     Click any vessel for its AIS details.</p>
+  <p class="sub"><span id="liveDot"></span>Live vessel traffic inside grain-export port zones, on a real 3D world map. Search a vessel by name or tap any dot for its AIS details.</p>
   <div class="stats">
     <div class="stat"><b id="statVessels">–</b><span>vessels</span></div>
     <div class="stat"><b id="statPorts">–</b><span>ports</span></div>
     <div class="stat"><b id="statUpdated">–</b><span>updated</span></div>
   </div>
 </div>
-<div id="banner">⚠️ <b>Sample data.</b> Connect the AISStream collector
-  (<span style="font-family:monospace">collector/collector.py</span>) with a free
-  API key for live vessel positions.</div>
-<div id="legend">
-  <div><i style="background:#ffb300"></i>Vessel (AIS)</div>
-  <div><i style="background:#69f0ae"></i>Grain export port</div>
+
+<div id="searchWrap">
+  <div id="searchBox" class="card">
+    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#9fb0c3" stroke-width="2.4" stroke-linecap="round">
+      <circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/>
+    </svg>
+    <input id="searchInput" type="text" placeholder="Search vessel by name…" autocomplete="off" spellcheck="false">
+  </div>
+  <div id="results" class="card"></div>
 </div>
-<div id="credit">Vessel data: <a href="https://aisstream.io" target="_blank" rel="noopener">AISStream.io</a> (free tier) ·
-  Imagery: Esri World Imagery</div>
+
+<div id="detail" class="card">
+  <div class="dhead">
+    <div>
+      <h2 id="dName">—</h2>
+      <div class="dsub" id="dSub">—</div>
+    </div>
+    <button id="detailClose" aria-label="Close">✕</button>
+  </div>
+  <div class="grid">
+    <div class="fact"><b id="dSpeed">—</b><span>speed</span></div>
+    <div class="fact"><b id="dCourse">—</b><span>course</span></div>
+    <div class="fact"><b id="dDest">—</b><span>destination</span></div>
+    <div class="fact"><b id="dMmsi">—</b><span>mmsi</span></div>
+    <div class="fact"><b id="dPos">—</b><span>position</span></div>
+    <div class="fact"><b id="dZone">—</b><span>port zone</span></div>
+  </div>
+</div>
+
+<div id="legend" class="card">
+  <div><i style="background:#ffb300"></i>Vessel (AIS)</div>
+  <div><i style="background:#34d399"></i>Grain export port</div>
+</div>
+<div id="credit">Vessel data: <a href="https://aisstream.io" target="_blank" rel="noopener">AISStream.io</a> (free tier) · Imagery: Esri World Imagery</div>
+<div id="banner">⚠️ <b>Sample data.</b> Connect the AISStream collector for live vessel positions.</div>
 
 <script>
   window.CESIUM_BASE_URL = 'https://cdn.jsdelivr.net/npm/cesium@1.138/Build/Cesium/';
@@ -61,24 +147,26 @@
 import * as Cesium from 'cesium';
 
 const viewer = new Cesium.Viewer('cesiumContainer', {
-  imageryProvider: new Cesium.UrlTemplateImageryProvider({
-    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-    credit: 'Esri World Imagery'
+  // Proper ArcGIS MapServer provider (Web Mercator) — renders the real world map.
+  imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
+    url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer'
   }),
   baseLayerPicker: false, geocoder: false, homeButton: true,
   sceneModePicker: false, navigationHelpButton: false,
   animation: false, timeline: false, fullscreenButton: false,
-  infoBox: true, selectionIndicator: true
+  infoBox: false, selectionIndicator: true
 });
 viewer.scene.globe.enableLighting = false;
 
-// Start framed on the Western Hemisphere grain corridor.
+// Open on the Western Hemisphere grain corridor.
 viewer.camera.setView({
-  destination: Cesium.Cartesian3.fromDegrees(-60, 5, 14000000)
+  destination: Cesium.Cartesian3.fromDegrees(-58, 4, 15000000)
 });
 
+const vesselIndex = [];   // {name, zone, entity}
+const byEntity = new Map();
+
 function headingLine(lon, lat, cogDeg, sogKnots) {
-  // Short projected track: where the vessel is pointed, scaled by speed.
   const lenDeg = Math.max(0.15, Math.min(1.2, sogKnots * 0.06));
   const rad = Cesium.Math.toRadians(cogDeg);
   const dLon = lenDeg * Math.sin(rad) / Math.max(0.2, Math.cos(Cesium.Math.toRadians(lat)));
@@ -86,49 +174,152 @@ function headingLine(lon, lat, cogDeg, sogKnots) {
   return [lon, lat, lon + dLon, lat + dLat];
 }
 
+function showDetail(v) {
+  document.getElementById('dName').textContent = v.name || 'Unknown vessel';
+  document.getElementById('dSub').textContent = `MMSI ${v.mmsi || '—'} · live AIS position`;
+  document.getElementById('dSpeed').textContent = v.sog_knots != null ? `${v.sog_knots} kn` : '—';
+  document.getElementById('dCourse').textContent = v.cog_deg != null ? `${v.cog_deg}°` : '—';
+  document.getElementById('dDest').textContent = v.destination || '—';
+  document.getElementById('dMmsi').textContent = v.mmsi || '—';
+  document.getElementById('dPos').textContent =
+    (v.lat != null && v.lon != null) ? `${v.lat.toFixed(2)}, ${v.lon.toFixed(2)}` : '—';
+  document.getElementById('dZone').textContent = v.zone || '—';
+  document.getElementById('detail').classList.add('open');
+}
+function hideDetail() {
+  document.getElementById('detail').classList.remove('open');
+  if (viewer.selectedEntity) viewer.selectedEntity = undefined;
+}
+document.getElementById('detailClose').addEventListener('click', hideDetail);
+
+viewer.selectedEntityChanged.addEventListener(() => {
+  const e = viewer.selectedEntity;
+  if (e && byEntity.has(e)) showDetail(byEntity.get(e));
+  else if (!e) hideDetail();
+});
+
+function flyToVessel(entry) {
+  const v = entry.vessel;
+  viewer.camera.flyTo({
+    destination: Cesium.Cartesian3.fromDegrees(v.lon, v.lat, 600000),
+    duration: 1.6
+  });
+  viewer.selectedEntity = entry.entity; // opens the detail sheet
+  closeResults();
+  document.getElementById('searchInput').value = entry.name;
+}
+
+// ---- search ----
+const input = document.getElementById('searchInput');
+const resultsBox = document.getElementById('results');
+let activeIdx = -1;
+
+function closeResults() { resultsBox.classList.remove('open'); resultsBox.innerHTML = ''; activeIdx = -1; }
+
+function renderResults(matches) {
+  resultsBox.innerHTML = '';
+  if (!matches.length) {
+    resultsBox.innerHTML = '<div class="noResult">No vessel matches that name.</div>';
+  } else {
+    matches.slice(0, 8).forEach((m, i) => {
+      const div = document.createElement('div');
+      div.className = 'result' + (i === activeIdx ? ' active' : '');
+      div.innerHTML = `<div class="rname">${m.name}</div><div class="rzone">${m.zone || 'Port zone'} · ${m.vessel.sog_knots ?? '—'} kn</div>`;
+      div.addEventListener('mousedown', (ev) => { ev.preventDefault(); flyToVessel(m); });
+      resultsBox.appendChild(div);
+    });
+  }
+  resultsBox.classList.add('open');
+}
+
+input.addEventListener('input', () => {
+  const q = input.value.trim().toLowerCase();
+  activeIdx = -1;
+  if (!q) { closeResults(); return; }
+  renderResults(vesselIndex.filter(v => v.name.toLowerCase().includes(q)));
+});
+
+input.addEventListener('keydown', (ev) => {
+  const items = resultsBox.querySelectorAll('.result');
+  if (ev.key === 'ArrowDown' || ev.key === 'ArrowUp') {
+    ev.preventDefault();
+    if (!items.length) return;
+    activeIdx = ev.key === 'ArrowDown'
+      ? Math.min(activeIdx + 1, items.length - 1)
+      : Math.max(activeIdx - 1, 0);
+    items.forEach((el, i) => el.classList.toggle('active', i === activeIdx));
+    items[activeIdx].scrollIntoView({ block: 'nearest' });
+  } else if (ev.key === 'Enter') {
+    const q = input.value.trim().toLowerCase();
+    const m = vesselIndex.filter(v => v.name.toLowerCase().includes(q));
+    if (m.length) flyToVessel(activeIdx >= 0 && m[activeIdx] ? m[activeIdx] : m[0]);
+  } else if (ev.key === 'Escape') {
+    closeResults(); input.blur();
+  }
+});
+input.addEventListener('blur', () => setTimeout(closeResults, 150));
+input.addEventListener('focus', () => {
+  if (input.value.trim()) input.dispatchEvent(new Event('input'));
+});
+
+// ---- data ----
 fetch('data/vessels.json')
   .then(r => { if (!r.ok) throw new Error('vessels.json not found'); return r.json(); })
   .then(snap => {
     const vessels = snap.vessels || [];
+    const ports = snap.ports || {};
     document.getElementById('statVessels').textContent = vessels.length;
-    document.getElementById('statPorts').textContent = Object.keys(snap.ports || {}).length;
+    document.getElementById('statPorts').textContent = Object.keys(ports).length;
     const updated = new Date(snap.generated_at);
     document.getElementById('statUpdated').textContent =
-      isNaN(updated) ? '—' : updated.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+      isNaN(updated) ? '—' : updated.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
     if (snap.sample_data) document.getElementById('banner').style.display = 'block';
+
+    // Map each vessel to its port zone for search context.
+    const zoneOf = (v) => {
+      for (const [, p] of Object.entries(ports)) {
+        const [plon, plat] = p.marker || [];
+        if (plon == null) continue;
+        if (Math.abs(v.lon - plon) < 3 && Math.abs(v.lat - plat) < 3) return p.name;
+      }
+      return v.zone || '';
+    };
 
     for (const v of vessels) {
       const pos = Cesium.Cartesian3.fromDegrees(v.lon, v.lat);
       const [x1, y1, x2, y2] = headingLine(v.lon, v.lat, v.cog_deg || 0, v.sog_knots || 0);
-      viewer.entities.add({
+      const entity = viewer.entities.add({
         position: pos,
         point: { pixelSize: 9, color: Cesium.Color.fromCssColorString('#ffb300'),
                  outlineColor: Cesium.Color.BLACK, outlineWidth: 1.5 },
         polyline: { positions: Cesium.Cartesian3.fromDegreesArray([x1, y1, x2, y2]),
                     width: 2, material: Cesium.Color.fromCssColorString('#ffb300').withAlpha(0.7) },
-        label: { text: v.name, font: '11px sans-serif', fillColor: Cesium.Color.WHITE,
+        label: { text: v.name || '', font: '11px sans-serif', fillColor: Cesium.Color.WHITE,
                  style: Cesium.LabelStyle.OUTLINE, outlineWidth: 2,
                  pixelOffset: new Cesium.Cartesian2(0, -18),
-                 distanceDisplayCondition: new Cesium.DistanceDisplayCondition(0, 6000000) },
-        description:
-          `<b>${v.name}</b><br>MMSI: ${v.mmsi}<br>` +
-          `Speed: ${v.sog_knots} kn · Course: ${v.cog_deg}°<br>` +
-          `Destination: ${v.destination || '—'}<br>` +
-          `<span style="color:#888">Position: ${v.lat}, ${v.lon}</span>`
+                 distanceDisplayCondition: new Cesium.DistanceDisplayCondition(0, 6000000) }
       });
+      const zone = zoneOf(v);
+      const entry = { name: v.name || 'Unknown', zone, vessel: { ...v, zone }, entity };
+      vesselIndex.push(entry);
+      byEntity.set(entity, entry.vessel);
     }
+    vesselIndex.sort((a, b) => a.name.localeCompare(b.name));
 
-    for (const [, p] of Object.entries(snap.ports || {})) {
-      const [lon, lat] = p.marker;
-      viewer.entities.add({
+    for (const [, p] of Object.entries(ports)) {
+      const [lon, lat] = p.marker || [];
+      if (lon == null) continue;
+      const pent = viewer.entities.add({
         position: Cesium.Cartesian3.fromDegrees(lon, lat),
-        point: { pixelSize: 13, color: Cesium.Color.fromCssColorString('#69f0ae'),
+        point: { pixelSize: 13, color: Cesium.Color.fromCssColorString('#34d399'),
                  outlineColor: Cesium.Color.BLACK, outlineWidth: 2 },
         label: { text: `⚓ ${p.name}`, font: 'bold 13px sans-serif', fillColor: Cesium.Color.WHITE,
                  style: Cesium.LabelStyle.OUTLINE, outlineWidth: 2,
-                 pixelOffset: new Cesium.Cartesian2(0, -22) },
-        description: `<b>${p.name}</b> (${p.country})<br>Grain export gateway — USDA inspection volumes coming in v2.`
+                 pixelOffset: new Cesium.Cartesian2(0, -22) }
       });
+      byEntity.set(pent, { name: `⚓ ${p.name}`, mmsi: '—', sog_knots: null, cog_deg: null,
+        destination: `${p.country || ''} grain export gateway`, lat: lat, lon: lon,
+        zone: 'Port marker' });
     }
   })
   .catch(err => {
