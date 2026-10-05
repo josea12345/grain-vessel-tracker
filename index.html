@@ -614,7 +614,9 @@ function render() {
       ? 'No tracked vessels match those filters. Try clearing the search.'
       : state.fleetOnly
         ? '★ <b>My Fleet is empty.</b> Open any vessel card and tap “☆ Track vessel” to start tracking it here.'
-        : 'No vessels match those filters. Try clearing the search or choosing another product.';
+        : state.q.trim()
+          ? `No vessels match “<b>${escapeHtml(state.q.trim())}</b>”. It may be outside coverage or not broadcasting — tell me the vessel name and I'll track it worldwide.`
+          : 'No vessels match those filters. Try clearing the search or choosing another product.';
   }
   listEl.innerHTML = '';
   for (const v of shown) {
