@@ -326,8 +326,13 @@ const statusOf = v => (v.sog_knots != null && v.sog_knots >= 0.5) ? 'underway' :
 
 /* ---------- map ---------- */
 const viewer = new Cesium.Viewer('cesiumContainer', {
-  imageryProvider: new Cesium.ArcGisMapServerImageryProvider({
-    url: 'https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer'
+  // Direct tile-URL provider (no metadata handshake): Esri World Imagery
+  // serves Web Mercator tiles at /tile/{z}/{y}/{x} — verified live.
+  imageryProvider: new Cesium.UrlTemplateImageryProvider({
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+    tilingScheme: new Cesium.WebMercatorTilingScheme(),
+    maximumLevel: 19,
+    credit: 'Esri World Imagery'
   }),
   baseLayerPicker: false, geocoder: false, homeButton: false,
   sceneModePicker: false, navigationHelpButton: false,
