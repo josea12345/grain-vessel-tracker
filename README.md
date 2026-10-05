@@ -14,13 +14,13 @@ with real-time AIS data. The physical flow behind the futures prices.
   France, Australia), keeps the latest position per vessel,
   writes `data/vessels.json` for the globe, and archives every snapshot
   into `data/vessels.db` so voyage history builds from day one.
-- **Web app** (`index.html`) — a MagicPort-style vessel directory on a live 3D globe
-  ([CesiumJS](https://cesium.com/platform/cesiumjs/) + Esri World Imagery):
+- **Web app** (`index.html`) — a MagicPort-style vessel directory on a live dark-mode
+  3D map ([MapLibre GL](https://maplibre.org) + CARTO basemap, globe projection):
   search vessels by name or MMSI, filter by product focus (corn, soybeans, soybean meal,
   soybean oil, wheat — mapped honestly at the port-zone level), port zone, and
   underway/at-anchor status; expandable vessel cards with AIS details (speed, course,
-  destination, position); "Show on map" flies the globe to any vessel; port markers
-  for the export gateways.
+  destination, position); "Show on map" smoothly flies the map to any vessel; glowing
+  markers for vessels and port gateways.
 
 ## Honest limitations (read before citing this in an interview)
 

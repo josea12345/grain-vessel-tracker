@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Grain Vessel Tracker — Search and Track Grain Vessels Live</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cesium@1.138/Build/Cesium/Widgets/widgets.css">
+<link href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css" rel="stylesheet">
 <style>
   :root {
     --bg: #f5f8fc;
@@ -69,7 +69,10 @@
     border-bottom: 1px solid var(--border); }
   #mapHead b { color: var(--ink); font-size: 15px; }
   #mapHead span { font-size: 12.5px; color: var(--muted); }
-  #cesiumContainer { width: 100%; height: 430px; background: #060b14; position: relative; }
+  #mapContainer { width: 100%; height: 430px; background: #0b1220; position: relative; }
+  #mapContainer .maplibregl-popup-content { background: #101a2e; color: #eef3f8; border-radius: 10px;
+    padding: 8px 12px; font-size: 13px; font-weight: 600; border: 1px solid rgba(255,255,255,0.12); }
+  #mapContainer .maplibregl-popup-tip { border-top-color: #101a2e; }
   #mapLegend { display: flex; gap: 16px; padding: 10px 18px; font-size: 12.5px; color: var(--muted);
     border-top: 1px solid var(--border); }
   #mapLegend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
@@ -163,7 +166,7 @@
     #filters { position: static; }
     #stats { grid-template-columns: repeat(2, 1fr); }
     #navLinks { display: none; }
-    #cesiumContainer { height: 320px; }
+    #mapContainer { height: 320px; }
     .statGrid { grid-template-columns: repeat(2, 1fr); }
     h1 { font-size: 24px; }
   }
@@ -203,8 +206,8 @@
 
   <section id="mapSection">
     <div id="mapCard">
-      <div id="mapHead"><b>🛰 Live 3D world map</b><span>Real satellite imagery · tap a vessel dot to open its card</span></div>
-      <div id="cesiumContainer"></div>
+      <div id="mapHead"><b>🛰 Live vessel map</b><span>Tap a vessel dot to open its card · drag to spin, scroll to zoom</span></div>
+      <div id="mapContainer"></div>
       <div id="mapLegend">
         <span><i style="background:#f59e0b"></i>Vessel (AIS)</span>
         <span><i style="background:#22c55e"></i>Grain export port</span>
@@ -254,19 +257,13 @@
       port zone — export gateways plus key transit chokepoints (Panama Canal) and major import terminals —
       not a verified cargo manifest. Product filters highlight port zones that handle each product.</div>
     Vessel data: <a href="https://aisstream.io" target="_blank" rel="noopener">AISStream.io</a> (free tier) ·
-    Imagery: Esri World Imagery · Built by <a href="https://github.com/josea12345" target="_blank" rel="noopener">josea12345</a>
+    Map: Esri, OpenStreetMap contributors ·
+    Built by <a href="https://github.com/josea12345" target="_blank" rel="noopener">josea12345</a>
   </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 <script>
-  window.CESIUM_BASE_URL = 'https://cdn.jsdelivr.net/npm/cesium@1.138/Build/Cesium/';
-</script>
-<script type="importmap">
-  { "imports": { "cesium": "https://cdn.jsdelivr.net/npm/cesium@1.138/Build/Cesium/index.js" } }
-</script>
-<script type="module">
-import * as Cesium from 'cesium';
-
 /* ---------- data ---------- */
 const PRODUCTS = ['Corn', 'Soybeans', 'Soybean Meal', 'Soybean Oil', 'Wheat'];
 // Zone-level export products (honest: the zone handles these; cargo per vessel isn't verified).
@@ -309,7 +306,6 @@ const PRODUCT_ICON = { 'Corn': '🌽', 'Soybeans': '🫘', 'Soybean Meal': '🟤
 const state = { q: '', product: 'All', zones: new Set(), underway: new Set(['underway', 'anchored']), sort: 'name' };
 let vessels = [];       // enriched vessel records
 let ports = {};
-const entityByMmsi = new Map();
 const cardByMmsi = new Map();
 
 function zoneKeyOf(v) {
@@ -324,35 +320,106 @@ function zoneKeyOf(v) {
 }
 const statusOf = v => (v.sog_knots != null && v.sog_knots >= 0.5) ? 'underway' : 'anchored';
 
-/* ---------- map ---------- */
-const viewer = new Cesium.Viewer('cesiumContainer', {
-  // Direct tile-URL provider (no metadata handshake): Esri World Imagery
-  // serves Web Mercator tiles at /tile/{z}/{y}/{x} — verified live.
-  imageryProvider: new Cesium.UrlTemplateImageryProvider({
-    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
-    tilingScheme: new Cesium.WebMercatorTilingScheme(),
-    maximumLevel: 19,
-    credit: 'Esri World Imagery'
-  }),
-  baseLayerPicker: false, geocoder: false, homeButton: false,
-  sceneModePicker: false, navigationHelpButton: false,
-  animation: false, timeline: false, fullscreenButton: false,
-  infoBox: false, selectionIndicator: true
+/* ---------- map (MapLibre GL + CARTO dark basemap, globe projection) ---------- */
+const map = new maplibregl.Map({
+  container: 'mapContainer',
+  style: {
+    version: 8,
+    sources: {
+      'esri-dark': {
+        type: 'raster',
+        tiles: ['https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}'],
+        tileSize: 256,
+        maxzoom: 16,
+        attribution: '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors © <a href="https://www.esri.com">Esri</a>'
+      },
+      'esri-ref': {
+        type: 'raster',
+        tiles: ['https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Reference/MapServer/tile/{z}/{y}/{x}'],
+        tileSize: 256,
+        maxzoom: 16
+      }
+    },
+    layers: [
+      { id: 'esri-dark', type: 'raster', source: 'esri-dark' },
+      { id: 'esri-ref', type: 'raster', source: 'esri-ref' }
+    ]
+  },
+  center: [-30, 18],
+  zoom: 1.7,
+  attributionControl: { compact: true }
 });
-viewer.scene.globe.enableLighting = false;
-viewer.camera.setView({ destination: Cesium.Cartesian3.fromDegrees(-58, 4, 15000000) });
+try { map.setProjection({ type: 'globe' }); } catch (e) { /* fall back to flat map */ }
 
-function headingLine(lon, lat, cogDeg, sogKnots) {
-  const lenDeg = Math.max(0.15, Math.min(1.2, sogKnots * 0.06));
-  const rad = Cesium.Math.toRadians(cogDeg);
-  const dLon = lenDeg * Math.sin(rad) / Math.max(0.2, Math.cos(Cesium.Math.toRadians(lat)));
-  return [lon, lat, lon + dLon, lat + lenDeg * Math.cos(rad)];
+let mapReady = false;
+const pendingMarkers = { vessels: null, ports: null };
+map.on('load', () => {
+  mapReady = true;
+  if (pendingMarkers.vessels) drawVessels(pendingMarkers.vessels);
+  if (pendingMarkers.ports) drawPorts(pendingMarkers.ports);
+});
+
+function drawVessels(list) {
+  if (!mapReady) { pendingMarkers.vessels = list; return; }
+  const fc = {
+    type: 'FeatureCollection',
+    features: list.map(v => ({
+      type: 'Feature',
+      geometry: { type: 'Point', coordinates: [v.lon, v.lat] },
+      properties: { mmsi: v.mmsi, name: v.name }
+    }))
+  };
+  const src = map.getSource('vessels');
+  if (src) { src.setData(fc); return; }
+  map.addSource('vessels', { type: 'geojson', data: fc });
+  map.addLayer({
+    id: 'vessel-halo', type: 'circle', source: 'vessels',
+    paint: { 'circle-radius': 10, 'circle-color': '#f59e0b', 'circle-opacity': 0.22, 'circle-blur': 1 }
+  });
+  map.addLayer({
+    id: 'vessel-core', type: 'circle', source: 'vessels',
+    paint: { 'circle-radius': 5, 'circle-color': '#fbbf24',
+             'circle-stroke-color': '#ffffff', 'circle-stroke-width': 1.5 }
+  });
+  const popup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 12 });
+  map.on('mouseenter', 'vessel-core', () => { map.getCanvas().style.cursor = 'pointer'; });
+  map.on('mouseleave', 'vessel-core', () => { map.getCanvas().style.cursor = ''; popup.remove(); });
+  map.on('mousemove', 'vessel-core', (e) => {
+    const f = e.features[0];
+    popup.setLngLat(f.geometry.coordinates)
+      .setHTML('<b>' + escapeHtml(f.properties.name) + '</b>')
+      .addTo(map);
+  });
+  map.on('click', 'vessel-core', (e) => {
+    const mmsi = e.features[0].properties.mmsi;
+    if (cardByMmsi.has(mmsi)) openCard(mmsi, true);
+  });
 }
 
-viewer.selectedEntityChanged.addEventListener(() => {
-  const e = viewer.selectedEntity;
-  if (e && e._vesselMmsi && cardByMmsi.has(e._vesselMmsi)) openCard(e._vesselMmsi, true);
-});
+function drawPorts(portList) {
+  if (!mapReady) { pendingMarkers.ports = portList; return; }
+  if (map.getSource('ports')) return;
+  map.addSource('ports', {
+    type: 'geojson',
+    data: {
+      type: 'FeatureCollection',
+      features: portList.map(p => ({
+        type: 'Feature',
+        geometry: { type: 'Point', coordinates: p.marker },
+        properties: { name: p.name }
+      }))
+    }
+  });
+  map.addLayer({
+    id: 'port-halo', type: 'circle', source: 'ports',
+    paint: { 'circle-radius': 12, 'circle-color': '#22c55e', 'circle-opacity': 0.25, 'circle-blur': 1 }
+  });
+  map.addLayer({
+    id: 'port-core', type: 'circle', source: 'ports',
+    paint: { 'circle-radius': 6.5, 'circle-color': '#22c55e',
+             'circle-stroke-color': '#ffffff', 'circle-stroke-width': 2 }
+  });
+}
 
 /* ---------- directory ---------- */
 const listEl = document.getElementById('list');
@@ -434,11 +501,7 @@ function showOnMap(mmsi) {
   const v = vessels.find(x => x.mmsi === mmsi);
   if (!v) return;
   document.getElementById('mapSection').scrollIntoView({ behavior: 'smooth' });
-  viewer.camera.flyTo({
-    destination: Cesium.Cartesian3.fromDegrees(v.lon, v.lat, 500000),
-    duration: 1.4
-  });
-  setTimeout(() => { viewer.selectedEntity = entityByMmsi.get(mmsi); }, 1500);
+  map.flyTo({ center: [v.lon, v.lat], zoom: 5, duration: 1800 });
 }
 
 function escapeHtml(s) {
@@ -547,35 +610,9 @@ fetch('data/vessels.json')
     vessels.sort((a, b) => a.name.localeCompare(b.name));
     Object.keys(ports).forEach(k => state.zones.add(k));
 
-    // map entities
-    for (const v of vessels) {
-      const [x1, y1, x2, y2] = headingLine(v.lon, v.lat, v.cog_deg || 0, v.sog_knots || 0);
-      const e = viewer.entities.add({
-        position: Cesium.Cartesian3.fromDegrees(v.lon, v.lat),
-        point: { pixelSize: 9, color: Cesium.Color.fromCssColorString('#f59e0b'),
-                 outlineColor: Cesium.Color.BLACK, outlineWidth: 1.5 },
-        polyline: { positions: Cesium.Cartesian3.fromDegreesArray([x1, y1, x2, y2]),
-                    width: 2, material: Cesium.Color.fromCssColorString('#f59e0b').withAlpha(0.7) },
-        label: { text: v.name, font: '11px sans-serif', fillColor: Cesium.Color.WHITE,
-                 style: Cesium.LabelStyle.OUTLINE, outlineWidth: 2,
-                 pixelOffset: new Cesium.Cartesian2(0, -18),
-                 distanceDisplayCondition: new Cesium.DistanceDisplayCondition(0, 6000000) }
-      });
-      e._vesselMmsi = v.mmsi;
-      entityByMmsi.set(v.mmsi, e);
-    }
-    for (const p of Object.values(ports)) {
-      const [lon, lat] = p.marker || [];
-      if (lon == null) continue;
-      viewer.entities.add({
-        position: Cesium.Cartesian3.fromDegrees(lon, lat),
-        point: { pixelSize: 13, color: Cesium.Color.fromCssColorString('#22c55e'),
-                 outlineColor: Cesium.Color.BLACK, outlineWidth: 2 },
-        label: { text: `⚓ ${p.name}`, font: 'bold 13px sans-serif', fillColor: Cesium.Color.WHITE,
-                 style: Cesium.LabelStyle.OUTLINE, outlineWidth: 2,
-                 pixelOffset: new Cesium.Cartesian2(0, -22) }
-      });
-    }
+    // map markers
+    drawVessels(vessels);
+    drawPorts(Object.values(ports).filter(p => p.marker));
 
     syncFilters();
     render();
