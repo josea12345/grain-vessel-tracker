@@ -236,7 +236,6 @@
       <button class="btn btnPrimary" id="searchBtn">Search</button>
       <button class="btn btnOutline" id="sortBtn">Sort by: Name <span>⇅</span></button>
       <button class="btn btnOutline" id="fleetChip" title="Show only vessels you're tracking">★ My Fleet (<span id="fleetCount">0</span>)</button>
-      <button class="btn btnOutline" id="cargillChip" title="Show only Cargill-tagged vessels" style="display:none">🏢 Cargill (<span id="cargillCount">0</span>)</button>
     </div>
     <div id="chips"></div>
 
@@ -314,7 +313,7 @@ const ZONE_PRODUCTS = {
 };
 const PRODUCT_ICON = { 'Corn': '🌽', 'Soybeans': '🫘', 'Soybean Meal': '🟤', 'Soybean Oil': '🫗', 'Wheat': '🌾' };
 
-const state = { q: '', product: 'All', zones: new Set(), underway: new Set(['underway', 'anchored', 'moored']), sort: 'name', fleetOnly: false, cargillOnly: false };
+const state = { q: '', product: 'All', zones: new Set(), underway: new Set(['underway', 'anchored', 'moored']), sort: 'name', fleetOnly: false };
 let vessels = [];       // enriched vessel records
 let ports = {};
 let lanes = {};
@@ -450,12 +449,6 @@ function syncFleetUI() {
   chip.classList.toggle('active', state.fleetOnly);
   chip.style.display = watch.size ? 'inline-flex' : 'none';
   if (!watch.size) state.fleetOnly = false;
-  const nCargill = vessels.filter(v => (v.tags || []).includes('cargill')).length;
-  document.getElementById('cargillCount').textContent = nCargill;
-  const cchip = document.getElementById('cargillChip');
-  cchip.classList.toggle('active', state.cargillOnly);
-  cchip.style.display = nCargill ? 'inline-flex' : 'none';
-  if (!nCargill) state.cargillOnly = false;
 }
 
 /* ---------- map (MapLibre GL + CARTO dark basemap, globe projection) ---------- */
@@ -596,7 +589,6 @@ function filtered() {
     if (!state.zones.has(v.zoneKey)) return false;
     if (!state.underway.has(statusOf(v))) return false;
     if (state.fleetOnly && !watch.has(v.mmsi)) return false;
-    if (state.cargillOnly && !(v.tags || []).includes('cargill')) return false;
     return true;
   });
   out.sort(state.sort === 'speed'
@@ -643,7 +635,6 @@ function render() {
         ${v.zoneKey === 'tracked' ? '<span class="pill pillInfo">★ Tracked</span>'
           : lanes[v.zoneKey] ? '<span class="pill pillLane">🌊 Lane</span>'
           : '<span class="pill type">Grain zone</span>'}
-        ${(v.tags || []).includes('cargill') ? '<span class="pill" style="background:#e8f5e9;color:#1b5e20">🏢 Cargill</span>' : ''}
         <span class="vchev">▾</span>
       </div>
       <div class="vdetail">
@@ -782,10 +773,6 @@ document.getElementById('sortBtn').addEventListener('click', (ev) => {
 });
 document.getElementById('fleetChip').addEventListener('click', () => {
   state.fleetOnly = !state.fleetOnly;
-  syncFleetUI(); render();
-});
-document.getElementById('cargillChip').addEventListener('click', () => {
-  state.cargillOnly = !state.cargillOnly;
   syncFleetUI(); render();
 });
 

@@ -288,15 +288,10 @@ DATA_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__
 
 def load_tracked_mmsis():
     """MMSIs the user asked to track anywhere in the world (not just in zones)."""
-    return [str(x.get("mmsi", x)) for x in _tracked_entries()
-            if str(x.get("mmsi", x)).isdigit()]
-
-
-def _tracked_entries():
     path = os.path.join(DATA_DIR, "tracked_mmsis.json")
     try:
         data = json.load(open(path))
-        return data if isinstance(data, list) else []
+        return [str(x.get("mmsi", x)) for x in data if str(x.get("mmsi", x)).isdigit()]
     except (OSError, ValueError, AttributeError):
         return []
 
@@ -492,11 +487,7 @@ async def collect(api_key, seconds):
     if tracked:
         v2, n2 = await collect_one(
             json.dumps(build_mmsi_subscription(api_key, tracked)), min(seconds, 120))
-        tag_by_mmsi = {str(x.get("mmsi", x)): x.get("tags", [])
-                       for x in _tracked_entries()}
         for mmsi, v in v2.items():
-            if tag_by_mmsi.get(mmsi):
-                v["tags"] = tag_by_mmsi[mmsi]
             vessels.setdefault(mmsi, v)
     return vessels, n1 + n2
 
