@@ -1,5 +1,5 @@
 {
- "generated_at": "2026-10-05T15:14:02.874562+00:00",
+ "generated_at": "2026-10-05T15:39:48.810252+00:00",
  "ports": {
   "new-orleans": {
    "name": "New Orleans / S. Louisiana",
@@ -18,277 +18,257 @@
    ]
   }
  },
- "vessel_count": 27,
+ "vessel_count": 25,
  "vessels": [
   {
    "mmsi": "710008780",
    "name": "ALPHARD",
-   "lat": -23.99231,
-   "lon": -46.31002,
-   "sog_knots": 5.7,
-   "cog_deg": 121.7,
+   "lat": -23.95145,
+   "lon": -46.30821,
+   "sog_knots": 8.1,
+   "cog_deg": 335.4,
    "destination": "",
-   "timestamp": "2026-10-05 15:11:57.026131738 +0000 UTC"
+   "timestamp": "2026-10-05 15:39:28.222516733 +0000 UTC"
   },
   {
-   "mmsi": "257569000",
-   "name": "BOW PROSPER",
-   "lat": -23.92539,
-   "lon": -46.32847,
-   "sog_knots": 0.0,
-   "cog_deg": 341.3,
+   "mmsi": "477392400",
+   "name": "AMOY POWER",
+   "lat": -23.94302,
+   "lon": -46.31274,
+   "sog_knots": 0.1,
+   "cog_deg": 174.7,
    "destination": "",
-   "timestamp": "2026-10-05 15:13:40.44667319 +0000 UTC"
-  },
-  {
-   "mmsi": "368215640",
-   "name": "CAPT.TKJ",
-   "lat": 29.77765,
-   "lon": -92.17798,
-   "sog_knots": 0.0,
-   "cog_deg": 19.5,
-   "destination": "",
-   "timestamp": "2026-10-05 15:13:51.050576424 +0000 UTC"
+   "timestamp": "2026-10-05 15:39:37.78718236 +0000 UTC"
   },
   {
    "mmsi": "367001570",
    "name": "CATHY",
-   "lat": 29.77976,
-   "lon": -92.17734,
+   "lat": 29.77975,
+   "lon": -92.17735,
    "sog_knots": 0.0,
    "cog_deg": 360.0,
    "destination": "",
-   "timestamp": "2026-10-05 15:13:55.332597046 +0000 UTC"
+   "timestamp": "2026-10-05 15:38:26.367875837 +0000 UTC"
   },
   {
    "mmsi": "710006060",
    "name": "CAUE",
-   "lat": -23.95002,
+   "lat": -23.95003,
    "lon": -46.31158,
    "sog_knots": 0.0,
    "cog_deg": 302.2,
    "destination": "",
-   "timestamp": "2026-10-05 15:12:52.998750304 +0000 UTC"
+   "timestamp": "2026-10-05 15:39:22.095237918 +0000 UTC"
   },
   {
    "mmsi": "477906500",
    "name": "CL HENGYANG",
-   "lat": -23.96822,
-   "lon": -46.29798,
+   "lat": -23.96819,
+   "lon": -46.29799,
    "sog_knots": 0.0,
    "cog_deg": 260.2,
    "destination": "",
-   "timestamp": "2026-10-05 15:12:51.71629904 +0000 UTC"
+   "timestamp": "2026-10-05 15:36:54.024418226 +0000 UTC"
   },
   {
    "mmsi": "228479800",
    "name": "CMA CGM SYRACUSE",
-   "lat": -24.00944,
-   "lon": -46.33817,
-   "sog_knots": 9.2,
-   "cog_deg": 22.6,
+   "lat": -23.98119,
+   "lon": -46.28896,
+   "sog_knots": 6.3,
+   "cog_deg": 3.2,
    "destination": "",
-   "timestamp": "2026-10-05 15:13:12.796905791 +0000 UTC"
-  },
-  {
-   "mmsi": "636015657",
-   "name": "GRACIOUS ACE",
-   "lat": -23.95725,
-   "lon": -46.30054,
-   "sog_knots": 0.0,
-   "cog_deg": 55.8,
-   "destination": "",
-   "timestamp": "2026-10-05 15:12:17.524410518 +0000 UTC"
+   "timestamp": "2026-10-05 15:38:01.123850327 +0000 UTC"
   },
   {
    "mmsi": "636021671",
    "name": "GREEN ITAQUI",
-   "lat": -23.97389,
-   "lon": -46.29349,
+   "lat": -23.9739,
+   "lon": -46.2935,
    "sog_knots": 0.0,
    "cog_deg": 242.2,
    "destination": "",
-   "timestamp": "2026-10-05 15:12:09.144644783 +0000 UTC"
+   "timestamp": "2026-10-05 15:39:09.624870482 +0000 UTC"
+  },
+  {
+   "mmsi": "538012241",
+   "name": "HAPPINESS DIVA",
+   "lat": -23.97884,
+   "lon": -46.28671,
+   "sog_knots": 0.0,
+   "cog_deg": 89.7,
+   "destination": "",
+   "timestamp": "2026-10-05 15:38:09.976035834 +0000 UTC"
   },
   {
    "mmsi": "352003285",
    "name": "HOANH SON UNIVERSE",
    "lat": -23.93498,
-   "lon": -46.31398,
+   "lon": -46.31403,
    "sog_knots": 0.0,
    "cog_deg": 188.0,
    "destination": "",
-   "timestamp": "2026-10-05 15:13:48.17202466 +0000 UTC"
+   "timestamp": "2026-10-05 15:37:50.092823985 +0000 UTC"
   },
   {
    "mmsi": "368225760",
    "name": "JOSEPH G",
-   "lat": 29.78036,
-   "lon": -92.18575,
+   "lat": 29.78033,
+   "lon": -92.18577,
    "sog_knots": 0.0,
-   "cog_deg": 54.4,
+   "cog_deg": 291.1,
    "destination": "",
-   "timestamp": "2026-10-05 15:13:36.213997864 +0000 UTC"
-  },
-  {
-   "mmsi": "567279000",
-   "name": "KIRANA NAREE",
-   "lat": -23.94937,
-   "lon": -46.31168,
-   "sog_knots": 0.0,
-   "cog_deg": 292.5,
-   "destination": "",
-   "timestamp": "2026-10-05 15:12:05.219146241 +0000 UTC"
+   "timestamp": "2026-10-05 15:39:06.224672696 +0000 UTC"
   },
   {
    "mmsi": "710014630",
    "name": "LOCAR LH XXIII",
-   "lat": -23.93287,
-   "lon": -46.31911,
+   "lat": -23.9329,
+   "lon": -46.3191,
    "sog_knots": 0.0,
-   "cog_deg": 121.4,
+   "cog_deg": 160.8,
    "destination": "",
-   "timestamp": "2026-10-05 15:13:48.554888008 +0000 UTC"
+   "timestamp": "2026-10-05 15:38:48.568179128 +0000 UTC"
+  },
+  {
+   "mmsi": "367309990",
+   "name": "MISS PEGGY ANN",
+   "lat": 29.77981,
+   "lon": -92.18379,
+   "sog_knots": 0.0,
+   "cog_deg": 125.1,
+   "destination": "",
+   "timestamp": "2026-10-05 15:39:31.643504704 +0000 UTC"
   },
   {
    "mmsi": "366983730",
    "name": "MR LLOYD",
    "lat": 29.77995,
-   "lon": -92.1843,
+   "lon": -92.18428,
    "sog_knots": 0.0,
-   "cog_deg": 144.0,
+   "cog_deg": 329.5,
    "destination": "",
-   "timestamp": "2026-10-05 15:12:42.370194999 +0000 UTC"
+   "timestamp": "2026-10-05 15:39:02.558977143 +0000 UTC"
   },
   {
-   "mmsi": "366874650",
-   "name": "MR.HENRY",
-   "lat": 29.77754,
-   "lon": -92.17868,
-   "sog_knots": 6.4,
-   "cog_deg": 299.0,
+   "mmsi": "712204006",
+   "name": "OMS XVII",
+   "lat": -23.97628,
+   "lon": -46.28729,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
    "destination": "",
-   "timestamp": "2026-10-05 15:12:44.060821506 +0000 UTC"
+   "timestamp": "2026-10-05 15:38:27.38607745 +0000 UTC"
   },
   {
-   "mmsi": "538008846",
-   "name": "NAVIOS GALAXY II",
-   "lat": -23.97017,
-   "lon": -46.28924,
-   "sog_knots": 0.1,
-   "cog_deg": 161.2,
+   "mmsi": "710032570",
+   "name": "SAAM AIMORE",
+   "lat": -23.97828,
+   "lon": -46.28872,
+   "sog_knots": 6.2,
+   "cog_deg": 355.5,
    "destination": "",
-   "timestamp": "2026-10-05 15:13:49.489709585 +0000 UTC"
+   "timestamp": "2026-10-05 15:39:29.592134709 +0000 UTC"
+  },
+  {
+   "mmsi": "352003770",
+   "name": "SEA DIAMOND 1",
+   "lat": -24.03827,
+   "lon": -46.34662,
+   "sog_knots": 9.4,
+   "cog_deg": 11.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:39:26.17368631 +0000 UTC"
   },
   {
    "mmsi": "710000022",
    "name": "SERRA POLAR",
-   "lat": -23.97743,
-   "lon": -46.29107,
+   "lat": -23.97744,
+   "lon": -46.29108,
    "sog_knots": 0.0,
    "cog_deg": 360.0,
    "destination": "",
-   "timestamp": "2026-10-05 15:13:31.403035584 +0000 UTC"
-  },
-  {
-   "mmsi": "477318100",
-   "name": "SHANDONG FU YI",
-   "lat": -23.9761,
-   "lon": -46.28717,
-   "sog_knots": 0.0,
-   "cog_deg": 72.3,
-   "destination": "",
-   "timestamp": "2026-10-05 15:12:32.858601538 +0000 UTC"
-  },
-  {
-   "mmsi": "710005753",
-   "name": "SM FLAMENGO",
-   "lat": -23.97582,
-   "lon": -46.28746,
-   "sog_knots": 0.0,
-   "cog_deg": 0.0,
-   "destination": "",
-   "timestamp": "2026-10-05 15:13:35.409994597 +0000 UTC"
-  },
-  {
-   "mmsi": "710029170",
-   "name": "SN ARAGIPE",
-   "lat": -23.94651,
-   "lon": -46.30805,
-   "sog_knots": 0.0,
-   "cog_deg": 183.7,
-   "destination": "",
-   "timestamp": "2026-10-05 15:11:38.253613816 +0000 UTC"
+   "timestamp": "2026-10-05 15:38:29.933874306 +0000 UTC"
   },
   {
    "mmsi": "710400549",
    "name": "SN-CARAIVA",
-   "lat": -23.94647,
-   "lon": -46.308,
-   "sog_knots": 0.0,
+   "lat": -23.94649,
+   "lon": -46.30803,
+   "sog_knots": 0.1,
    "cog_deg": 337.6,
    "destination": "",
-   "timestamp": "2026-10-05 15:13:18.25822148 +0000 UTC"
+   "timestamp": "2026-10-05 15:37:29.972647457 +0000 UTC"
   },
   {
-   "mmsi": "257450000",
-   "name": "STAVANGER PRIDE",
-   "lat": -23.9235,
-   "lon": -46.33308,
+   "mmsi": "538002630",
+   "name": "STAR HELENA",
+   "lat": -23.93816,
+   "lon": -46.31359,
    "sog_knots": 0.0,
-   "cog_deg": 47.4,
+   "cog_deg": 230.1,
    "destination": "",
-   "timestamp": "2026-10-05 15:13:38.313500531 +0000 UTC"
+   "timestamp": "2026-10-05 15:38:20.125605789 +0000 UTC"
+  },
+  {
+   "mmsi": "710006712",
+   "name": "SVITZER ATANASIO",
+   "lat": -23.95998,
+   "lon": -46.30488,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:38:50.676423912 +0000 UTC"
+  },
+  {
+   "mmsi": "710007272",
+   "name": "SVITZER BABITONGA",
+   "lat": -23.93773,
+   "lon": -46.30928,
+   "sog_knots": 0.1,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:37:02.480153735 +0000 UTC"
+  },
+  {
+   "mmsi": "710007000",
+   "name": "SVITZER IRLANDA D",
+   "lat": -23.96098,
+   "lon": -46.30431,
+   "sog_knots": 0.0,
+   "cog_deg": 348.9,
+   "destination": "",
+   "timestamp": "2026-10-05 15:37:54.787208468 +0000 UTC"
+  },
+  {
+   "mmsi": "710006591",
+   "name": "SVITZER MONTE K.T.",
+   "lat": -23.93338,
+   "lon": -46.31776,
+   "sog_knots": 0.2,
+   "cog_deg": 360.0,
+   "destination": "",
+   "timestamp": "2026-10-05 15:39:34.171864489 +0000 UTC"
   },
   {
    "mmsi": "710007151",
    "name": "SVITZER ROCHA PEDRO",
-   "lat": -23.93776,
-   "lon": -46.30942,
-   "sog_knots": 0.3,
-   "cog_deg": 41.1,
+   "lat": -23.93773,
+   "lon": -46.30936,
+   "sog_knots": 0.0,
+   "cog_deg": 360.0,
    "destination": "",
-   "timestamp": "2026-10-05 15:11:47.461419274 +0000 UTC"
+   "timestamp": "2026-10-05 15:39:27.285691787 +0000 UTC"
   },
   {
-   "mmsi": "710013920",
+   "mmsi": "720001258",
    "name": "UNKNOWN",
-   "lat": -24.00693,
-   "lon": -46.32824,
-   "sog_knots": 3.1,
-   "cog_deg": 13.6,
-   "destination": "",
-   "timestamp": "2026-10-05 15:13:33.707982916 +0000 UTC"
-  },
-  {
-   "mmsi": "538004890",
-   "name": "VIGOROUS",
-   "lat": -23.92505,
-   "lon": -46.34023,
+   "lat": -23.96851,
+   "lon": -46.29031,
    "sog_knots": 0.0,
-   "cog_deg": 217.0,
+   "cog_deg": 360.0,
    "destination": "",
-   "timestamp": "2026-10-05 15:11:35.854490029 +0000 UTC"
-  },
-  {
-   "mmsi": "710014320",
-   "name": "WS ZEUS",
-   "lat": -23.95001,
-   "lon": -46.3115,
-   "sog_knots": 0.0,
-   "cog_deg": 6.2,
-   "destination": "",
-   "timestamp": "2026-10-05 15:12:30.896537269 +0000 UTC"
-  },
-  {
-   "mmsi": "538012548",
-   "name": "YU YAN",
-   "lat": -23.98016,
-   "lon": -46.29072,
-   "sog_knots": 0.0,
-   "cog_deg": 271.6,
-   "destination": "",
-   "timestamp": "2026-10-05 15:13:08.536239421 +0000 UTC"
+   "timestamp": "2026-10-05 15:38:17.57249076 +0000 UTC"
   }
  ],
  "sample_data": false
