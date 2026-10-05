@@ -2,8 +2,9 @@
 Grain Vessel Tracker — AIS collector (v1).
 
 Connects to AISStream.io's free WebSocket feed, subscribes to bounding boxes
-around 20 major grain export ports worldwide (US Gulf, US Pacific Northwest,
-Brazil, Argentina, Canada, Black Sea, France, Australia), keeps the latest
+around 32 major grain ports and chokepoints across the Americas, Black Sea,
+Europe, and Australia (US Gulf, US Pacific Northwest, Brazil, Argentina,
+Uruguay, Central America & Caribbean, Canada, Black Sea, France, Australia), keeps the latest
 position report per vessel,
 writes a live snapshot (data/vessels.json) for the 3D globe, and archives
 every snapshot into data/vessels.db so voyage history builds from day one.
@@ -108,6 +109,18 @@ PORTS = {
         "bbox": [[-2.2, -49.4], [-0.9, -48.1]],
         "marker": [-48.75, -1.53],
     },
+    "sao-francisco": {
+        "name": "São Francisco do Sul",
+        "country": "Brazil",
+        "bbox": [[-27.0, -49.4], [-25.5, -47.9]],
+        "marker": [-48.63, -26.23],
+    },
+    "salvador": {
+        "name": "Salvador",
+        "country": "Brazil",
+        "bbox": [[-13.7, -39.2], [-12.3, -37.8]],
+        "marker": [-38.51, -12.97],
+    },
     # --- Argentina ---
     "rosario": {
         "name": "Rosario / San Lorenzo (Up-River)",
@@ -120,6 +133,68 @@ PORTS = {
         "country": "Argentina",
         "bbox": [[-39.5, -62.9], [-38.1, -61.3]],
         "marker": [-62.10, -38.78],
+    },
+    "necochea": {
+        "name": "Necochea / Quequén",
+        "country": "Argentina",
+        "bbox": [[-39.3, -59.7], [-37.9, -58.2]],
+        "marker": [-58.95, -38.57],
+    },
+    "zarate": {
+        "name": "Zárate / Campana",
+        "country": "Argentina",
+        "bbox": [[-34.8, -59.7], [-33.4, -58.3]],
+        "marker": [-59.03, -34.10],
+    },
+    # --- Uruguay ---
+    "nueva-palmira": {
+        "name": "Nueva Palmira",
+        "country": "Uruguay",
+        "bbox": [[-34.6, -59.1], [-33.2, -57.7]],
+        "marker": [-58.42, -33.88],
+    },
+    "montevideo": {
+        "name": "Montevideo",
+        "country": "Uruguay",
+        "bbox": [[-35.6, -56.9], [-34.2, -55.5]],
+        "marker": [-56.21, -34.90],
+    },
+    # --- Central America & Caribbean ---
+    "cristobal": {
+        "name": "Panama Canal – Cristóbal",
+        "country": "Panama",
+        "bbox": [[8.7, -80.6], [10.0, -79.2]],
+        "marker": [-79.90, 9.35],
+    },
+    "balboa": {
+        "name": "Panama Canal – Balboa",
+        "country": "Panama",
+        "bbox": [[8.3, -80.2], [9.6, -78.9]],
+        "marker": [-79.57, 8.95],
+    },
+    "veracruz": {
+        "name": "Veracruz",
+        "country": "Mexico",
+        "bbox": [[18.6, -96.8], [19.8, -95.5]],
+        "marker": [-96.13, 19.20],
+    },
+    "corinto": {
+        "name": "Corinto",
+        "country": "Nicaragua",
+        "bbox": [[11.9, -87.8], [13.1, -86.6]],
+        "marker": [-87.18, 12.48],
+    },
+    "puerto-cortes": {
+        "name": "Puerto Cortés",
+        "country": "Honduras",
+        "bbox": [[15.2, -88.6], [16.4, -87.3]],
+        "marker": [-87.95, 15.83],
+    },
+    "puerto-quetzal": {
+        "name": "Puerto Quetzal",
+        "country": "Guatemala",
+        "bbox": [[13.3, -91.4], [14.5, -90.1]],
+        "marker": [-90.78, 13.92],
     },
     # --- Canada ---
     "vancouver": {

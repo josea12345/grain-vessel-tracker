@@ -190,7 +190,7 @@
 
 <div id="page">
   <h1>Search and Track Grain Vessels</h1>
-  <p id="subline">Live AIS vessel traffic inside grain-export port zones — covering the products you work with:
+  <p id="subline">Live AIS vessel traffic inside grain port zones — covering the products you work with:
     corn, soybeans, soybean meal, soybean oil, and wheat. Search by name, filter by product or port zone,
     and tap any vessel for its details.</p>
 
@@ -250,7 +250,8 @@
 
 <footer>
   <div class="inner">
-    <div class="honest">🌾 <b>Honest labeling:</b> a "grain vessel" here is a vessel inside a grain-export port zone —
+    <div class="honest">🌾 <b>Honest labeling:</b> a "grain vessel" here is a vessel inside a grain-relevant
+      port zone — export gateways plus key transit chokepoints (Panama Canal) and major import terminals —
       not a verified cargo manifest. Product filters highlight port zones that handle each product.</div>
     Vessel data: <a href="https://aisstream.io" target="_blank" rel="noopener">AISStream.io</a> (free tier) ·
     Imagery: Esri World Imagery · Built by <a href="https://github.com/josea12345" target="_blank" rel="noopener">josea12345</a>
@@ -282,6 +283,18 @@ const ZONE_PRODUCTS = {
   'barcarena':     ['Soybeans', 'Corn'],
   'rosario':       ['Soybeans', 'Corn', 'Wheat', 'Soybean Meal', 'Soybean Oil'],
   'bahia-blanca':  ['Wheat', 'Corn', 'Soybeans'],
+  'necochea':      ['Wheat', 'Corn', 'Soybeans'],
+  'zarate':        ['Soybeans', 'Corn', 'Wheat', 'Soybean Meal', 'Soybean Oil'],
+  'nueva-palmira': ['Soybeans', 'Corn', 'Wheat'],
+  'montevideo':    ['Soybeans', 'Wheat', 'Corn'],
+  'sao-francisco': ['Soybeans', 'Corn'],
+  'salvador':      ['Soybeans', 'Corn'],
+  'cristobal':     ['Corn', 'Soybeans', 'Wheat'],
+  'balboa':        ['Corn', 'Soybeans', 'Wheat'],
+  'veracruz':      ['Corn', 'Wheat', 'Soybeans'],
+  'corinto':       ['Soybeans', 'Corn'],
+  'puerto-cortes': ['Corn', 'Soybeans'],
+  'puerto-quetzal':['Corn', 'Soybeans', 'Wheat'],
   'vancouver':     ['Wheat', 'Soybeans'],
   'prince-rupert': ['Wheat'],
   'odesa':         ['Wheat', 'Corn'],
