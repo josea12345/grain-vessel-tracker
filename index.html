@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Grain Vessel Tracker — 3D</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cesium@1.138/Build/Cesium/Widgets/widgets.css">
+<style>
+  html, body, #cesiumContainer { width: 100%; height: 100%; margin: 0; padding: 0; overflow: hidden;
+    font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+  #hud { position: absolute; top: 14px; left: 14px; z-index: 10; background: rgba(10, 18, 12, 0.82);
+    color: #e8f0e4; border: 1px solid #2c4a2e; border-radius: 10px; padding: 12px 16px; max-width: 320px;
+    backdrop-filter: blur(4px); }
+  #hud h1 { margin: 0 0 4px; font-size: 17px; letter-spacing: 0.3px; }
+  #hud h1 .grain { color: #9ccc65; }
+  #hud p { margin: 4px 0; font-size: 12.5px; line-height: 1.45; color: #c4d4bd; }
+  #hud .stats { display: flex; gap: 14px; margin-top: 8px; }
+  #hud .stat b { display: block; font-size: 20px; color: #fff; }
+  #hud .stat span { font-size: 11px; color: #9db394; text-transform: uppercase; letter-spacing: 0.6px; }
+  #banner { position: absolute; top: 14px; right: 14px; z-index: 10; background: rgba(120, 72, 0, 0.85);
+    color: #ffe9c4; border: 1px solid #a86e00; border-radius: 8px; padding: 8px 12px; font-size: 12px;
+    max-width: 260px; display: none; }
+  #legend { position: absolute; bottom: 14px; left: 14px; z-index: 10; background: rgba(10, 18, 12, 0.82);
+    color: #c4d4bd; border: 1px solid #2c4a2e; border-radius: 8px; padding: 8px 12px; font-size: 12px; }
+  #legend i { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 6px; }
+  #credit { position: absolute; bottom: 14px; right: 14px; z-index: 10; color: rgba(255,255,255,0.55);
+    font-size: 11px; text-align: right; }
+  #credit a { color: rgba(255,255,255,0.75); }
+</style>
+</head>
+<body>
+<div id="cesiumContainer"></div>
+
+<div id="hud">
+  <h1>🚢 <span class="grain">Grain</span> Vessel Tracker</h1>
+  <p>Live cargo vessels inside grain-export port zones, rendered in 3D.
+     Click any vessel for its AIS details.</p>
+  <div class="stats">
+    <div class="stat"><b id="statVessels">–</b><span>vessels</span></div>
+    <div class="stat"><b id="statPorts">–</b><span>ports</span></div>
+    <div class="stat"><b id="statUpdated">–</b><span>updated</span></div>
+  </div>
+</div>
+<div id="banner">⚠️ <b>Sample data.</b> Connect the AISStream collector
+  (<span style="font-family:monospace">collector/collector.py</span>) with a free
+  API key for live vessel positions.</div>
+<div id="legend">
+  <div><i style="background:#ffb300"></i>Cargo vessel (AIS)</div>
+  <div><i style="background:#69f0ae"></i>Grain export port</div>
+</div>
+<div id="credit">Vessel data: <a href="https://aisstream.io" target="_blank" rel="noopener">AISStream.io</a> (free tier) ·
+  Imagery: Esri World Imagery</div>
+
+<script>
+  window.CESIUM_BASE_URL = 'https://cdn.jsdelivr.net/npm/cesium@1.138/Build/Cesium/';
+</script>
+<script type="importmap">
+  { "imports": { "cesium": "https://cdn.jsdelivr.net/npm/cesium@1.138/Build/Cesium/index.js" } }
+</script>
+<script type="module">
+import * as Cesium from 'cesium';
+
+const viewer = new Cesium.Viewer('cesiumContainer', {
+  imageryProvider: new Cesium.UrlTemplateImageryProvider({
+    url: 'https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}',
+    credit: 'Esri World Imagery'
+  }),
+  baseLayerPicker: false, geocoder: false, homeButton: true,
+  sceneModePicker: false, navigationHelpButton: false,
+  animation: false, timeline: false, fullscreenButton: false,
+  infoBox: true, selectionIndicator: true
+});
+viewer.scene.globe.enableLighting = false;
+
+// Start framed on the Western Hemisphere grain corridor.
+viewer.camera.setView({
+  destination: Cesium.Cartesian3.fromDegrees(-60, 5, 14000000)
+});
+
+function headingLine(lon, lat, cogDeg, sogKnots) {
+  // Short projected track: where the vessel is pointed, scaled by speed.
+  const lenDeg = Math.max(0.15, Math.min(1.2, sogKnots * 0.06));
+  const rad = Cesium.Math.toRadians(cogDeg);
+  const dLon = lenDeg * Math.sin(rad) / Math.max(0.2, Math.cos(Cesium.Math.toRadians(lat)));
+  const dLat = lenDeg * Math.cos(rad);
+  return [lon, lat, lon + dLon, lat + dLat];
+}
+
+fetch('data/vessels.json')
+  .then(r => { if (!r.ok) throw new Error('vessels.json not found'); return r.json(); })
+  .then(snap => {
+    const vessels = snap.vessels || [];
+    document.getElementById('statVessels').textContent = vessels.length;
+    document.getElementById('statPorts').textContent = Object.keys(snap.ports || {}).length;
+    const updated = new Date(snap.generated_at);
+    document.getElementById('statUpdated').textContent =
+      isNaN(updated) ? '—' : updated.toLocaleTimeString([], {hour: '2-digit', minute: '2-digit'});
+    if (snap.sample_data) document.getElementById('banner').style.display = 'block';
+
+    for (const v of vessels) {
+      const pos = Cesium.Cartesian3.fromDegrees(v.lon, v.lat);
+      const [x1, y1, x2, y2] = headingLine(v.lon, v.lat, v.cog_deg || 0, v.sog_knots || 0);
+      viewer.entities.add({
+        position: pos,
+        point: { pixelSize: 9, color: Cesium.Color.fromCssColorString('#ffb300'),
+                 outlineColor: Cesium.Color.BLACK, outlineWidth: 1.5 },
+        polyline: { positions: Cesium.Cartesian3.fromDegreesArray([x1, y1, x2, y2]),
+                    width: 2, material: Cesium.Color.fromCssColorString('#ffb300').withAlpha(0.7) },
+        label: { text: v.name, font: '11px sans-serif', fillColor: Cesium.Color.WHITE,
+                 style: Cesium.LabelStyle.OUTLINE, outlineWidth: 2,
+                 pixelOffset: new Cesium.Cartesian2(0, -18),
+                 distanceDisplayCondition: new Cesium.DistanceDisplayCondition(0, 6000000) },
+        description:
+          `<b>${v.name}</b><br>MMSI: ${v.mmsi}<br>` +
+          `Speed: ${v.sog_knots} kn · Course: ${v.cog_deg}°<br>` +
+          `Destination: ${v.destination || '—'}<br>` +
+          `<span style="color:#888">Position: ${v.lat}, ${v.lon}</span>`
+      });
+    }
+
+    for (const [, p] of Object.entries(snap.ports || {})) {
+      const [lon, lat] = p.marker;
+      viewer.entities.add({
+        position: Cesium.Cartesian3.fromDegrees(lon, lat),
+        point: { pixelSize: 13, color: Cesium.Color.fromCssColorString('#69f0ae'),
+                 outlineColor: Cesium.Color.BLACK, outlineWidth: 2 },
+        label: { text: `⚓ ${p.name}`, font: 'bold 13px sans-serif', fillColor: Cesium.Color.WHITE,
+                 style: Cesium.LabelStyle.OUTLINE, outlineWidth: 2,
+                 pixelOffset: new Cesium.Cartesian2(0, -22) },
+        description: `<b>${p.name}</b> (${p.country})<br>Grain export gateway — USDA inspection volumes coming in v2.`
+      });
+    }
+  })
+  .catch(err => {
+    document.getElementById('statVessels').textContent = '0';
+    console.error(err);
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,165 @@
+{
+ "generated_at": "2026-10-05T12:00:00+00:00",
+ "ports": {
+  "new-orleans": {
+   "name": "New Orleans / S. Louisiana",
+   "country": "USA",
+   "marker": [
+    -90.06,
+    29.95
+   ]
+  },
+  "santos": {
+   "name": "Santos",
+   "country": "Brazil",
+   "marker": [
+    -46.31,
+    -23.96
+   ]
+  }
+ },
+ "vessel_count": 14,
+ "vessels": [
+  {
+   "mmsi": "366999000",
+   "name": "GRAIN PIONEER",
+   "lat": 29.7313,
+   "lon": -91.735,
+   "sog_knots": 3.4,
+   "cog_deg": 80.1,
+   "destination": "ROTTERDAM",
+   "timestamp": "2026-10-05T12:00:00+00:00"
+  },
+  {
+   "mmsi": "366999001",
+   "name": "MISSISSIPPI STAR",
+   "lat": 29.7797,
+   "lon": -89.4803,
+   "sog_knots": 1.1,
+   "cog_deg": 151.5,
+   "destination": "ROTTERDAM",
+   "timestamp": "2026-10-05T12:00:00+00:00"
+  },
+  {
+   "mmsi": "366999002",
+   "name": "DELTA BULKER",
+   "lat": 29.0218,
+   "lon": -91.1951,
+   "sog_knots": 7.5,
+   "cog_deg": 201.5,
+   "destination": "NEW ORLEANS",
+   "timestamp": "2026-10-05T12:00:00+00:00"
+  },
+  {
+   "mmsi": "366999003",
+   "name": "GULF HARVEST",
+   "lat": 29.4454,
+   "lon": -90.6321,
+   "sog_knots": 3.5,
+   "cog_deg": 312.1,
+   "destination": "SANTOS",
+   "timestamp": "2026-10-05T12:00:00+00:00"
+  },
+  {
+   "mmsi": "366999004",
+   "name": "CORN BELT",
+   "lat": 29.8076,
+   "lon": -90.9153,
+   "sog_knots": 1.9,
+   "cog_deg": 343.6,
+   "destination": "VERACRUZ",
+   "timestamp": "2026-10-05T12:00:00+00:00"
+  },
+  {
+   "mmsi": "366999005",
+   "name": "SOY EXPRESS",
+   "lat": 29.0329,
+   "lon": -90.8122,
+   "sog_knots": 4.5,
+   "cog_deg": 123.5,
+   "destination": "VERACRUZ",
+   "timestamp": "2026-10-05T12:00:00+00:00"
+  },
+  {
+   "mmsi": "366999006",
+   "name": "BAYOU TRADER",
+   "lat": 29.9493,
+   "lon": -89.9027,
+   "sog_knots": 6.7,
+   "cog_deg": 349.3,
+   "destination": "PANAMA CANAL",
+   "timestamp": "2026-10-05T12:00:00+00:00"
+  },
+  {
+   "mmsi": "366999007",
+   "name": "RIVER GRAIN",
+   "lat": 29.0024,
+   "lon": -91.0377,
+   "sog_knots": 7.9,
+   "cog_deg": 317.9,
+   "destination": "VERACRUZ",
+   "timestamp": "2026-10-05T12:00:00+00:00"
+  },
+  {
+   "mmsi": "710999000",
+   "name": "SANTOS BULKER",
+   "lat": -23.8762,
+   "lon": -46.0545,
+   "sog_knots": 0.6,
+   "cog_deg": 81.8,
+   "destination": "NEW ORLEANS",
+   "timestamp": "2026-10-05T12:00:00+00:00"
+  },
+  {
+   "mmsi": "710999001",
+   "name": "ATLANTIC HARVEST",
+   "lat": -23.2236,
+   "lon": -45.8736,
+   "sog_knots": 11.7,
+   "cog_deg": 136.5,
+   "destination": "SANTOS",
+   "timestamp": "2026-10-05T12:00:00+00:00"
+  },
+  {
+   "mmsi": "710999002",
+   "name": "PAMPA STAR",
+   "lat": -23.7829,
+   "lon": -46.4622,
+   "sog_knots": 5.0,
+   "cog_deg": 75.2,
+   "destination": "NEW ORLEANS",
+   "timestamp": "2026-10-05T12:00:00+00:00"
+  },
+  {
+   "mmsi": "710999003",
+   "name": "COFFEE COAST",
+   "lat": -23.6771,
+   "lon": -46.0797,
+   "sog_knots": 1.0,
+   "cog_deg": 228.0,
+   "destination": "SUEZ CANAL",
+   "timestamp": "2026-10-05T12:00:00+00:00"
+  },
+  {
+   "mmsi": "710999004",
+   "name": "PARANA GRAIN",
+   "lat": -23.6334,
+   "lon": -46.7039,
+   "sog_knots": 5.1,
+   "cog_deg": 355.2,
+   "destination": "SUEZ CANAL",
+   "timestamp": "2026-10-05T12:00:00+00:00"
+  },
+  {
+   "mmsi": "710999005",
+   "name": "SOUTHERN CROSS BULK",
+   "lat": -24.4486,
+   "lon": -46.5109,
+   "sog_knots": 10.4,
+   "cog_deg": 20.1,
+   "destination": "QINGDAO",
+   "timestamp": "2026-10-05T12:00:00+00:00"
+  }
+ ],
+ "sample_data": true
+}
