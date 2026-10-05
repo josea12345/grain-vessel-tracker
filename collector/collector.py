@@ -250,6 +250,32 @@ PORTS = {
     },
 }
 
+# --- Ocean "lanes": the highways grain travels. Watching these puts vessels
+# on the map mid-journey instead of only inside port circles. They are NOT
+# ports: no markers, no product mapping — just coverage.
+LANES = {
+    "lane-trans-atlantic": {
+        "name": "North Atlantic lane",
+        "bbox": [[28, -65], [52, -10]],
+    },
+    "lane-trans-pacific": {
+        "name": "Trans-Pacific lane",
+        "bbox": [[5, -175], [40, -120]],
+    },
+    "lane-south-atlantic": {
+        "name": "South Atlantic lane",
+        "bbox": [[-38, -45], [5, -5]],
+    },
+    "lane-indian": {
+        "name": "Indian Ocean lane",
+        "bbox": [[-12, 50], [20, 90]],
+    },
+    "lane-med": {
+        "name": "Mediterranean lane",
+        "bbox": [[30, 5], [46, 38]],
+    },
+}
+
 # AIS ship-type codes 70-79 cover cargo vessels, but AISStream's PositionReport
 # MetaData does NOT include ShipType (it arrives in separate static-data
 # messages). v1 therefore tracks ALL vessel traffic inside the port zones and
@@ -271,18 +297,24 @@ def load_tracked_mmsis():
 
 
 def build_subscription(api_key):
-    sub = {
+    return {
         "APIKey": api_key,
-        "BoundingBoxes": [p["bbox"] for p in PORTS.values()],
+        "BoundingBoxes": [p["bbox"] for p in PORTS.values()] + [l["bbox"] for l in LANES.values()],
         # PositionReport gives live positions (+ navigational status).
         # ShipStaticData (type 5) carries the crew-declared destination + ETA.
         "FilterMessageTypes": ["PositionReport", "ShipStaticData"],
     }
-    # Per-vessel global tracking: these MMSIs are followed wherever they are.
-    tracked = load_tracked_mmsis()
-    if tracked:
-        sub["FiltersShipMMSI"] = tracked
-    return sub
+
+
+def build_mmsi_subscription(api_key, mmsis):
+    # NOTE: AISStream ANDs subscription filters, so an MMSI filter combined
+    # with bounding boxes only matches that vessel INSIDE those boxes.
+    # Worldwide per-vessel tracking needs its own box-free subscription.
+    return {
+        "APIKey": api_key,
+        "FilterMessageTypes": ["PositionReport", "ShipStaticData"],
+        "FiltersShipMMSI": [str(m) for m in mmsis],
+    }
 
 
 # AIS navigational-status codes -> plain-English labels (ITU-1371).
@@ -395,10 +427,10 @@ def archive_snapshot(vessels):
     return total
 
 
-async def collect(api_key, seconds):
+async def collect_one(subscription, seconds):
+    """Run a single AISStream subscription, return {mmsi: vessel} + msg count."""
     vessels = {}
     static = {}  # mmsi -> {destination, eta} from ShipStaticData messages
-    subscription = json.dumps(build_subscription(api_key))
     # Honor standard proxy env vars (some sandboxes/VPNs require egress via proxy).
     proxy = os.environ.get("HTTPS_PROXY") or os.environ.get("https_proxy")
     connect_kwargs = {"max_size": 10 * 1024 * 1024}
@@ -445,6 +477,21 @@ async def collect(api_key, seconds):
     return vessels, n_messages
 
 
+async def collect(api_key, seconds):
+    # Phase 1: port zones + ocean lanes.
+    vessels, n1 = await collect_one(json.dumps(build_subscription(api_key)), seconds)
+    # Phase 2: individually tracked MMSIs, worldwide (separate subscription —
+    # see build_mmsi_subscription for why it can't share phase 1's).
+    tracked = load_tracked_mmsis()
+    n2 = 0
+    if tracked:
+        v2, n2 = await collect_one(
+            json.dumps(build_mmsi_subscription(api_key, tracked)), min(seconds, 120))
+        for mmsi, v in v2.items():
+            vessels.setdefault(mmsi, v)
+    return vessels, n1 + n2
+
+
 def main():
     ap = argparse.ArgumentParser(description="Collect grain-port vessel positions from AISStream.")
     ap.add_argument("--seconds", type=int, default=120,
@@ -460,11 +507,20 @@ def main():
     vessels, n_messages = asyncio.run(collect(args.key, args.seconds))
     print(f"Received {n_messages} messages -> {len(vessels)} vessels in grain-port boxes.")
 
+    # Sanity guard: a degraded run (bad subscription, stream outage) must never
+    # wipe the live snapshot. 37 coverage boxes normally yield hundreds of
+    # vessels; anything under 50 means the feed failed, not that ports emptied.
+    if len(vessels) < 50:
+        print(f"REFUSING to write snapshot: only {len(vessels)} vessels "
+              f"(minimum 50). Keeping previous data.")
+        return
+
     os.makedirs(DATA_DIR, exist_ok=True)
     snapshot = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "ports": {k: {"name": p["name"], "country": p["country"], "marker": p["marker"]}
                  for k, p in PORTS.items()},
+        "lanes": {k: {"name": l["name"], "bbox": l["bbox"]} for k, l in LANES.items()},
         "vessel_count": len(vessels),
         "vessels": sorted(vessels.values(), key=lambda v: v["name"]),
         "sample_data": False,

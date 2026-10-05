@@ -315,9 +315,11 @@ const PRODUCT_ICON = { 'Corn': '🌽', 'Soybeans': '🫘', 'Soybean Meal': '🟤
 const state = { q: '', product: 'All', zones: new Set(), underway: new Set(['underway', 'anchored', 'moored']), sort: 'name', fleetOnly: false };
 let vessels = [];       // enriched vessel records
 let ports = {};
+let lanes = {};
 const cardByMmsi = new Map();
 
 function zoneKeyOf(v) {
+  // ports first (more specific), then ocean lanes, then unmatched
   let best = null, bestD = 1e9;
   for (const [key, p] of Object.entries(ports)) {
     const [plon, plat] = p.marker || [];
@@ -325,7 +327,14 @@ function zoneKeyOf(v) {
     const d = Math.hypot(v.lon - plon, v.lat - plat);
     if (d < bestD) { bestD = d; best = key; }
   }
-  return bestD < 4 ? best : null;
+  if (bestD < 4) return best;
+  for (const [key, l] of Object.entries(lanes)) {
+    const [[la1, lo1], [la2, lo2]] = l.bbox || [];
+    if (la1 == null) continue;
+    if (v.lat >= Math.min(la1, la2) && v.lat <= Math.max(la1, la2) &&
+        v.lon >= Math.min(lo1, lo2) && v.lon <= Math.max(lo1, lo2)) return key;
+  }
+  return null;
 }
 const NAV_LABELS = {0:'Underway',1:'At anchor',2:'Not under command',3:'Restricted',4:'Restricted',
   5:'Moored',6:'Aground',7:'Fishing',8:'Underway'};
@@ -575,7 +584,7 @@ function filtered() {
   const q = state.q.trim().toLowerCase();
   let out = vessels.filter(v => {
     if (q && !(v.name.toLowerCase().includes(q) || String(v.mmsi).includes(q))) return false;
-    if (state.product !== 'All' && v.zoneKey !== 'tracked' && !(ZONE_PRODUCTS[v.zoneKey] || []).includes(state.product)) return false;
+    if (state.product !== 'All' && v.zoneKey !== 'tracked' && !lanes[v.zoneKey] && !(ZONE_PRODUCTS[v.zoneKey] || []).includes(state.product)) return false;
     if (!state.zones.has(v.zoneKey)) return false;
     if (!state.underway.has(statusOf(v))) return false;
     if (state.fleetOnly && !watch.has(v.mmsi)) return false;
@@ -591,10 +600,15 @@ function statCard(k, v) {
   return `<div class="miniCard"><div class="k">${k}</div><div class="v">${v}</div></div>`;
 }
 
+const RENDER_CAP = 300; // lanes can push vessel counts into the thousands; cap cards, map still shows all
 function render() {
   const rows = filtered();
-  document.getElementById('countShown').textContent = rows.length;
-  document.getElementById('countTotal').textContent = vessels.length;
+  const shown = rows.slice(0, RENDER_CAP);
+  document.getElementById('countShown').textContent = shown.length;
+  document.getElementById('countTotal').textContent = rows.length;
+  const countLine = document.getElementById('countLine');
+  countLine.innerHTML = `Showing <b>${shown.length}</b> of <b>${rows.length}</b> vessels` +
+    (rows.length > RENDER_CAP ? ' — refine search or filters to see more' : '');
   emptyEl.style.display = rows.length ? 'none' : 'block';
   if (!rows.length) {
     emptyEl.innerHTML = state.fleetOnly && watch.size
@@ -604,7 +618,7 @@ function render() {
         : 'No vessels match those filters. Try clearing the search or choosing another product.';
   }
   listEl.innerHTML = '';
-  for (const v of rows) {
+  for (const v of shown) {
     const card = document.createElement('div');
     card.className = 'vessel';
     card.id = 'v-' + v.mmsi;
@@ -710,6 +724,9 @@ function syncFilters() {
   const zoneEntries = Object.entries(ports);
   const nTracked = vessels.filter(v => v.zoneKey === 'tracked').length;
   if (nTracked) zoneEntries.unshift(['tracked', { name: '★ Tracked vessels (worldwide)' }]);
+  for (const [key, l] of Object.entries(lanes)) {
+    if (vessels.some(v => v.zoneKey === key)) zoneEntries.push([key, { name: '🌊 ' + l.name }]);
+  }
   for (const [key, p] of zoneEntries) {
     const n = vessels.filter(v => v.zoneKey === key).length;
     const lab = document.createElement('label');
@@ -761,6 +778,7 @@ fetch('data/vessels.json')
   .then(r => { if (!r.ok) throw new Error('vessels.json not found'); return r.json(); })
   .then(snap => {
     ports = snap.ports || {};
+    lanes = snap.lanes || {};
     const raw = snap.vessels || [];
     document.getElementById('statVessels').textContent = raw.length;
     document.getElementById('statPorts').textContent = Object.keys(ports).length;
@@ -772,12 +790,15 @@ fetch('data/vessels.json')
 
     vessels = raw.map(v => {
       const zk = zoneKeyOf(v);
-      // Vessels tracked by MMSI live outside every zone — keep them visible.
-      const key = zk || 'tracked';
-      return { ...v, name: v.name || 'Unknown', zoneKey: key, zoneName: zk ? ports[zk].name : '★ Tracked vessel' };
+      let key, zname;
+      if (!zk) { key = 'tracked'; zname = '★ Tracked vessel'; }
+      else if (lanes[zk]) { key = zk; zname = '🌊 ' + lanes[zk].name; }
+      else { key = zk; zname = ports[zk].name; }
+      return { ...v, name: v.name || 'Unknown', zoneKey: key, zoneName: zname };
     });
     vessels.sort((a, b) => a.name.localeCompare(b.name));
     Object.keys(ports).forEach(k => state.zones.add(k));
+    Object.keys(lanes).forEach(k => state.zones.add(k));
     state.zones.add('tracked');
 
     // map markers
