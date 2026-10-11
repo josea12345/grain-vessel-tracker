@@ -22,7 +22,7 @@ with real-time AIS data. The physical flow behind the futures prices.
   destination, position); "Show on map" smoothly flies the map to any vessel; glowing
   markers for vessels and port gateways.
 
-## Honest limitations (read before citing this in an interview)
+## Known limitations
 
 - AISStream's position reports do **not** include ship type — it arrives in separate
   static-data messages the free feed doesn't bundle. So this tracker shows **all** vessel traffic
